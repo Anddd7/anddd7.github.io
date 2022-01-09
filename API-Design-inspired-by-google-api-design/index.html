@@ -1,11 +1,18 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>API Design - inspired by google api design · Anddd7's Planet</title><meta name="description" content="API Design - inspired by google api designGoogle API 设计指南
-URL面向资源（Resource）的API设计：“资源”是被命名的实体，“资源名称”是它们的标识符。
-资源名称由资源自身的 ID、任何父资源的 ID 及其 API 服务名称组成：
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author"><title>API Design - inspired by google api design · Anddd7's Planet</title><meta name="description" content="Google API 设计指南
+URL面向资源（Resource）的API设计：“资源”是被命名的实体，“资源名称”是它们的标识符。资源名称由资源自身的 ID、任何父资源的 ID 及其 API 服务名称组成：
 
 
-"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/foundation-icons.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.0.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/assets/avatar.jpeg" style="width:127px;"><h3 title=""><a href="/">Anddd7's Planet</a></h3></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://twitter.com/Anddd_7"><i class="fa fa-twitter"></i></a></li><li><a target="_blank" rel="noopener" href="http://github.com/Anddd7"><i class="fa fa-github"></i></a></li><li><a href="mailto:liaoad_space@sina.com"><i class="fi-mail"></i></a></li></ul><div class="footer"><span>Theme based on </span><a target="_blank" rel="noopener" href="https://github.com/Ben02/hexo-theme-Anatole"> <strong>Anatole</strong></a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/about">关于</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>API Design - inspired by google api design</a></h3></div><div class="post-content"><h1 id="API-Design-inspired-by-google-api-design"><a href="#API-Design-inspired-by-google-api-design" class="headerlink" title="API Design - inspired by google api design"></a>API Design - inspired by google api design</h1><p><a target="_blank" rel="noopener" href="https://cloud.google.com/apis/design">Google API 设计指南</a></p>
-<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>面向资源（Resource）的API设计：“资源”是被命名的实体，“资源名称”是它们的标识符。</p>
-<p>资源名称由资源自身的 ID、任何父资源的 ID 及其 API 服务名称组成：</p>
+
+API 服务名称
+集合 ID
+资源 ID
+集合 ID
+资源 ID
+
+
+
+//stor"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/favicon.jpg" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="stylesheet" href="/css/foundation-icons.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"><meta name="generator" content="Hexo 6.0.0"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/assets/avatar.jpeg" style="width:127px;"><h3 title=""><a href="/">Anddd7's Planet</a></h3></div></div><ul class="social-links"><li><a target="_blank" rel="noopener" href="https://twitter.com/Anddd_7"><i class="fa fa-twitter"></i></a></li><li><a target="_blank" rel="noopener" href="http://github.com/Anddd7"><i class="fa fa-github"></i></a></li><li><a href="mailto:liaoad_space@sina.com"><i class="fi-mail"></i></a></li></ul><div class="footer"><span>Theme based on </span><a target="_blank" rel="noopener" href="https://github.com/Ben02/hexo-theme-Anatole"> <strong>Anatole</strong></a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/about">关于</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post-page"><div class="post animated fadeInDown"><div class="post-title"><h3><a>API Design - inspired by google api design</a></h3></div><div class="post-content"><p><a target="_blank" rel="noopener" href="https://cloud.google.com/apis/design">Google API 设计指南</a></p>
+<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>面向资源（Resource）的API设计：“资源”是被命名的实体，“资源名称”是它们的标识符。资源名称由资源自身的 ID、任何父资源的 ID 及其 API 服务名称组成：</p>
 <table>
 <thead>
 <tr>
@@ -26,21 +33,24 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <tr>
 <td align="left">//mail.googleapis.com</td>
 <td align="left">/users</td>
-<td align="left">/<a href="mailto:&#x6e;&#x61;&#109;&#101;&#64;&#101;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#46;&#x63;&#111;&#x6d;">&#x6e;&#x61;&#109;&#101;&#64;&#101;&#x78;&#97;&#x6d;&#x70;&#108;&#x65;&#46;&#x63;&#111;&#x6d;</a></td>
+<td align="left">/<a href="mailto:&#x6e;&#97;&#x6d;&#101;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;">&#x6e;&#97;&#x6d;&#101;&#x40;&#101;&#120;&#97;&#x6d;&#x70;&#x6c;&#101;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
 <td align="left">/settings</td>
 <td align="left">/customFrom</td>
 </tr>
 </tbody></table>
-<p>完整资源名称：<code>//library.googleapis.com/shelves/shelf1/books/book2</code></p>
-<p>相对资源名称：<code>shelves/shelf1/books/book2</code></p>
-<p>非末尾的资源ID有且仅有一个网址段，末尾的资源ID可以有多个网址URI段：<code>server/server1/files/source/py/parser.py</code></p>
-<p>网址：通过对资源名称进行转码 = 协议 tcp http + 版本 v1 v2</p>
-<p><code>&lt;protocol&gt;:&lt;service-name&gt;&lt;version&gt;&lt;collection-id&gt;...&lt;resource-id&gt;</code></p>
-<blockquote>
-<p><code>//calendar.googleapis.com/users/john smith/events/123</code></p>
-<p><code>https://calendar.googleapis.com/v3/users/john%20smith/events/123</code></p>
+<p>Examples:</p>
+<ul>
+<li>完整资源名称：<code>//library.googleapis.com/shelves/shelf1/books/book2</code></li>
+<li>相对资源名称：<code>shelves/shelf1/books/book2</code></li>
+<li>非末尾的资源ID有且仅有一个网址段，末尾的资源ID可以有多个网址URI段：<code>server/server1/files/source/py/parser.py</code><ul>
+<li>网址：通过对资源名称进行转码 = 协议 tcp http + 版本 v1 v2<blockquote>
+<p>Pattern: <code>&lt;protocol&gt;:&lt;service-name&gt;&lt;version&gt;&lt;collection-id&gt;...&lt;resource-id&gt;</code> <br>E.g. <code>//calendar.googleapis.com/users/john smith/events/123</code> <br>E.g. <code>https://calendar.googleapis.com/v3/users/john%20smith/events/123</code></p>
 </blockquote>
-<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h5 id="标准方法-Standard-methods"><a href="#标准方法-Standard-methods" class="headerlink" title="标准方法 Standard methods"></a>标准方法 Standard methods</h5><table>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><h3 id="标准方法-Standard-methods"><a href="#标准方法-Standard-methods" class="headerlink" title="标准方法 Standard methods"></a>标准方法 Standard methods</h3><table>
 <thead>
 <tr>
 <th align="left">标准方法</th>
@@ -80,21 +90,33 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <td align="left"><code>google.protobuf.Empty</code>**</td>
 </tr>
 </tbody></table>
-<p><code>GET /shelves/shelf1/books?page_size=2&amp;page_token=3</code></p>
-<blockquote>
+<p>Examples:</p>
+<ul>
+<li><code>GET /shelves/shelf1/books?page_size=2&amp;page_token=3</code><ul>
+<li><blockquote>
 <p>仅适用于获取集合资源；分页、结果排序；过滤字段、结果字段；</p>
 </blockquote>
-<p><code>GET /shelves/shelf1/books/book2</code></p>
-<p><code>POST /shelves/shelf1/books</code></p>
-<p><code>PUT /shelves/shelf1/books/book2</code> or <code>PATCH /shelves/shelf1/books/book2</code></p>
-<blockquote>
+</li>
+</ul>
+</li>
+<li><code>GET /shelves/shelf1/books/book2</code></li>
+<li><code>POST /shelves/shelf1/books</code></li>
+<li><code>PUT /shelves/shelf1/books/book2</code> or <code>PATCH /shelves/shelf1/books/book2</code><ul>
+<li><blockquote>
 <p>PUT 全量更新；PATCH 部分更新，配合<a target="_blank" rel="noopener" href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#field-masks-in-update-operations">FieldMask</a>指定哪些字段会被更新；</p>
 </blockquote>
-<p><code>DELETE /shelves/shelf1/books/book2</code></p>
-<blockquote>
+</li>
+</ul>
+</li>
+<li><code>DELETE /shelves/shelf1/books/book2</code><ul>
+<li><blockquote>
 <p>数据保持一致，但是只有第一次会删除成功返回Empty，后续返回NOT_FOUND</p>
 </blockquote>
-<h5 id="自定义方法-Custom-methods"><a href="#自定义方法-Custom-methods" class="headerlink" title="自定义方法 Custom methods"></a>自定义方法 Custom methods</h5><table>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="自定义方法-Custom-methods"><a href="#自定义方法-Custom-methods" class="headerlink" title="自定义方法 Custom methods"></a>自定义方法 Custom methods</h3><table>
 <thead>
 <tr>
 <th align="left">方法名称</th>
@@ -134,41 +156,50 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <td align="left">恢复之前删除的资源，例如 <a target="_blank" rel="noopener" href="https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services/undelete"><code>services.undelete</code></a>。建议的保留期限为 30 天。</td>
 </tr>
 </tbody></table>
-<p>使用<code>:</code>而非<code>/</code>来分隔自定义动词和资源名称，e.g. <code>POST /files/a/long/file/name:undelete</code></p>
-<blockquote>
+<p>Highlights:</p>
+<ul>
+<li>使用<code>:</code>而非<code>/</code>来分隔自定义动词和资源名称，e.g. <code>POST /files/a/long/file/name:undelete</code><ul>
+<li><blockquote>
 <p>使用自定义方法表达业务动作：提拔员工、完成配送（类似黑马业务能力表的设计）</p>
 </blockquote>
-<h5 id="Example-works-in-Spring-Micronaunt"><a href="#Example-works-in-Spring-Micronaunt" class="headerlink" title="Example (works in Spring/Micronaunt)"></a>Example (works in Spring/Micronaunt)</h5><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(<span class="meta-string">&quot;/google&quot;</span>)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoogleStyleController</span> </span>&#123;</span><br><span class="line">  <span class="meta">@GetMapping(<span class="meta-string">&quot;/&#123;id&#125;&quot;</span>)</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">(<span class="meta">@PathVariable</span> id: <span class="type">String</span>)</span></span>: String = URLDecoder.decode(id, Charset.defaultCharset())</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping(<span class="meta-string">&quot;/&#123;id&#125;:print&quot;</span>)</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">print</span><span class="params">(<span class="meta">@PathVariable</span> id: <span class="type">String</span>)</span></span> = <span class="string">&quot;@&lt;<span class="subst">$&#123;URLDecoder.decode(id, Charset.defaultCharset())&#125;</span>&gt;@&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// controller test</span></span><br><span class="line"><span class="meta">@ActiveProfiles(<span class="meta-string">&quot;test&quot;</span>)</span></span><br><span class="line"><span class="meta">@WebMvcTest(GoogleStyleController::class, excludeAutoConfiguration = [SecurityAutoConfiguration::class])</span></span><br><span class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">GoogleStyleControllerTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mvc: MockMvc</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> id = <span class="string">&quot;1a!@#\$%^&amp;*():print&quot;</span> <span class="comment">// 如果id存在特殊字符，需要encode避免&quot;:&quot;被误解</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> encoded = URLEncoder.encode(id, Charset.defaultCharset())</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> `should <span class="keyword">get</span> things`<span class="params">()</span></span> &#123;</span><br><span class="line">      mvc.<span class="keyword">get</span>(<span class="string">&quot;/google/<span class="subst">$&#123;encoded&#125;</span>&quot;</span>).andExpect &#123; content &#123; string(id) &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> `should print things`<span class="params">()</span></span> &#123;</span><br><span class="line">      mvc.<span class="keyword">get</span>(<span class="string">&quot;/google/<span class="subst">$&#123;encoded&#125;</span>:print&quot;</span>).andExpect &#123; content &#123; string(<span class="string">&quot;@&lt;<span class="subst">$&#123;id&#125;</span>&gt;@&quot;</span>) &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Standard-Fields-amp-Header"><a href="#Standard-Fields-amp-Header" class="headerlink" title="Standard Fields &amp; Header"></a>Standard Fields &amp; Header</h2><p>标准字段：根据项目类型、行业特征指定一些API的标准字段，比如分页参数、audit信息、auth信息等，保证整个系统API的一致性和可读性</p>
-<p>系统参数：同上，并包括Header中的一些参数（仅供参考）：</p>
-<ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Example-works-in-Spring-Micronaunt"><a href="#Example-works-in-Spring-Micronaunt" class="headerlink" title="Example (works in Spring/Micronaunt)"></a>Example (works in Spring/Micronaunt)</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(<span class="meta-string">&quot;/google&quot;</span>)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoogleStyleController</span> </span>&#123;</span><br><span class="line">  <span class="meta">@GetMapping(<span class="meta-string">&quot;/&#123;id&#125;&quot;</span>)</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">(<span class="meta">@PathVariable</span> id: <span class="type">String</span>)</span></span>: String = URLDecoder.decode(id, Charset.defaultCharset())</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping(<span class="meta-string">&quot;/&#123;id&#125;:print&quot;</span>)</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">print</span><span class="params">(<span class="meta">@PathVariable</span> id: <span class="type">String</span>)</span></span> = <span class="string">&quot;@&lt;<span class="subst">$&#123;URLDecoder.decode(id, Charset.defaultCharset())&#125;</span>&gt;@&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// controller test</span></span><br><span class="line"><span class="meta">@ActiveProfiles(<span class="meta-string">&quot;test&quot;</span>)</span></span><br><span class="line"><span class="meta">@WebMvcTest(GoogleStyleController::class, excludeAutoConfiguration = [SecurityAutoConfiguration::class])</span></span><br><span class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">GoogleStyleControllerTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mvc: MockMvc</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> id = <span class="string">&quot;1a!@#\$%^&amp;*():print&quot;</span> <span class="comment">// 如果id存在特殊字符，需要encode避免&quot;:&quot;被误解</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> encoded = URLEncoder.encode(id, Charset.defaultCharset())</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> `should <span class="keyword">get</span> things`<span class="params">()</span></span> &#123;</span><br><span class="line">      mvc.<span class="keyword">get</span>(<span class="string">&quot;/google/<span class="subst">$&#123;encoded&#125;</span>&quot;</span>).andExpect &#123; content &#123; string(id) &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> `should print things`<span class="params">()</span></span> &#123;</span><br><span class="line">      mvc.<span class="keyword">get</span>(<span class="string">&quot;/google/<span class="subst">$&#123;encoded&#125;</span>:print&quot;</span>).andExpect &#123; content &#123; string(<span class="string">&quot;@&lt;<span class="subst">$&#123;id&#125;</span>&gt;@&quot;</span>) &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Standard-Fields-amp-Header"><a href="#Standard-Fields-amp-Header" class="headerlink" title="Standard Fields &amp; Header"></a>Standard Fields &amp; Header</h2><ul>
+<li>标准字段：根据项目类型、行业特征指定一些API的标准字段，比如分页参数、audit信息、auth信息等，保证整个系统API的一致性和可读性</li>
+<li>系统参数：同上，并包括Header中的一些参数（仅供参考）<ul>
 <li><code>X-HTTP-Method-Override</code>：请求的预期 HTTP 方法。部分网络代理不接受所有 HTTP 方法。（AWS API Gateway）</li>
 <li><code>passwd/password</code>：避免将密码或credentials放入网址</li>
 <li><code>X-Goog-Request-Reason, X-Server-Timeout</code></li>
-<li><code>X-RESOURCE-ID</code>：创建完成的资源ID（如果Create方法不返回任何数据的话）<h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2></li>
+<li><code>X-RESOURCE-ID</code>：创建完成的资源ID（如果Create方法不返回任何数据的话）</li>
 </ul>
-<blockquote>
-<p>CODE：A simple error code that can be easily handled by the client.</p>
-<p>Message：A developer-facing human-readable error message in English.</p>
-<p>Details：Additional error information that the client code can use to handle the error, such as retry info or a help link.</p>
-</blockquote>
-<ul>
+</li>
+</ul>
+<h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><ul>
 <li>使用统一的Code，且不提倡自由扩展：面向数据和行为设计，而非业务场景</li>
 <li>通过不同的上下文来对Code进行解释和相应</li>
-<li>能够映射到某一个确定的HttpStatus<h4 id="重试"><a href="#重试" class="headerlink" title="重试"></a>重试</h4></li>
+<li>能够映射到某一个确定的HttpStatus</li>
 </ul>
-<p>客户端可根据（可重试的）Code设计重试策略：重试次数、重试间隔、长任务后台作业</p>
-<h4 id="传播错误-Propagating-Reproducing"><a href="#传播错误-Propagating-Reproducing" class="headerlink" title="传播错误 Propagating / Reproducing"></a>传播错误 Propagating / Reproducing</h4><p>由于上游服务错误导致的服务器错误</p>
+<blockquote>
+<p>CODE：A simple error code that can be easily handled by the client. <br>Message：A developer-facing human-readable error message in English. <br>Details：Additional error information that the client code can use to handle the error, such as retry info or a help link.</p>
+</blockquote>
+<h3 id="重试"><a href="#重试" class="headerlink" title="重试"></a>重试</h3><p>客户端可根据（可重试的）Code设计重试策略：重试次数、重试间隔、长任务后台作业</p>
+<h3 id="传播错误-Propagating-Reproducing"><a href="#传播错误-Propagating-Reproducing" class="headerlink" title="传播错误 Propagating / Reproducing"></a>传播错误 Propagating / Reproducing</h3><p>由于上游服务错误导致的服务器错误</p>
 <ul>
 <li>隐藏实现详细信息和机密信息</li>
 <li>调整负责该错误的一方：从调用者角度看，无论服务器是因为何种原因发生错误，对调用者的响应结果是一定的<ul>
 <li>Get 资源，依赖上游服务404：404</li>
 <li>List 资源，部分依赖上游服务404：200 with partial data</li>
-<li>…<blockquote>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<h3 id="Status-Code-for-example"><a href="#Status-Code-for-example" class="headerlink" title="Status Code (for example)"></a>Status Code (for example)</h3><blockquote>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/26639172/rest-api-status-code-for-upstream-service-failure">REST API status code for upstream service failure?</a></p>
 </blockquote>
-错误列表</li>
-</ul>
 <table>
 <thead>
 <tr>
@@ -258,9 +289,7 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <td align="left">请参阅备注。</td>
 </tr>
 </tbody></table>
-<h2 id="Naming-Convention"><a href="#Naming-Convention" class="headerlink" title="Naming Convention"></a>Naming Convention</h2></li>
-</ul>
-<table>
+<h2 id="Naming-Convention"><a href="#Naming-Convention" class="headerlink" title="Naming Convention"></a>Naming Convention</h2><table>
 <thead>
 <tr>
 <th align="left">API 名称</th>
@@ -299,25 +328,26 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <td></td>
 </tr>
 </tbody></table>
-<h5 id="（接口）方法名称：VerbNoun"><a href="#（接口）方法名称：VerbNoun" class="headerlink" title="（接口）方法名称：VerbNoun"></a>（接口）方法名称：VerbNoun</h5><p>方法名称的动词部分<strong>应该</strong>使用用于要求或命令的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Imperative_mood#English">祈使语气</a>，如果关于 API 子资源的方法名称使用提问动词（经常使用陈述语气表示），则容易让人混淆。</p>
-<p>例如，要求 API 创建一本书，这显然是 <code>CreateBook</code>（祈使语气），但是询问 API 关于图书发行商的状态可能会使用陈述语气，例如 <code>IsBookPublisherApproved</code> 或 <code>NeedsPublisherApproval</code>。</p>
-<p>若要在此类情况下继续使用祈使语气，请使用“check”(<code>CheckBookPublisherApproved</code>) 和“validate”(<code>ValidateBookPublisher</code>) 等命令。</p>
-<p>方法名称<strong>不应</strong>包含介词（例如“For”、“With”、“At”、“To”）。通常，带有介词的方法名称表示正在使用新方法，应将一个字段添加到现有方法中，或者该方法应使用不同的动词。</p>
-<p>例如，如果 <code>CreateBook</code> 消息已存在且您正在考虑添加 <code>CreateBookFromDictation</code>，请考虑使用 <code>TranscribeBook</code> 方法。</p>
-<h5 id="消息（对象）名称："><a href="#消息（对象）名称：" class="headerlink" title="消息（对象）名称："></a>消息（对象）名称：</h5><ul>
+<h3 id="（接口）方法名称：VerbNoun"><a href="#（接口）方法名称：VerbNoun" class="headerlink" title="（接口）方法名称：VerbNoun"></a>（接口）方法名称：VerbNoun</h3><p>方法名称的动词部分<strong>应该</strong>使用用于要求或命令的<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Imperative_mood#English">祈使语气</a>，如果关于 API 子资源的方法名称使用提问动词（经常使用陈述语气表示），则容易让人混淆。例如，要求 API 创建一本书，这显然是 <code>CreateBook</code>（祈使语气），但是询问 API 关于图书发行商的状态可能会使用陈述语气，例如 <code>IsBookPublisherApproved</code> 或 <code>NeedsPublisherApproval</code>。若要在此类情况下继续使用祈使语气，请使用“check”(<code>CheckBookPublisherApproved</code>) 和“validate”(<code>ValidateBookPublisher</code>) 等命令。</p>
+<p>方法名称<strong>不应</strong>包含介词（例如“For”、“With”、“At”、“To”）。通常，带有介词的方法名称表示正在使用新方法，应将一个字段添加到现有方法中，或者该方法应使用不同的动词。例如，如果 <code>CreateBook</code> 消息已存在且您正在考虑添加 <code>CreateBookFromDictation</code>，请考虑使用 <code>TranscribeBook</code> 方法。</p>
+<h3 id="消息（对象）名称"><a href="#消息（对象）名称" class="headerlink" title="消息（对象）名称"></a>消息（对象）名称</h3><ul>
 <li>（形容词）+名词：无二义性时，形容词可省略</li>
 <li><strong>不应</strong>包含介词（例如“With”、“For”）（带有介词的消息名称可以通过消息上的可选字段来更好地表示<ul>
 <li>请求响应使用Request、Response进行区分</li>
 <li>除非请求和响应刚好是：<ul>
 <li>Empty</li>
 <li>某一个资源类型：通常用于标准方法中</li>
-<li>某一个操作：通常用于自定义方法中<h5 id="字段名称"><a href="#字段名称" class="headerlink" title="字段名称"></a>字段名称</h5></li>
+<li>某一个操作：通常用于自定义方法中</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<h3 id="字段名称"><a href="#字段名称" class="headerlink" title="字段名称"></a>字段名称</h3><ul>
 <li><strong>不应</strong>包含介词</li>
-<li><strong>不应</strong>使用后置形容词<h5 id="时间与日期"><a href="#时间与日期" class="headerlink" title="时间与日期"></a>时间与日期</h5></li>
+<li><strong>不应</strong>使用后置形容词</li>
+</ul>
+<h3 id="时间与日期"><a href="#时间与日期" class="headerlink" title="时间与日期"></a>时间与日期</h3><ul>
 <li>使用Timestamp</li>
 <li><strong>应该</strong>以 <code>time</code>（例如 <code>start_time</code> 和 <code>end_time</code>）结尾</li>
 <li>（与时区和时段无关的日期）<ul>
@@ -327,20 +357,30 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 </li>
 <li>（与时区和日期无关的时间）<ul>
 <li>使用LocalTime（ ISO 8601 24 小时制格式 HH:MM:SS[.FFF]）</li>
-<li>应具有后缀 <code>_time</code><h5 id="数量"><a href="#数量" class="headerlink" title="数量"></a>数量</h5></li>
+<li>应具有后缀 <code>_time</code></li>
 </ul>
 </li>
+</ul>
+<h3 id="数量"><a href="#数量" class="headerlink" title="数量"></a>数量</h3><ul>
 <li>整数数量必须带单位: xxx_{bytes|width_pixels|meters}</li>
-<li>数量是条目计数，则该字段<strong>应该</strong>具有后缀 <code>_count</code><h5 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h5></li>
+<li>数量是条目计数，则该字段<strong>应该</strong>具有后缀 <code>_count</code></li>
+</ul>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><ul>
 <li>过滤字段：<code>filter</code></li>
-<li>响应：<code>ListEventResponse &#123; events: [..., ...] &#125;</code><h5 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h5></li>
-<li>对于软件开发者熟知的名称缩写，使源代码易于读写…<h2 id="Implementation-Tips"><a href="#Implementation-Tips" class="headerlink" title="Implementation Tips"></a>Implementation Tips</h2><h5 id="空响应"><a href="#空响应" class="headerlink" title="空响应"></a>空响应</h5></li>
+<li>响应：<code>ListEventResponse &#123; events: [..., ...] &#125;</code></li>
+</ul>
+<h3 id="缩写"><a href="#缩写" class="headerlink" title="缩写"></a>缩写</h3><ul>
+<li>对于软件开发者熟知的名称缩写，使源代码易于读写…</li>
+</ul>
+<h2 id="Implementation-Tips"><a href="#Implementation-Tips" class="headerlink" title="Implementation Tips"></a>Implementation Tips</h2><h3 id="空响应"><a href="#空响应" class="headerlink" title="空响应"></a>空响应</h3><ul>
 <li>标准Delete应返回空</li>
 <li>“软”删除返回状态已更新的资源（表示正在删除）<ul>
 <li>此处“软”删除是指对于正常List/Get不可见，但仍可以通过自定义查询获得结果的“条件隐藏式删除”</li>
 </ul>
 </li>
-<li>自定义方法一定要有Response：便于后续接口修改和维护<h5 id="耗时操作-异步操作-Long-Running-Operations"><a href="#耗时操作-异步操作-Long-Running-Operations" class="headerlink" title="耗时操作/异步操作 Long Running Operations"></a>耗时操作/异步操作 Long Running Operations</h5></li>
+<li>自定义方法一定要有Response：便于后续接口修改和维护</li>
+</ul>
+<h3 id="耗时操作-异步操作-Long-Running-Operations"><a href="#耗时操作-异步操作-Long-Running-Operations" class="headerlink" title="耗时操作/异步操作 Long Running Operations"></a>耗时操作/异步操作 Long Running Operations</h3><ul>
 <li>异步API会返回标准的Operation对象（异步句柄）<ul>
 <li>List、Get、Delete、Cancel</li>
 </ul>
@@ -349,51 +389,81 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <li>即使没有完成，原资源也可以通过List、Get进行查询<blockquote>
 <p>例如，在创建资源时，即便资源表明其尚未准备就绪，该资源也<strong>应该</strong>出现在 LIST 和 GET 方法中。</p>
 </blockquote>
-<h5 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h5></li>
+</li>
+</ul>
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><ul>
 <li>request<ul>
 <li><code>page_size</code>: 结果数</li>
-<li><code>page_token</code>: 分页令牌，请求特定页<blockquote>
-<ol>
-<li>The page token is useful when you don’t want users to move to the any given page without fetching first results. Since the next page token is only received when you access the previous page, users won’t be able to cache a search and access content later. So the end users can’t skip promoted (advertised) content.</li>
-<li>Can’t do parallel requests</li>
-</ol>
-<p><a target="_blank" rel="noopener" href="https://softwareengineering.stackexchange.com/questions/313382/paging-strategies-page-token-vs-skip-start-index">https://softwareengineering.stackexchange.com/questions/313382/paging-strategies-page-token-vs-skip-start-index</a></p>
-<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/35369966/why-use-pagination-tokens">https://stackoverflow.com/questions/35369966/why-use-pagination-tokens</a></p>
-<p><a target="_blank" rel="noopener" href="https://softwareengineering.stackexchange.com/questions/351271/api-pagination-how-to-implement-page-token-paging-method">https://softwareengineering.stackexchange.com/questions/351271/api-pagination-how-to-implement-page-token-paging-method</a></p>
-</blockquote>
-</li>
+<li><code>page_token</code>: 分页令牌，请求特定页</li>
 </ul>
 </li>
 <li>response<ul>
-<li><code>next_page_token</code>：下一页的分页令牌<h5 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h5></li>
+<li><code>next_page_token</code>：下一页的分页令牌</li>
 </ul>
 </li>
-<li>使用额外的字段<code>order_by=&quot;foo,bar desc&quot;</code>，默认asc<h5 id="子集合（跨父集合）"><a href="#子集合（跨父集合）" class="headerlink" title="子集合（跨父集合）"></a>子集合（跨父集合）</h5></li>
+</ul>
+<blockquote>
+<ol>
+<li>The page token is useful when you don’t want users to move to the any given page without fetching first results. Since the next page token is only received when you access the previous page, users won’t be able to cache a search and access content later. So the end users can’t skip promoted (advertised) content.</li>
+<li>Can’t do parallel requests \</li>
+</ol>
+</blockquote>
+<p>links:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://softwareengineering.stackexchange.com/questions/313382/paging-strategies-page-token-vs-skip-start-index">https://softwareengineering.stackexchange.com/questions/313382/paging-strategies-page-token-vs-skip-start-index</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/35369966/why-use-pagination-tokens">https://stackoverflow.com/questions/35369966/why-use-pagination-tokens</a></li>
+<li><a target="_blank" rel="noopener" href="https://softwareengineering.stackexchange.com/questions/351271/api-pagination-how-to-implement-page-token-paging-method">https://softwareengineering.stackexchange.com/questions/351271/api-pagination-how-to-implement-page-token-paging-method</a></li>
+</ul>
+<h3 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h3><ul>
+<li>使用额外的字段<code>order_by=&quot;foo,bar desc&quot;</code>，默认asc</li>
+</ul>
+<h3 id="子集合（跨父集合）"><a href="#子集合（跨父集合）" class="headerlink" title="子集合（跨父集合）"></a>子集合（跨父集合）</h3><ul>
 <li>使用<code>-</code>通配标识跨父集合（<code>-</code>可以避免转移，<code>*</code>不行）<ul>
 <li><code>GET https://library.googleapis.com/v1/shelves/-/books?filter=xxx</code></li>
-<li><code>GET https://library.googleapis.com/v1/shelves/-/books/&#123;id&#125;</code><h5 id="验证请求（dry-run）"><a href="#验证请求（dry-run）" class="headerlink" title="验证请求（dry run）"></a>验证请求（dry run）</h5></li>
+<li><code>GET https://library.googleapis.com/v1/shelves/-/books/&#123;id&#125;</code></li>
 </ul>
 </li>
-<li>使用额外的字段<code>validate_only=true</code>，仅执行无副作用的请求<h5 id="重复请求"><a href="#重复请求" class="headerlink" title="重复请求"></a>重复请求</h5></li>
-<li>不能轻易重复执行的请求（有较大影响：钱、时间、法务风险），请求时需要包含唯一ID（非资源ID）<h5 id="枚举值"><a href="#枚举值" class="headerlink" title="枚举值"></a>枚举值</h5></li>
+</ul>
+<h3 id="验证请求（dry-run）"><a href="#验证请求（dry-run）" class="headerlink" title="验证请求（dry run）"></a>验证请求（dry run）</h3><ul>
+<li>使用额外的字段<code>validate_only=true</code>，仅执行无副作用的请求</li>
+</ul>
+<h3 id="重复请求"><a href="#重复请求" class="headerlink" title="重复请求"></a>重复请求</h3><ul>
+<li>不能轻易重复执行的请求（有较大影响：钱、时间、法务风险），请求时需要包含唯一ID（非资源ID）</li>
+</ul>
+<h3 id="枚举值"><a href="#枚举值" class="headerlink" title="枚举值"></a>枚举值</h3><ul>
 <li>从<code>0</code>开始定义并作为默认值，API必须记录如何处理默认情况</li>
-<li>这个默认值不允许默认行为，则接口应显示错误INVALID ARGUMENT<h5 id="语法规则：EBNF"><a href="#语法规则：EBNF" class="headerlink" title="*语法规则：EBNF"></a>*语法规则：EBNF</h5><h5 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h5></li>
-<li>避免使用超过32位的无符号；-1、0代表特殊含义时需要额外记录<h5 id="部分响应-Partial-Response"><a href="#部分响应-Partial-Response" class="headerlink" title="部分响应 Partial Response"></a>部分响应 Partial Response</h5></li>
-<li>通过<code>FieldMask</code>，提供<code>$fields</code>保留字段来提示API Gateway、BFF清洗返回数据<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https:<span class="regexp">//</span>library.googleapis.com<span class="regexp">/v1/</span>shelves?<span class="variable">$fields</span>=shelves.name</span><br><span class="line">GET https:<span class="regexp">//</span>library.googleapis.com<span class="regexp">/v1/</span>shelves/<span class="number">123</span>?<span class="variable">$fields</span>=name</span><br></pre></td></tr></table></figure></li>
-<li>资源视图，在请求中增加参数<code>view=&lt;defined view&gt;</code>，来指定返回某一种视图数据<h5 id="ETag：客户端条件请求"><a href="#ETag：客户端条件请求" class="headerlink" title="*ETag：客户端条件请求"></a>*ETag：客户端条件请求</h5><h5 id="单例资源-Singleton"><a href="#单例资源-Singleton" class="headerlink" title="单例资源 Singleton"></a>单例资源 Singleton</h5></li>
-<li>仅有一个资源存在其集合（或父资源）中:<code>/users/&#123;uid&#125;/setting</code><h5 id="如何提供Option值"><a href="#如何提供Option值" class="headerlink" title="如何提供Option值"></a>如何提供Option值</h5></li>
+<li>这个默认值不允许默认行为，则接口应显示错误INVALID ARGUMENT</li>
+</ul>
+<h3 id="语法规则：EBNF"><a href="#语法规则：EBNF" class="headerlink" title="*语法规则：EBNF"></a>*语法规则：EBNF</h3><h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><ul>
+<li>避免使用超过32位的无符号；-1、0代表特殊含义时需要额外记录</li>
+</ul>
+<h3 id="部分响应-Partial-Response"><a href="#部分响应-Partial-Response" class="headerlink" title="部分响应 Partial Response"></a>部分响应 Partial Response</h3><ul>
+<li><p>通过<code>FieldMask</code>，提供<code>$fields</code>保留字段来提示API Gateway、BFF清洗返回数据</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https:<span class="regexp">//</span>library.googleapis.com<span class="regexp">/v1/</span>shelves?<span class="variable">$fields</span>=shelves.name</span><br><span class="line">GET https:<span class="regexp">//</span>library.googleapis.com<span class="regexp">/v1/</span>shelves/<span class="number">123</span>?<span class="variable">$fields</span>=name</span><br></pre></td></tr></table></figure></li>
+<li><p>资源视图，在请求中增加参数<code>view=&lt;defined view&gt;</code>，来指定返回某一种视图数据</p>
+</li>
+</ul>
+<h3 id="ETag：客户端条件请求"><a href="#ETag：客户端条件请求" class="headerlink" title="*ETag：客户端条件请求"></a>*ETag：客户端条件请求</h3><h3 id="单例资源-Singleton"><a href="#单例资源-Singleton" class="headerlink" title="单例资源 Singleton"></a>单例资源 Singleton</h3><ul>
+<li>仅有一个资源存在其集合（或父资源）中:<code>/users/&#123;uid&#125;/setting</code></li>
+</ul>
+<h3 id="如何提供Option值"><a href="#如何提供Option值" class="headerlink" title="如何提供Option值"></a>如何提供Option值</h3><ul>
 <li>Bool，提供固定的无需扩展的设置：<code>bool enable_tracing</code> 或 <code>bool enable_pretty_print</code></li>
 <li>Enum，灵活的设计但不会频繁修改：<code>enum TlsVersion</code> 或 <code>enum HttpVersion</code></li>
-<li>String，开放式设计或兼容外部标准：<code>sting region_code</code>或<code>string language_code</code><h5 id="数据保留（backup）Data-Retention"><a href="#数据保留（backup）Data-Retention" class="headerlink" title="数据保留（backup）Data Retention"></a>数据保留（backup）Data Retention</h5></li>
+<li>String，开放式设计或兼容外部标准：<code>sting region_code</code>或<code>string language_code</code></li>
+</ul>
+<h3 id="数据保留（backup）Data-Retention"><a href="#数据保留（backup）Data-Retention" class="headerlink" title="数据保留（backup）Data Retention"></a>数据保留（backup）Data Retention</h3><ul>
 <li>对于用户元数据、用户设置和其他重要信息，应保留 30 天的数据。例如，监控指标、项目元数据和服务定义。</li>
 <li>对于大量用户内容，应保留 7 天的数据。例如，二进制 blob 和数据库表。</li>
 <li>对于暂时性状态或费用昂贵的存储服务，如果可行，应保留 1 天的数据。例如，Memcache 实例和 Redis 服务器。<blockquote>
-<p>在数据保留期限期间，可以删除数据而不会丢失数据。如果免费提供数据保留的成本很高，则服务可以提供付费的数据保留。</p>
-<p>（使用非业务侵入的方式来保留、恢复这部分数据）</p>
+<p>在数据保留期限期间，可以删除数据而不会丢失数据。如果免费提供数据保留的成本很高，则服务可以提供付费的数据保留。<br>（使用非业务侵入的方式来保留、恢复这部分数据）</p>
 </blockquote>
-<h5 id="数据负载限制-Large-Payloads"><a href="#数据负载限制-Large-Payloads" class="headerlink" title="数据负载限制 Large Payloads"></a>数据负载限制 Large Payloads</h5></li>
+</li>
+</ul>
+<h3 id="数据负载限制-Large-Payloads"><a href="#数据负载限制-Large-Payloads" class="headerlink" title="数据负载限制 Large Payloads"></a>数据负载限制 Large Payloads</h3><ul>
 <li>Max 32MB</li>
-<li>大于10MB则需要考虑API设计的合理性，是否需要使用流式传输、异步传输<h2 id="Built-in-API文档"><a href="#Built-in-API文档" class="headerlink" title="Built-in API文档"></a>Built-in API文档</h2></li>
+<li>大于10MB则需要考虑API设计的合理性，是否需要使用流式传输、异步传输</li>
+</ul>
+<h2 id="Built-in-API文档"><a href="#Built-in-API文档" class="headerlink" title="Built-in API文档"></a>Built-in API文档</h2><ul>
 <li>API说明：以动词开头说明API功能，e.g.<ul>
 <li>与世界各地的朋友分享最新动态、照片、视频等。</li>
 <li>访问云托管的机器学习服务，轻松构建响应数据流的智能应用。</li>
@@ -405,9 +475,12 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <li>经纬度坐标的精度，以米为单位。 必须是非负数。</li>
 <li>标记是否为本系列的提交资源返回附件网址值。<code>series.insert</code> 的默认值为 <code>true</code>。</li>
 <li>投票信息的容器。仅在记录投票信息时出现。</li>
-<li>目前未使用或已弃用。Checklist：</li>
+<li>目前未使用或已弃用。</li>
 </ul>
 </li>
+</ul>
+<p>Checklist：</p>
+<ul>
 <li>它是什么？</li>
 <li>如果成功了它会执行什么操作？如果失败了它会执行什么操作？什么可能导致它失败及如何导致它失败？</li>
 <li>它具有幂等性吗？</li>
@@ -417,9 +490,9 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <li>应该如何使用它？</li>
 <li>可能会导致它失败的常见错误有哪些？</li>
 <li>它总是存在吗？（例如：“用于投票信息的容器。仅在记录投票信息时存在。”）</li>
-<li>它有默认设置吗？<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h2></li>
+<li>它有默认设置吗？</li>
 </ul>
-<p>主版本号</p>
+<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h2><p>主版本号</p>
 <ul>
 <li>作为URL路径的第一部分</li>
 <li>重大更改（删除、修改字段）时需要增加API版号 - Server/Client主版本号必须保持一致<ul>
@@ -449,9 +522,8 @@ URL面向资源（Resource）的API设计：“资源”是被命名的实体，
 <li><code>v1,v2</code> 稳定的可接受版本</li>
 <li><code>v1.1</code> 稳定的非公开版本</li>
 <li><code>v1beta</code> 非稳定版本，必须是<code>v1</code>的超集（包含）</li>
-<li><code>v1alpha</code> 非稳定版本，必须是<code>v1beta</code>的超集（包含）<hr>
-Writing by <strong>Anddd7</strong> at <em>2021-12-24T12:53</em>Tags: #Microservice #Restful #Api-Design</li>
+<li><code>v1alpha</code> 非稳定版本，必须是<code>v1beta</code>的超集（包含）</li>
 </ul>
 </li>
 </ul>
-</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-01-07</span><i class="fa fa-tag"></i><a class="tag" href="/tags/api-design-microservice/" title="api-design, microservice">api-design, microservice </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://anddd7.github.io/API-Design-inspired-by-google-api-design/,Anddd7's Planet,API Design - inspired by google api design,;"></a></div></div><div class="pagination"><ul class="clearfix"></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+</div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2022-01-07</span><i class="fa fa-tag"></i><a class="tag" href="/tags/api-design-microservice-restful/" title="api-design, microservice, restful">api-design, microservice, restful </a></div></div></div></div><div class="share"><div class="evernote"><a class="fa fa-bookmark" href="javascript:(function(){EN_CLIP_HOST='http://www.evernote.com';try{var%20x=document.createElement('SCRIPT');x.type='text/javascript';x.src=EN_CLIP_HOST+'/public/bookmarkClipper.js?'+(new%20Date().getTime()/100000);document.getElementsByTagName('head')[0].appendChild(x);}catch(e){location.href=EN_CLIP_HOST+'/clip.action?url='+encodeURIComponent(location.href)+'&amp;title='+encodeURIComponent(document.title);}})();" ref="nofollow" target="_blank"></a></div><div class="weibo"><a class="fa fa-weibo" href="javascript:void((function(s,d,e){try{}catch(e){}var f='http://service.weibo.com/share/share.php?',u=d.location.href,p=['url=',e(u),'&amp;title=',e(d.title),'&amp;appkey=2924220432'].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=620,height=450,left=',(s.width-620)/2,',top=',(s.height-450)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent)){setTimeout(a,0)}else{a()}})(screen,document,encodeURIComponent));"></a></div><div class="twitter"><a class="fa fa-twitter" target="_blank" rel="noopener" href="http://twitter.com/home?status=,https://anddd7.github.io/API-Design-inspired-by-google-api-design/,Anddd7's Planet,API Design - inspired by google api design,;"></a></div></div><div class="pagination"><ul class="clearfix"></ul></div></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
