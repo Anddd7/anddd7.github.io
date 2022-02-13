@@ -25,7 +25,7 @@ API 服务名,">
 <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
 
     
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/social-share.js/1.0.16/css/share.min.css">
 
     
 <link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
@@ -77,7 +77,7 @@ API 服务名,">
     <div class="bar" style="width: 0;"></div>
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/assets/avatar.jpeg" alt="" data-url="https://anddd7.mesh-shaped.top">
-        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <!-- <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div> -->
         <h3 class="subtitle">API Design - inspired by google api design</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
@@ -120,13 +120,13 @@ API 服务名,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    26k
+                    22k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    24 mins.
+                    20 mins.
                 </span>
                 
                 
@@ -181,7 +181,7 @@ API 服务名,">
 <tr>
 <td align="left">&#x2F;&#x2F;mail.googleapis.com</td>
 <td align="left">&#x2F;users</td>
-<td align="left">&#x2F;<a href="mailto:&#x6e;&#97;&#109;&#x65;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;">&#x6e;&#97;&#109;&#x65;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6c;&#x65;&#x2e;&#x63;&#111;&#x6d;</a></td>
+<td align="left">&#x2F;<a href="mailto:&#110;&#x61;&#109;&#101;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#109;">&#110;&#x61;&#109;&#101;&#x40;&#x65;&#120;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#46;&#99;&#111;&#109;</a></td>
 <td align="left">&#x2F;settings</td>
 <td align="left">&#x2F;customFrom</td>
 </tr>
@@ -314,8 +314,37 @@ API 服务名,">
 </ul>
 </li>
 </ul>
-<h3 id="Example-works-in-Spring-x2F-Micronaunt"><a href="#Example-works-in-Spring-x2F-Micronaunt" class="headerlink" title="Example (works in Spring&#x2F;Micronaunt)"></a>Example (works in Spring&#x2F;Micronaunt)</h3><figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// controller</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(<span class="string">&quot;/google&quot;</span>)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoogleStyleController</span> </span>&#123;</span><br><span class="line">  <span class="meta">@GetMapping(<span class="string">&quot;/&#123;id&#125;&quot;</span>)</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">get</span><span class="params">(<span class="meta">@PathVariable</span> id: <span class="type">String</span>)</span></span>: String = URLDecoder.decode(id, Charset.defaultCharset())</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping(<span class="string">&quot;/&#123;id&#125;:print&quot;</span>)</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> <span class="title">print</span><span class="params">(<span class="meta">@PathVariable</span> id: <span class="type">String</span>)</span></span> = <span class="string">&quot;@&lt;<span class="subst">$&#123;URLDecoder.decode(id, Charset.defaultCharset())&#125;</span>&gt;@&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// controller test</span></span><br><span class="line"><span class="meta">@ActiveProfiles(<span class="string">&quot;test&quot;</span>)</span></span><br><span class="line"><span class="meta">@WebMvcTest(GoogleStyleController::class, excludeAutoConfiguration = [SecurityAutoConfiguration::class])</span></span><br><span class="line"><span class="keyword">internal</span> <span class="class"><span class="keyword">class</span> <span class="title">GoogleStyleControllerTest</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">lateinit</span> <span class="keyword">var</span> mvc: MockMvc</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> id = <span class="string">&quot;1a!@#\$%^&amp;*():print&quot;</span> <span class="comment">// 如果id存在特殊字符，需要encode避免&quot;:&quot;被误解</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">val</span> encoded = URLEncoder.encode(id, Charset.defaultCharset())</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> `should <span class="keyword">get</span> things`<span class="params">()</span></span> &#123;</span><br><span class="line">      mvc.<span class="keyword">get</span>(<span class="string">&quot;/google/<span class="subst">$&#123;encoded&#125;</span>&quot;</span>).andExpect &#123; content &#123; string(id) &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">  <span class="function"><span class="keyword">fun</span> `should print things`<span class="params">()</span></span> &#123;</span><br><span class="line">      mvc.<span class="keyword">get</span>(<span class="string">&quot;/google/<span class="subst">$&#123;encoded&#125;</span>:print&quot;</span>).andExpect &#123; content &#123; string(<span class="string">&quot;@&lt;<span class="subst">$&#123;id&#125;</span>&gt;@&quot;</span>) &#125; &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Example-works-in-Spring-x2F-Micronaunt"><a href="#Example-works-in-Spring-x2F-Micronaunt" class="headerlink" title="Example (works in Spring&#x2F;Micronaunt)"></a>Example (works in Spring&#x2F;Micronaunt)</h3><pre><code class="kotlin">// controller
+@RestController
+@RequestMapping(&quot;/google&quot;)
+class GoogleStyleController &#123;
+  @GetMapping(&quot;/&#123;id&#125;&quot;)
+  fun get(@PathVariable id: String): String = URLDecoder.decode(id, Charset.defaultCharset())
 
+  @GetMapping(&quot;/&#123;id&#125;:print&quot;)
+  fun print(@PathVariable id: String) = &quot;@&lt;$&#123;URLDecoder.decode(id, Charset.defaultCharset())&#125;&gt;@&quot;
+&#125;
+
+// controller test
+@ActiveProfiles(&quot;test&quot;)
+@WebMvcTest(GoogleStyleController::class, excludeAutoConfiguration = [SecurityAutoConfiguration::class])
+internal class GoogleStyleControllerTest &#123;
+  @Autowired
+  private lateinit var mvc: MockMvc
+  private val id = &quot;1a!@#\$%^&amp;*():print&quot; // 如果id存在特殊字符，需要encode避免&quot;:&quot;被误解
+  private val encoded = URLEncoder.encode(id, Charset.defaultCharset())
+
+  @Test
+  fun `should get things`() &#123;
+      mvc.get(&quot;/google/$&#123;encoded&#125;&quot;).andExpect &#123; content &#123; string(id) &#125; &#125;
+  &#125;
+
+  @Test
+  fun `should print things`() &#123;
+      mvc.get(&quot;/google/$&#123;encoded&#125;:print&quot;).andExpect &#123; content &#123; string(&quot;@&lt;$&#123;id&#125;&gt;@&quot;) &#125; &#125;
+  &#125;
+&#125;
+</code></pre>
 <h2 id="Standard-Fields-amp-Header"><a href="#Standard-Fields-amp-Header" class="headerlink" title="Standard Fields &amp; Header"></a>Standard Fields &amp; Header</h2><ul>
 <li>标准字段：根据项目类型、行业特征指定一些API的标准字段，比如分页参数、audit信息、auth信息等，保证整个系统API的一致性和可读性</li>
 <li>系统参数：同上，并包括Header中的一些参数（仅供参考）<ul>
@@ -587,7 +616,9 @@ API 服务名,">
 </ul>
 <h3 id="部分响应-Partial-Response"><a href="#部分响应-Partial-Response" class="headerlink" title="部分响应 Partial Response"></a>部分响应 Partial Response</h3><ul>
 <li><p>通过<code>FieldMask</code>，提供<code>$fields</code>保留字段来提示API Gateway、BFF清洗返回数据</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET https://library.googleapis.com/v1/shelves?$fields=shelves.name</span><br><span class="line">GET https://library.googleapis.com/v1/shelves/123?$fields=name</span><br></pre></td></tr></table></figure>
+<pre><code class="zsh">GET https://library.googleapis.com/v1/shelves?$fields=shelves.name
+GET https://library.googleapis.com/v1/shelves/123?$fields=name
+</code></pre>
 </li>
 <li><p>资源视图，在请求中增加参数<code>view=&lt;defined view&gt;</code>，来指定返回某一种视图数据</p>
 </li>
@@ -702,7 +733,7 @@ API 服务名,">
                 <div class="subbox">
                     <img src="/assets/avatar.jpeg" height=300 width=300></img>
                     <p>Anddd7</p>
-                    <span>Learn by doing</span>
+                    <span>Talk is cheap, just Do it~</span>
                     <dl>
                         
                             
@@ -845,19 +876,27 @@ API 服务名,">
  
 <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
   
-<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
-  
 <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
-  
-<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
-  
-<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
-  
-<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
   
 <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
   
 <script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clojure/clojure.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/markdown/markdown.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/go/go.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/rust/rust.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/dockerfile/dockerfile.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/groovy/groovy.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/yaml/yaml.min.js"></script>
    
 <script src="/js/busuanzi.min.js"></script>
 
@@ -931,7 +970,7 @@ API 服务名,">
     var typedTextEl = $('.typed-text');
     if (typedTextEl && typedTextEl.length > 0) {
       var typed = new Typed('.typed-text', {
-        strings: ['Learn by doing', ''],
+        strings: ['Talk is cheap, just Do it~', '别哔哔，干就完事了!'],
         typeSpeed: 90,
         loop: true,
         loopCount: Infinity,
