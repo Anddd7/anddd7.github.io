@@ -1,0 +1,599 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Logseq - Customized with Clojure and CSS - Anddd7&#39;s Planet</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Anddd7, cloud-native, mesh-shaped,"> 
+    <meta name="description" content="Level Up! Programmer~,Logseq 实现 TODO 列表在前文基础上，介绍一下更贴近程序员的Logseq使用方式 —— Advanced Queries。
+TODO Query我的TODO列表是按GTD的方式划分了4块：,"> 
+    <meta name="author" content="Anddd7"> 
+    <link rel="alternative" href="atom.xml" title="Anddd7&#39;s Planet" type="application/atom+xml"> 
+    <link rel="icon" href="/assets/avatar.jpeg"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcdn.net/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+    <script>var musiclist = "2916766519"</script>
+    
+<script src="/js/loadaplayer.js"></script>
+
+    <!-- 引用依赖 -->
+    
+<link rel="stylesheet" href="/aplayer/dist/APlayer.min.css">
+
+    
+<script src="/aplayer/dist/APlayer.min.js"></script>
+<script src="/js/Meting.min.js"></script>
+
+    
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">Anddd7&#39;s Planet</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/assets/avatar.jpeg" alt="" data-url="https://anddd7.mesh-shaped.top">
+        <!-- <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div> -->
+        <h3 class="subtitle">Logseq - Customized with Clojure and CSS</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.jpg') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="/categories/Studies"><b>「
+                    </b>STUDIES<b> 」</b></a>
+                
+                二月 24, 2022
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/02/24/Logseq-Customized-with-Clojure-and-CSS/" title="Logseq - Customized with Clojure and CSS" class="">Logseq - Customized with Clojure and CSS</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    5.9k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    5 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Logseq/" rel="tag">Logseq</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/TODO/" rel="tag">TODO</a></li></ul>
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h1 id="Logseq-实现-TODO-列表"><a href="#Logseq-实现-TODO-列表" class="headerlink" title="Logseq 实现 TODO 列表"></a>Logseq 实现 TODO 列表</h1><p>在前文基础上，介绍一下更贴近程序员的Logseq使用方式 —— Advanced Queries。</p>
+<h2 id="TODO-Query"><a href="#TODO-Query" class="headerlink" title="TODO Query"></a>TODO Query</h2><p>我的TODO列表是按GTD的方式划分了4块：正在做、即将到期的、重要的、其他的</p>
+<h3 id="GTD-x2F-DOING"><a href="#GTD-x2F-DOING" class="headerlink" title="GTD&#x2F;DOING"></a>GTD&#x2F;DOING</h3><pre><code class="clojure">#+BEGIN_QUERY
+&#123;
+    :title &quot;🍖 Run~Run~Run&quot;
+    :query [:find (pull ?h [*])
+            :where
+            [?h :block/marker ?marker]
+            [(contains? #&#123;&quot;NOW&quot; &quot;DOING&quot;&#125; ?marker)]]
+    :result-transform (fn [result]
+                        (sort-by (fn [h]
+                                    (get h :block/priority &quot;Z&quot;)) result))
+    :collapsed? false&#125;
+#+END_QUERY
+</code></pre>
+<h3 id="GTD-x2F-SCHEDULED"><a href="#GTD-x2F-SCHEDULED" class="headerlink" title="GTD&#x2F;SCHEDULED"></a>GTD&#x2F;SCHEDULED</h3><pre><code class="clojure">#+BEGIN_QUERY
+&#123;
+    :title &quot;🍻 It&#39;s time to make it happen&quot;
+    :query [
+        :find (pull ?h [*])
+        :in $ ?start ?next
+        :where
+        [?h :block/marker ?marker]
+        [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
+        (or [?h :block/scheduled ?d] [?h :block/deadline ?d])
+        [(&gt;= ?d ?start)]
+        [(&lt; ?d ?next)]
+    ]
+      :inputs [:today :7d-after]
+    :result-transform (fn [result]
+                        (sort-by (fn [h]
+                                    (get h :block/priority &quot;Z&quot;)) result))
+    :collapsed? false&#125;
+#+END_QUERY
+</code></pre>
+<h3 id="GTD-x2F-NEXT"><a href="#GTD-x2F-NEXT" class="headerlink" title="GTD&#x2F;NEXT"></a>GTD&#x2F;NEXT</h3><pre><code class="clojure">#+BEGIN_QUERY
+&#123;
+    :title &quot;🏄 Nnnnnext&quot;
+    :query [:find (pull ?h [*])
+            :where
+            [?h :block/marker ?marker]
+            [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
+            (not
+                (not
+                    [?h :block/priority ?priority]
+                     [(contains? #&#123;&quot;A&quot; &quot;B&quot; &quot;C&quot;&#125; ?priority)]
+                )
+                (not 
+                    [?h :block/ref-pages ?p]
+                     [?p :page/name ?page-name]
+                     [(clojure.string/includes? ?page-name &quot;okr&quot;)]
+                )
+            )]
+    :result-transform (fn [result]
+                        (sort-by (fn [h]
+                                    (get h :block/priority &quot;Z&quot;)) result))
+    :collapsed? false&#125;
+#+END_QUERY
+</code></pre>
+<h3 id="GTD-x2F-OTHERS"><a href="#GTD-x2F-OTHERS" class="headerlink" title="GTD&#x2F;OTHERS"></a>GTD&#x2F;OTHERS</h3><pre><code class="clojure">#+BEGIN_QUERY
+&#123;
+    :title &quot;🦄 Emmmm, schedule it or kick it off&quot;
+    :query [
+        :find (pull ?h [*])
+        :in $ ?start ?next
+        :where
+        [?h :block/marker ?marker]
+        [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
+        (not
+            [?h :block/priority ?priority]
+            [(contains? #&#123;&quot;A&quot; &quot;B&quot; &quot;C&quot;&#125; ?priority)]
+        )
+        (not 
+            [?h :block/ref-pages ?p]
+                [?p :page/name ?page-name]
+            [(clojure.string/includes? ?page-name &quot;okr&quot;)]
+        )
+        (not
+            (or [?h :block/scheduled ?d] [?h :block/deadline ?d])
+            [(&gt;= ?d ?start)]
+            [(&lt; ?d ?next)]
+        )
+    ]
+    :inputs [:today :3d-after]
+    :result-transform (fn [result]
+                        (sort-by (fn [h]
+                                    (get h :block/priority &quot;Z&quot;)) result))
+    :collapsed? false&#125;
+#+END_QUERY
+</code></pre>
+<h2 id="CSS-加持"><a href="#CSS-加持" class="headerlink" title="CSS 加持"></a>CSS 加持</h2><p>我使用的是Dev Theme, 但默认的样式会有一些问题（或者说我不太习惯）</p>
+<ul>
+<li>代码块字体较小</li>
+<li>markdown table太窄，宽屏模式下还是会折行</li>
+<li>query table会有一个radio button切换模式，不过我不太常使用</li>
+</ul>
+<p>在进行了亿点点🤏🏻（阅读源码）的研究之后，发现用css可能是最简单的解决方式…</p>
+<pre><code class="css">/* This must be the first line of the custom.css with other import rules */
+
+/* 
+    Anddd7&#39;s diy _
+    checkout [https://logseq.com], create some sample blocks and check the classnames in browser
+    copy and overwrite it here. (use !important if needed.)
+*/
+
+/* default font for literal */
+:root &#123;
+  --ct-text-size: 16px;
+  --ct-line-height: 1.6;
+  --ls-font-family: &quot;Only Emoji&quot;, &quot;JetBrains Mono&quot;;
+  --ct-page-title-font-family: var(--ls-font-family);
+  --ct-code-font-family: &quot;JetBrains Mono&quot;;
+&#125;
+
+/* increase the font size of the code */
+.CodeMirror pre.CodeMirror-line,
+.CodeMirror-gutter,
+.CodeMirror-gutters,
+.CodeMirror-linenumber,
+.CodeMirror-scroll,
+.CodeMirror-sizer,
+.CodeMirror &#123;
+  font-size: 14px;
+  line-height: 18px;
+&#125;
+
+/* expand markdown table for wide screen */
+.table-wrapper &#123;
+  white-space: nowrap;
+  max-width: 1400px !important;
+&#125;
+
+/* hide useless things in customer query */
+.custom-query .initial .align-items &#123;
+  display: none;
+&#125;
+.custom-query .initial .content .block-content .timestamp,
+.custom-query .initial .content .block-content .block-body &#123;
+  display: none;
+&#125;
+
+/* styles changes */
+.priority &#123;
+  margin-right: 8px !important;
+&#125;
+</code></pre>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p align="center">
+  <img src="/assets/Logseq-Customized-with-Clojure-and-CSS/1645694079239.jpg" alt="Demo" />
+</p>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>GTD（Get Things Done）是一个不错的工作框架，特别是在事情多且杂的时候。</p>
+<blockquote>
+<p>“切换页表，切换任务”，像CPU一样实现多核运行。</p>
+</blockquote>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="/assets/avatar.jpeg" height=300 width=300></img>
+                    <p>Anddd7</p>
+                    <span>Talk is cheap, just Do it~</span>
+                    <dl>
+                        
+                            
+                                <dd><a href="https://github.com/Anddd7" target="_blank"><span
+                                    class=" iconfont icon-github"></span></a></dd>
+                            
+                            
+                                <dd><a href="https://twitter.com/Anddd_7" target="_blank"><span
+                                    class=" iconfont icon-twitter"></span></a></dd>
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">3 <p>文章</p></a></li>
+                    <li><a href="/categories">2 <p>分类</p></a></li>
+                    <li><a href="/tags">7 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Logseq-%E5%AE%9E%E7%8E%B0-TODO-%E5%88%97%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">Logseq 实现 TODO 列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TODO-Query"><span class="toc-number">1.1.</span> <span class="toc-text">TODO Query</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-DOING"><span class="toc-number">1.1.1.</span> <span class="toc-text">GTD&#x2F;DOING</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-SCHEDULED"><span class="toc-number">1.1.2.</span> <span class="toc-text">GTD&#x2F;SCHEDULED</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-NEXT"><span class="toc-number">1.1.3.</span> <span class="toc-text">GTD&#x2F;NEXT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-OTHERS"><span class="toc-number">1.1.4.</span> <span class="toc-text">GTD&#x2F;OTHERS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E5%8A%A0%E6%8C%81"><span class="toc-number">1.2.</span> <span class="toc-text">CSS 加持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-number">1.2.1.</span> <span class="toc-text">Output</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2022
+        <span class="gradient-text">
+            Anddd7
+        </span>.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme
+        <span class="gradient-text">
+            <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+        </span>
+        <small><a href="https://github.com/TriDiamond/hexo-theme-obsidian/blob/master/CHANGELOG.md" title="v1.4.9.3" target="_blank" rel="noopener">v1.4.9.3</a></small>
+        
+        </br>
+        蜀ICP备
+        <span class="gradient-text">
+            <a href="https://beian.miit.gov.cn/" title="2022001863号-1" target="_blank" rel="noopener">2022001863号-1</a>
+        </span>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<script src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.min.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/social-share.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clojure/clojure.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/markdown/markdown.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/go/go.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/rust/rust.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/dockerfile/dockerfile.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/groovy/groovy.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/yaml/yaml.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Talk is cheap, just Do it~', '别哔哔，干就完事了!'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+<!-- 引用依赖 -->
+<script>document.write(aplayerconf)</script>
+
+
+
+
+</html>
