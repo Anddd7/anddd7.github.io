@@ -5,13 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Logseq - Customized with Clojure and CSS - Anddd7&#39;s Planet</title>
+    <title>Mesh-Shaped Recap - Anddd7&#39;s Planet</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Anddd7, cloud-native, mesh-shaped,"> 
-    <meta name="description" content="Level Up! Programmer~,Logseq 实现 TODO 列表在前文基础上，介绍一下更贴近程序员的Logseq使用方式 —— Advanced Queries。
-TODO Query我的TODO列表是按GTD的方式划分了4块：,"> 
+    <meta name="description" content="Level Up! Programmer~,Recap在过去的 2 个月，在 Logseq 的帮助下进行了一段时间“mesh”式的学习和探索。得到了一些新的知识，也遇到了不少的问题，借这个时间点回顾一下，希望能在下半年做的更好一些。
+Good,"> 
     <meta name="author" content="Anddd7"> 
     <link rel="alternative" href="atom.xml" title="Anddd7&#39;s Planet" type="application/atom+xml"> 
     <link rel="icon" href="/assets/avatar.jpeg"> 
@@ -75,7 +75,7 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/assets/avatar.jpeg" alt="" data-url="https://anddd7.mesh-shaped.top">
         <!-- <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div> -->
-        <h3 class="subtitle">Logseq - Customized with Clojure and CSS</h3>
+        <h3 class="subtitle">Mesh-Shaped Recap</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -105,25 +105,24 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/Studies"><b>「
-                    </b>STUDIES<b> 」</b></a>
+                <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
                 
-                二月 24, 2022
+                六月 06, 2022
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2022/02/24/Logseq-Customized-with-Clojure-and-CSS/" title="Logseq - Customized with Clojure and CSS" class="">Logseq - Customized with Clojure and CSS</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/06/06/Mesh-Shaped-Recap/" title="Mesh-Shaped Recap" class="">Mesh-Shaped Recap</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    5.9k
+                    2.5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    5 mins.
+                    2 mins.
                 </span>
                 
                 
@@ -136,7 +135,7 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Logseq/" rel="tag">Logseq</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/TODO/" rel="tag">TODO</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Cloud-Native/" rel="tag">Cloud-Native</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Mesh-Shaped/" rel="tag">Mesh-Shaped</a></li></ul>
             
         </div>
     </div>
@@ -157,160 +156,34 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="Logseq-实现-TODO-列表"><a href="#Logseq-实现-TODO-列表" class="headerlink" title="Logseq 实现 TODO 列表"></a>Logseq 实现 TODO 列表</h1><p>在前文基础上，介绍一下更贴近程序员的Logseq使用方式 —— Advanced Queries。</p>
-<h2 id="TODO-Query"><a href="#TODO-Query" class="headerlink" title="TODO Query"></a>TODO Query</h2><p>我的TODO列表是按GTD的方式划分了4块：正在做、即将到期的、重要的、其他的</p>
-<h3 id="GTD-x2F-DOING"><a href="#GTD-x2F-DOING" class="headerlink" title="GTD&#x2F;DOING"></a>GTD&#x2F;DOING</h3><pre><code class="clojure">#+BEGIN_QUERY
-&#123;
-    :title &quot;🍖 Run~Run~Run&quot;
-    :query [:find (pull ?h [*])
-            :where
-            [?h :block/marker ?marker]
-            [(contains? #&#123;&quot;NOW&quot; &quot;DOING&quot;&#125; ?marker)]]
-    :result-transform (fn [result]
-                        (sort-by (fn [h]
-                                    (get h :block/priority &quot;Z&quot;)) result))
-    :collapsed? false&#125;
-#+END_QUERY
-</code></pre>
-<h3 id="GTD-x2F-SCHEDULED"><a href="#GTD-x2F-SCHEDULED" class="headerlink" title="GTD&#x2F;SCHEDULED"></a>GTD&#x2F;SCHEDULED</h3><pre><code class="clojure">#+BEGIN_QUERY
-&#123;
-    :title &quot;🍻 It&#39;s time to make it happen&quot;
-    :query [
-        :find (pull ?h [*])
-        :in $ ?start ?next
-        :where
-        [?h :block/marker ?marker]
-        [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
-        (or [?h :block/scheduled ?d] [?h :block/deadline ?d])
-        [(&gt;= ?d ?start)]
-        [(&lt; ?d ?next)]
-    ]
-      :inputs [:today :7d-after]
-    :result-transform (fn [result]
-                        (sort-by (fn [h]
-                                    (get h :block/priority &quot;Z&quot;)) result))
-    :collapsed? false&#125;
-#+END_QUERY
-</code></pre>
-<h3 id="GTD-x2F-NEXT"><a href="#GTD-x2F-NEXT" class="headerlink" title="GTD&#x2F;NEXT"></a>GTD&#x2F;NEXT</h3><pre><code class="clojure">#+BEGIN_QUERY
-&#123;
-    :title &quot;🏄 Nnnnnext&quot;
-    :query [:find (pull ?h [*])
-            :where
-            [?h :block/marker ?marker]
-            [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
-            (not
-                (not
-                    [?h :block/priority ?priority]
-                     [(contains? #&#123;&quot;A&quot; &quot;B&quot; &quot;C&quot;&#125; ?priority)]
-                )
-                (not 
-                    [?h :block/ref-pages ?p]
-                     [?p :page/name ?page-name]
-                     [(clojure.string/includes? ?page-name &quot;okr&quot;)]
-                )
-            )]
-    :result-transform (fn [result]
-                        (sort-by (fn [h]
-                                    (get h :block/priority &quot;Z&quot;)) result))
-    :collapsed? false&#125;
-#+END_QUERY
-</code></pre>
-<h3 id="GTD-x2F-OTHERS"><a href="#GTD-x2F-OTHERS" class="headerlink" title="GTD&#x2F;OTHERS"></a>GTD&#x2F;OTHERS</h3><pre><code class="clojure">#+BEGIN_QUERY
-&#123;
-    :title &quot;🦄 Emmmm, schedule it or kick it off&quot;
-    :query [
-        :find (pull ?h [*])
-        :in $ ?start ?next
-        :where
-        [?h :block/marker ?marker]
-        [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
-        (not
-            [?h :block/priority ?priority]
-            [(contains? #&#123;&quot;A&quot; &quot;B&quot; &quot;C&quot;&#125; ?priority)]
-        )
-        (not 
-            [?h :block/ref-pages ?p]
-                [?p :page/name ?page-name]
-            [(clojure.string/includes? ?page-name &quot;okr&quot;)]
-        )
-        (not
-            (or [?h :block/scheduled ?d] [?h :block/deadline ?d])
-            [(&gt;= ?d ?start)]
-            [(&lt; ?d ?next)]
-        )
-    ]
-    :inputs [:today :3d-after]
-    :result-transform (fn [result]
-                        (sort-by (fn [h]
-                                    (get h :block/priority &quot;Z&quot;)) result))
-    :collapsed? false&#125;
-#+END_QUERY
-</code></pre>
-<h2 id="CSS-加持"><a href="#CSS-加持" class="headerlink" title="CSS 加持"></a>CSS 加持</h2><p>我使用的是Dev Theme, 但默认的样式会有一些问题（或者说我不太习惯）</p>
-<ul>
-<li>代码块字体较小</li>
-<li>markdown table太窄，宽屏模式下还是会折行</li>
-<li>query table会有一个radio button切换模式，不过我不太常使用</li>
+            <h2 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h2><p>在过去的 2 个月，在 Logseq 的帮助下进行了一段时间“mesh”式的学习和探索。得到了一些新的知识，也遇到了不少的问题，借这个时间点回顾一下，希望能在下半年做的更好一些。</p>
+<h3 id="Good-achievements"><a href="#Good-achievements" class="headerlink" title="Good achievements"></a>Good achievements</h3><ul>
+<li>阅读了 3 本书（粗读）</li>
+<li>阅读了 40+ 篇 Blog&#x2F;文档，100+篇笔记（长短不一）</li>
+<li>整理并复习了 DDD、Cloud-Native 的知识图谱</li>
+<li>持续的贡献开源代码</li>
 </ul>
-<p>在进行了亿点点🤏🏻（阅读源码）的研究之后，发现用css可能是最简单的解决方式…</p>
-<pre><code class="css">/* This must be the first line of the custom.css with other import rules */
-
-/* 
-    Anddd7&#39;s diy _
-    checkout [https://logseq.com], create some sample blocks and check the classnames in browser
-    copy and overwrite it here. (use !important if needed.)
-*/
-
-/* default font for literal */
-:root &#123;
-  --ct-text-size: 16px;
-  --ct-line-height: 1.6;
-  --ls-font-family: &quot;Only Emoji&quot;, &quot;JetBrains Mono&quot;;
-  --ct-page-title-font-family: var(--ls-font-family);
-  --ct-code-font-family: &quot;JetBrains Mono&quot;;
-&#125;
-
-/* increase the font size of the code */
-.CodeMirror pre.CodeMirror-line,
-.CodeMirror-gutter,
-.CodeMirror-gutters,
-.CodeMirror-linenumber,
-.CodeMirror-scroll,
-.CodeMirror-sizer,
-.CodeMirror &#123;
-  font-size: 14px;
-  line-height: 18px;
-&#125;
-
-/* expand markdown table for wide screen */
-.table-wrapper &#123;
-  white-space: nowrap;
-  max-width: 1400px !important;
-&#125;
-
-/* hide useless things in customer query */
-.custom-query .initial .align-items &#123;
-  display: none;
-&#125;
-.custom-query .initial .content .block-content .timestamp,
-.custom-query .initial .content .block-content .block-body &#123;
-  display: none;
-&#125;
-
-/* styles changes */
-.priority &#123;
-  margin-right: 8px !important;
-&#125;
-</code></pre>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p align="center">
-  <img src="/assets/Logseq-Customized-with-Clojure-and-CSS/1645694079239.jpg" alt="Demo" />
-</p>
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>GTD（Get Things Done）是一个不错的工作框架，特别是在事情多且杂的时候。</p>
+<h3 id="Less-well"><a href="#Less-well" class="headerlink" title="Less well"></a>Less well</h3><ul>
+<li>一部分“碎片学习”是无效的</li>
+<li>知识焦虑越来越重</li>
+<li>OKR 优先级和权重失真</li>
+</ul>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>在完成了规划已久的<a href="/2022/03/29/Mesh-Shaped-Cloud-Native-Developer/">“Mesh-Shaped”</a>设定之后，这一宏大愿景给了我非常强的信心和动力投身到 “mesh” 式的学习中。借助 Logseq 等工具，我把所关注的公众号、参与的技术群群、关注的社交网络中的大佬，都安排进了我的“knowledge pipeline” —— 通过摘抄、截图、总结把这些知识收集了起来。从编程语言的 tips、到云原生的发展前景、到架构模式的建立、到开源商业的市场逻辑，随着时间的推移，涉及的知识域越来越广。</p>
+<p>然而，随着知识域扩展到我不熟悉的领域，并不能通过简单的摘抄就能够理解它。我需要搜索更多的资料，了解更多的背景，而学习的重点也逐渐的偏移了我的 OKR。在我花了整整 3 天时间，才完成了预计 10h 的 GCP ML Fundamental 的学习后，我发现想要学习一个全新的领域，需要的时间、精力是另一个量级的（超出预计），也是很难用碎片化时间去填充的。比如，ML Models 和相关的算法，需要一个非常集中思考的时间，才能够真正学懂的知识。</p>
+<h3 id="一部分“碎片学习”是无效的"><a href="#一部分“碎片学习”是无效的" class="headerlink" title="一部分“碎片学习”是无效的"></a>一部分“碎片学习”是无效的</h3><p>因此，回顾我过去 2 个月的学习时，不少的知识都是碎片且无效的。（包括加入了很多社区群，just 加入）</p>
+<p>碎片式学习很适合查漏补缺，比如，在对 DDD 和面向对象有一定了解的前提下，通过参加社区活动和查阅博客，对我以前不理解或有疏漏的概念进行了补充和深入。或者是对于一个具体的问题的调查和研究。</p>
+<p>而我收集到的很多“碎片”，只是放在那里，希望我能在它“过气”之前用上它。</p>
+<h3 id="知识焦虑越来越重"><a href="#知识焦虑越来越重" class="headerlink" title="知识焦虑越来越重"></a>知识焦虑越来越重</h3><p>不加限制的阅读导致我的知识焦虑越来越重。什么都想知道，什么都要了解 —— 这并不好。</p>
+<h3 id="OKR-优先级和权重失真"><a href="#OKR-优先级和权重失真" class="headerlink" title="OKR 优先级和权重失真"></a>OKR 优先级和权重失真</h3><p>碎片化的学习叠加起来，反而占据了大量的时间，导致 OKR 里的主线任务迟迟没有进展。而且在执行 OKR 时，我也试图用碎片化的方式去做 —— 今天做这个明天看那个，实现了 OKR 的“并发”，然而我并没有多个“线程”来执行他们，最后的后果就是抢占式调度 —— 更慢了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>发散很重要，我们需要拓宽眼界和思路，以实现 “曲线救国” 或是 “降维打击”。聚焦也同等重要，保证路不走偏，积蓄力量攻坚克难。</p>
+<p>前两天和同事交流“Orchestration vs Choreography”时，有聊到：</p>
 <blockquote>
-<p>“切换页表，切换任务”，像CPU一样实现多核运行。</p>
+<p>Choreography 是 mesh 式的调用，其实是因为服务间相互不可知。即 Complex（Cynefin）的认知模式下，大家都是黑盒，因此只能依赖相邻的服务一步一步传递信息，实现业务的最终执行<br>Orchestration 则是由中心的指挥家总揽全局。因为整个系统对他而言处于 Clear 模式，需要谁做什么、谁先谁后，都心中有数。</p>
 </blockquote>
+<p>反观“Mesh-Shaped”，并不是说所有知识一定是要相互连接，奔着扩大范围走的。而是以点绘面 —— 通过已有的核心点，逐步扩散出新的领域，从而构建更大的范围知识网。</p>
+<p align="center">
+  <img src="/assets/mesh-shaped-recap/image_1653875255217_0.png" alt="Demo" />
+</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -363,7 +236,7 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Logseq-%E5%AE%9E%E7%8E%B0-TODO-%E5%88%97%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">Logseq 实现 TODO 列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TODO-Query"><span class="toc-number">1.1.</span> <span class="toc-text">TODO Query</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-DOING"><span class="toc-number">1.1.1.</span> <span class="toc-text">GTD&#x2F;DOING</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-SCHEDULED"><span class="toc-number">1.1.2.</span> <span class="toc-text">GTD&#x2F;SCHEDULED</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-NEXT"><span class="toc-number">1.1.3.</span> <span class="toc-text">GTD&#x2F;NEXT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-OTHERS"><span class="toc-number">1.1.4.</span> <span class="toc-text">GTD&#x2F;OTHERS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E5%8A%A0%E6%8C%81"><span class="toc-number">1.2.</span> <span class="toc-text">CSS 加持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-number">1.2.1.</span> <span class="toc-text">Output</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recap"><span class="toc-number">1.</span> <span class="toc-text">Recap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Good-achievements"><span class="toc-number">1.1.</span> <span class="toc-text">Good achievements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-well"><span class="toc-number">1.2.</span> <span class="toc-text">Less well</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why"><span class="toc-number">2.</span> <span class="toc-text">Why</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E9%83%A8%E5%88%86%E2%80%9C%E7%A2%8E%E7%89%87%E5%AD%A6%E4%B9%A0%E2%80%9D%E6%98%AF%E6%97%A0%E6%95%88%E7%9A%84"><span class="toc-number">2.1.</span> <span class="toc-text">一部分“碎片学习”是无效的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%84%A6%E8%99%91%E8%B6%8A%E6%9D%A5%E8%B6%8A%E9%87%8D"><span class="toc-number">2.2.</span> <span class="toc-text">知识焦虑越来越重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OKR-%E4%BC%98%E5%85%88%E7%BA%A7%E5%92%8C%E6%9D%83%E9%87%8D%E5%A4%B1%E7%9C%9F"><span class="toc-number">2.3.</span> <span class="toc-text">OKR 优先级和权重失真</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
                 </div>
             </div>
             

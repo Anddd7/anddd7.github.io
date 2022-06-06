@@ -5,13 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Logseq - Customized with Clojure and CSS - Anddd7&#39;s Planet</title>
+    <title>路由 vs 代理 vs 网关 - Anddd7&#39;s Planet</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Anddd7, cloud-native, mesh-shaped,"> 
-    <meta name="description" content="Level Up! Programmer~,Logseq 实现 TODO 列表在前文基础上，介绍一下更贴近程序员的Logseq使用方式 —— Advanced Queries。
-TODO Query我的TODO列表是按GTD的方式划分了4块：,"> 
+    <meta name="description" content="Level Up! Programmer~,在阅读《为什么需要可编程代理》的时候，发现在云原生网关的变迁史中，频繁的出现了“路由、代理、网关”。而我们日常所用的技术中心，也有不少的软硬件设备和这三个概念有关系，如路由器、代理服务器、API 网,"> 
     <meta name="author" content="Anddd7"> 
     <link rel="alternative" href="atom.xml" title="Anddd7&#39;s Planet" type="application/atom+xml"> 
     <link rel="icon" href="/assets/avatar.jpeg"> 
@@ -75,7 +74,7 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/assets/avatar.jpeg" alt="" data-url="https://anddd7.mesh-shaped.top">
         <!-- <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div> -->
-        <h3 class="subtitle">Logseq - Customized with Clojure and CSS</h3>
+        <h3 class="subtitle">路由 vs 代理 vs 网关</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -105,25 +104,24 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/Studies"><b>「
-                    </b>STUDIES<b> 」</b></a>
+                <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
                 
-                二月 24, 2022
+                五月 29, 2022
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2022/02/24/Logseq-Customized-with-Clojure-and-CSS/" title="Logseq - Customized with Clojure and CSS" class="">Logseq - Customized with Clojure and CSS</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/05/29/%E8%B7%AF%E7%94%B1-vs-%E4%BB%A3%E7%90%86-vs-%E7%BD%91%E5%85%B3/" title="路由 vs 代理 vs 网关" class="">路由 vs 代理 vs 网关</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    5.9k
+                    2k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    5 mins.
+                    2 mins.
                 </span>
                 
                 
@@ -136,7 +134,7 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Logseq/" rel="tag">Logseq</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/TODO/" rel="tag">TODO</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Cloud-Native/" rel="tag">Cloud-Native</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Gateway/" rel="tag">Gateway</a></li></ul>
             
         </div>
     </div>
@@ -157,160 +155,71 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h1 id="Logseq-实现-TODO-列表"><a href="#Logseq-实现-TODO-列表" class="headerlink" title="Logseq 实现 TODO 列表"></a>Logseq 实现 TODO 列表</h1><p>在前文基础上，介绍一下更贴近程序员的Logseq使用方式 —— Advanced Queries。</p>
-<h2 id="TODO-Query"><a href="#TODO-Query" class="headerlink" title="TODO Query"></a>TODO Query</h2><p>我的TODO列表是按GTD的方式划分了4块：正在做、即将到期的、重要的、其他的</p>
-<h3 id="GTD-x2F-DOING"><a href="#GTD-x2F-DOING" class="headerlink" title="GTD&#x2F;DOING"></a>GTD&#x2F;DOING</h3><pre><code class="clojure">#+BEGIN_QUERY
-&#123;
-    :title &quot;🍖 Run~Run~Run&quot;
-    :query [:find (pull ?h [*])
-            :where
-            [?h :block/marker ?marker]
-            [(contains? #&#123;&quot;NOW&quot; &quot;DOING&quot;&#125; ?marker)]]
-    :result-transform (fn [result]
-                        (sort-by (fn [h]
-                                    (get h :block/priority &quot;Z&quot;)) result))
-    :collapsed? false&#125;
-#+END_QUERY
-</code></pre>
-<h3 id="GTD-x2F-SCHEDULED"><a href="#GTD-x2F-SCHEDULED" class="headerlink" title="GTD&#x2F;SCHEDULED"></a>GTD&#x2F;SCHEDULED</h3><pre><code class="clojure">#+BEGIN_QUERY
-&#123;
-    :title &quot;🍻 It&#39;s time to make it happen&quot;
-    :query [
-        :find (pull ?h [*])
-        :in $ ?start ?next
-        :where
-        [?h :block/marker ?marker]
-        [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
-        (or [?h :block/scheduled ?d] [?h :block/deadline ?d])
-        [(&gt;= ?d ?start)]
-        [(&lt; ?d ?next)]
-    ]
-      :inputs [:today :7d-after]
-    :result-transform (fn [result]
-                        (sort-by (fn [h]
-                                    (get h :block/priority &quot;Z&quot;)) result))
-    :collapsed? false&#125;
-#+END_QUERY
-</code></pre>
-<h3 id="GTD-x2F-NEXT"><a href="#GTD-x2F-NEXT" class="headerlink" title="GTD&#x2F;NEXT"></a>GTD&#x2F;NEXT</h3><pre><code class="clojure">#+BEGIN_QUERY
-&#123;
-    :title &quot;🏄 Nnnnnext&quot;
-    :query [:find (pull ?h [*])
-            :where
-            [?h :block/marker ?marker]
-            [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
-            (not
-                (not
-                    [?h :block/priority ?priority]
-                     [(contains? #&#123;&quot;A&quot; &quot;B&quot; &quot;C&quot;&#125; ?priority)]
-                )
-                (not 
-                    [?h :block/ref-pages ?p]
-                     [?p :page/name ?page-name]
-                     [(clojure.string/includes? ?page-name &quot;okr&quot;)]
-                )
-            )]
-    :result-transform (fn [result]
-                        (sort-by (fn [h]
-                                    (get h :block/priority &quot;Z&quot;)) result))
-    :collapsed? false&#125;
-#+END_QUERY
-</code></pre>
-<h3 id="GTD-x2F-OTHERS"><a href="#GTD-x2F-OTHERS" class="headerlink" title="GTD&#x2F;OTHERS"></a>GTD&#x2F;OTHERS</h3><pre><code class="clojure">#+BEGIN_QUERY
-&#123;
-    :title &quot;🦄 Emmmm, schedule it or kick it off&quot;
-    :query [
-        :find (pull ?h [*])
-        :in $ ?start ?next
-        :where
-        [?h :block/marker ?marker]
-        [(contains? #&#123;&quot;NOW&quot; &quot;LATER&quot; &quot;TODO&quot;&#125; ?marker)]
-        (not
-            [?h :block/priority ?priority]
-            [(contains? #&#123;&quot;A&quot; &quot;B&quot; &quot;C&quot;&#125; ?priority)]
-        )
-        (not 
-            [?h :block/ref-pages ?p]
-                [?p :page/name ?page-name]
-            [(clojure.string/includes? ?page-name &quot;okr&quot;)]
-        )
-        (not
-            (or [?h :block/scheduled ?d] [?h :block/deadline ?d])
-            [(&gt;= ?d ?start)]
-            [(&lt; ?d ?next)]
-        )
-    ]
-    :inputs [:today :3d-after]
-    :result-transform (fn [result]
-                        (sort-by (fn [h]
-                                    (get h :block/priority &quot;Z&quot;)) result))
-    :collapsed? false&#125;
-#+END_QUERY
-</code></pre>
-<h2 id="CSS-加持"><a href="#CSS-加持" class="headerlink" title="CSS 加持"></a>CSS 加持</h2><p>我使用的是Dev Theme, 但默认的样式会有一些问题（或者说我不太习惯）</p>
-<ul>
-<li>代码块字体较小</li>
-<li>markdown table太窄，宽屏模式下还是会折行</li>
-<li>query table会有一个radio button切换模式，不过我不太常使用</li>
+            <p>在阅读<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/B0LVmFvI7kFtjFEM0FG_zw">《为什么需要可编程代理》</a>的时候，发现在云原生网关的变迁史中，频繁的出现了“路由、代理、网关”。而我们日常所用的技术中心，也有不少的软硬件设备和这三个概念有关系，如路由器、代理服务器、API 网关等。让我产生了好奇，这三个概念有具体的联系吗？</p>
+<p>在翻阅了部分资料后，大致做了一些总结。</p>
+<h2 id="路由-——-“move-packets-between-networks”"><a href="#路由-——-“move-packets-between-networks”" class="headerlink" title="路由 —— “move packets between networks”"></a>路由 —— “move packets between networks”</h2><ul>
+<li>路由器<ul>
+<li>硬件路由<ul>
+<li>路由器工作在网络的 3 层；</li>
+<li>对其通信两端来说都是透明的，内外网的主机不会查觉中间有路由器参与了操作；</li>
+<li>路由器可以工作在低层，通过直接转化网络地址来转发数据包，它比代理服务器的速度要快；</li>
 </ul>
-<p>在进行了亿点点🤏🏻（阅读源码）的研究之后，发现用css可能是最简单的解决方式…</p>
-<pre><code class="css">/* This must be the first line of the custom.css with other import rules */
-
-/* 
-    Anddd7&#39;s diy _
-    checkout [https://logseq.com], create some sample blocks and check the classnames in browser
-    copy and overwrite it here. (use !important if needed.)
-*/
-
-/* default font for literal */
-:root &#123;
-  --ct-text-size: 16px;
-  --ct-line-height: 1.6;
-  --ls-font-family: &quot;Only Emoji&quot;, &quot;JetBrains Mono&quot;;
-  --ct-page-title-font-family: var(--ls-font-family);
-  --ct-code-font-family: &quot;JetBrains Mono&quot;;
-&#125;
-
-/* increase the font size of the code */
-.CodeMirror pre.CodeMirror-line,
-.CodeMirror-gutter,
-.CodeMirror-gutters,
-.CodeMirror-linenumber,
-.CodeMirror-scroll,
-.CodeMirror-sizer,
-.CodeMirror &#123;
-  font-size: 14px;
-  line-height: 18px;
-&#125;
-
-/* expand markdown table for wide screen */
-.table-wrapper &#123;
-  white-space: nowrap;
-  max-width: 1400px !important;
-&#125;
-
-/* hide useless things in customer query */
-.custom-query .initial .align-items &#123;
-  display: none;
-&#125;
-.custom-query .initial .content .block-content .timestamp,
-.custom-query .initial .content .block-content .block-body &#123;
-  display: none;
-&#125;
-
-/* styles changes */
-.priority &#123;
-  margin-right: 8px !important;
-&#125;
-</code></pre>
-<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p align="center">
-  <img src="/assets/Logseq-Customized-with-Clojure-and-CSS/1645694079239.jpg" alt="Demo" />
+</li>
+<li>软（件）路由<ul>
+<li>结合软件的功能，通过拦截数据包来修改和转发到目标地址</li>
+<li>(软路由更接近于代理服务器)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="代理-——-「代为处理」"><a href="#代理-——-「代为处理」" class="headerlink" title="代理 —— 「代为处理」"></a>代理 —— 「代为处理」</h2><ul>
+<li><p>代理服务器</p>
+<ul>
+<li>代理工作在 3 层以上，通常是 4 层和 7 层；</li>
+<li>局域网中只有代理服务器能上网，只能依托代理服务器进行数据请求和接收，然后再转发；<ul>
+<li>perform some useful service such as caching HTTP content, applying application-level filtering and authorization functions and so on</li>
+</ul>
+</li>
+<li>不同的代理服务器提供不同的服务，通常提供WWW、FTP等常见服务；</li>
+<li>代理通常连接的是两个或多个使用相同协议栈的端点(转发为主)；</li>
+</ul>
+</li>
+<li><p>代理方式</p>
+<ul>
+<li>正向代理 代理外部地址 翻墙<ul>
+<li>NAT 通过解包，替换目标地址&#x2F;端口</li>
+</ul>
+</li>
+<li>反向代理 为内部多个机器提供统一的对外地址<ul>
+<li>负载均衡 对一组相同功能的机器进行的反向代理<ul>
+<li>(负载均衡是目的，反向代理是实现方式)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="网关-——-「网络关口」"><a href="#网关-——-「网络关口」" class="headerlink" title="网关 —— 「网络关口」"></a>网关 —— 「网络关口」</h2><ul>
+<li>网关<ul>
+<li>网关是一个概念，不具体特指一类产品，只要连接两个不同的网络的设备都可以叫网关；</li>
+<li>网关通常连接的是两个或多个使用不同协议的端点(协议转换)；</li>
+<li>广义的网关：有进有出即为网关</li>
+<li>狭义的网关<ul>
+<li>IP路由过程中的网关：子网的关口，所有对子网的访问需要先向网关(默认网关)寻址<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21787311">网关和路由器的区别是什么？</a></li>
+</ul>
+</li>
+<li>API网关：对HTTP API进行拦截、监控、修改、转发</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p align="center">
+  <img src="/assets/luyou-vs-daili-vs-wangguan/2022-05-25-10-21-15.png" alt="Demo" />
 </p>
-
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>GTD（Get Things Done）是一个不错的工作框架，特别是在事情多且杂的时候。</p>
-<blockquote>
-<p>“切换页表，切换任务”，像CPU一样实现多核运行。</p>
-</blockquote>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -363,7 +272,7 @@ TODO Query我的TODO列表是按GTD的方式划分了4块：,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Logseq-%E5%AE%9E%E7%8E%B0-TODO-%E5%88%97%E8%A1%A8"><span class="toc-number">1.</span> <span class="toc-text">Logseq 实现 TODO 列表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TODO-Query"><span class="toc-number">1.1.</span> <span class="toc-text">TODO Query</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-DOING"><span class="toc-number">1.1.1.</span> <span class="toc-text">GTD&#x2F;DOING</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-SCHEDULED"><span class="toc-number">1.1.2.</span> <span class="toc-text">GTD&#x2F;SCHEDULED</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-NEXT"><span class="toc-number">1.1.3.</span> <span class="toc-text">GTD&#x2F;NEXT</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD-x2F-OTHERS"><span class="toc-number">1.1.4.</span> <span class="toc-text">GTD&#x2F;OTHERS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-%E5%8A%A0%E6%8C%81"><span class="toc-number">1.2.</span> <span class="toc-text">CSS 加持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-number">1.2.1.</span> <span class="toc-text">Output</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1-%E2%80%94%E2%80%94-%E2%80%9Cmove-packets-between-networks%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">路由 —— “move packets between networks”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86-%E2%80%94%E2%80%94-%E3%80%8C%E4%BB%A3%E4%B8%BA%E5%A4%84%E7%90%86%E3%80%8D"><span class="toc-number">2.</span> <span class="toc-text">代理 —— 「代为处理」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E5%85%B3-%E2%80%94%E2%80%94-%E3%80%8C%E7%BD%91%E7%BB%9C%E5%85%B3%E5%8F%A3%E3%80%8D"><span class="toc-number">3.</span> <span class="toc-text">网关 —— 「网络关口」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li></ol>
                 </div>
             </div>
             
