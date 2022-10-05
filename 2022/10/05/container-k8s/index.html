@@ -5,13 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Mesh-Shaped Recap - Anddd7&#39;s Planet</title>
+    <title>容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落 - Anddd7&#39;s Planet</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Anddd7, cloud-native, mesh-shaped,"> 
-    <meta name="description" content="Level Up! Programmer~,Recap在过去的 2 个月，在 Logseq 的帮助下进行了一段时间“mesh”式的学习和探索。得到了一些新的知识，也遇到了不少的问题，借这个时间点回顾一下，希望能在下半年做的更好一些。
-Good,"> 
+    <meta name="description" content="Level Up! Programmer~,背景今年在系统学习 Kubernetes 的时候，发现 k8s 为了进一步模块化、兼容化各种云平台和容器运行时，有非常多个接口规范和标准。同时正式的将 Docker 移除，将 containerd ,"> 
     <meta name="author" content="Anddd7"> 
     <link rel="alternative" href="atom.xml" title="Anddd7&#39;s Planet" type="application/atom+xml"> 
     <link rel="icon" href="/assets/avatar.jpeg"> 
@@ -75,7 +74,7 @@ Good,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/assets/avatar.jpeg" alt="" data-url="https://anddd7.mesh-shaped.top">
         <!-- <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div> -->
-        <h3 class="subtitle">Mesh-Shaped Recap</h3>
+        <h3 class="subtitle">容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -105,24 +104,25 @@ Good,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
+                <a href="/categories/Studies"><b>「
+                    </b>STUDIES<b> 」</b></a>
                 
-                六月 06, 2022
+                十月 05, 2022
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2022/06/06/Mesh-Shaped-Recap/" title="Mesh-Shaped Recap" class="">Mesh-Shaped Recap</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/10/05/container-k8s/" title="容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落" class="">容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    2.5k
+                    6k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                    2 mins.
+                    5 mins.
                 </span>
                 
                 
@@ -135,7 +135,7 @@ Good,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Cloud-Native/" rel="tag">Cloud-Native</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Mesh-Shaped/" rel="tag">Mesh-Shaped</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/container/" rel="tag">container</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
             
         </div>
     </div>
@@ -156,34 +156,54 @@ Good,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h2><p>在过去的 2 个月，在 Logseq 的帮助下进行了一段时间“mesh”式的学习和探索。得到了一些新的知识，也遇到了不少的问题，借这个时间点回顾一下，希望能在下半年做的更好一些。</p>
-<h3 id="Good-achievements"><a href="#Good-achievements" class="headerlink" title="Good achievements"></a>Good achievements</h3><ul>
-<li>阅读了 3 本书（粗读）</li>
-<li>阅读了 40+ 篇 Blog&#x2F;文档，100+篇笔记（长短不一）</li>
-<li>整理并复习了 DDD、Cloud-Native 的知识图谱</li>
-<li>持续的贡献开源代码</li>
+            <h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>今年在系统学习 Kubernetes 的时候，发现 k8s 为了进一步模块化、兼容化各种云平台和容器运行时，有非常多个接口规范和标准。同时正式的将 Docker 移除，将 containerd 作为默认的容器运行时。因此，为了搞清楚容器变迁中的前因后果，画了一张全景图来分析和归纳各个技术之间的关系和变迁。</p>
+<p><em>（大部分信息都在图中，因此文字仅作为导读）<br>（图文带有主观认知，难免会有错误和误解，仅作学习参考）</em></p>
+<h3 id="天空一声巨响，Docker-闪亮登场"><a href="#天空一声巨响，Docker-闪亮登场" class="headerlink" title="天空一声巨响，Docker 闪亮登场"></a>天空一声巨响，Docker 闪亮登场</h3><p><img src="https://pic3.zhimg.com/v2-2e5bff692825013e0537ec33fc1bde8e_b.jpg"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-2e5bff692825013e0537ec33fc1bde8e_720w.webp"></p>
+<p>Docker 的核心能力 namespace、cgroup 其实早在 08 年前就已经被广泛的运用在 linux 系统上。而当时，提供 “代码和依赖一致” 的能力，也并非是容器首创的。而 Docker 能够打败 Cloud Foundry，靠的其实是 AUFS —— 通过分层文件打造镜像，保证了系统环境的统一。即 代码（应用程序）+ 依赖（后端服务）+ 系统（操作系统） 三位一体，保证了运行的一致性。</p>
+<p><img src="https://pic2.zhimg.com/v2-23eda6e9882ef84ac4f92543079b3f39_b.jpg"></p>
+<p><img src="https://pic2.zhimg.com/80/v2-23eda6e9882ef84ac4f92543079b3f39_720w.webp"></p>
+<p>加之，Docker 还通过 Cli + Docker Hub 的模式，便捷且友好的交互模式降低了容器的准入门槛，赢得了开发者就赢得了未来。（同 Github）</p>
+<h3 id="Kubernetes-vs-Docker-Swarm"><a href="#Kubernetes-vs-Docker-Swarm" class="headerlink" title="Kubernetes vs Docker Swarm"></a>Kubernetes vs Docker Swarm</h3><p><img src="https://pic4.zhimg.com/v2-ec7c2c677631f7fcb616166676501d43_b.jpg"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-ec7c2c677631f7fcb616166676501d43_720w.webp"></p>
+<p>当 Docker 完成了单机运行环境的大一统后，就开始计划抢夺各大云厂商的饭碗 —— PaaS 和容器编排。不过，各大云厂（AWS、Azure、GCP、VMWare）背后站的可都是 IT 行业的话事人，不会这么轻易的让出这块蛋糕。因此，2014 年左右，发生了 2 件事改变了 Docker 的命运。</p>
+<p>Kubernetes 横空出世，带着 Google 的光环一出场就吸引了全场目光，随后一路走高直接干趴了 DockerSwarm。<br>OCI 组织成立（Google Redhat 发起），开始定义各种容器标准，随后 Docker 开始拆分自身组件、实现各式标准和对接各种平台。runc, containerd 在受到社区追捧被更多工具使用时，Docker 这个软件却被慢慢遗忘了，最后只剩下 “docker” 这样一个容器的代称了。</p>
+<p><em>（如果 Docker 不加入 OCI、不实现标准、不捐赠 runc，现在会是怎么样呢<br>（最近 Istio 终于也加入 CNCF 了 …</em></p>
+<h3 id="OCI-开放容器接口"><a href="#OCI-开放容器接口" class="headerlink" title="OCI 开放容器接口"></a>OCI 开放容器接口</h3><p><img src="https://pic4.zhimg.com/v2-505c8cfaeac6e5042330af60890c9813_b.jpg"></p>
+<p><img src="https://pic4.zhimg.com/80/v2-505c8cfaeac6e5042330af60890c9813_720w.webp"></p>
+<p>Linux 基金会下的 OCI 定义了 Runtime（运行时） + Image（镜像）标准，以便根据用户的使用情况选择不同的容器运行时，如 能基于 hypervisor 提供强隔离性的 KataContainer，基于系统调用拦截的 gVistor 等。</p>
+<p>“OCI 容器” 通常是指的容器运行时，即如何创建容器、管理镜像的底层功能。</p>
+<h3 id="Kubernetes-占领高地"><a href="#Kubernetes-占领高地" class="headerlink" title="Kubernetes 占领高地"></a>Kubernetes 占领高地</h3><p><img src="https://pic2.zhimg.com/v2-98750bc5070732faf351a1e71fd8d7a9_b.jpg"></p>
+<p><img src="https://pic2.zhimg.com/80/v2-98750bc5070732faf351a1e71fd8d7a9_720w.webp"></p>
+<p>Kubernetes 通过开源运作不断吸引开发者，开发者影响技术决策，从而逐渐占据企业市场，最终赢得了容器编排大战的胜利，当前 k8s 以成为容器编排的事实标准，AWS、Cloud Foundry 这些在容器之前就已经有 PaaS 平台能力的云厂，份额也在不断的被 k8s 蚕食。</p>
+<p>k8s 本质是一个 PaaS 平台，为了对接不同的实现，比如 容器运行时、网络传输、云服务组件，也抽象出了很多接口，即 CRI、CNI、CSI、CCM 等。</p>
+<p>为什么剔除 Docker（dockerd） 也是因为对于 k8s 来说，并不需要 Docker 的上层功能，仅需要能够操纵容器的运行时组件即可。而这部分能力恰好就是在 Docker 演进过程中，被拆分出来的 containerd。因此 containerd 被纳入到 CRI 标准中，随后被捐赠给 CNCF，作为 k8s 默认的容器运行时实现。</p>
+<h3 id="“容器运行时”"><a href="#“容器运行时”" class="headerlink" title="“容器运行时”"></a>“容器运行时”</h3><p>我们在翻阅文档时，通常会看到两种容器运行时：</p>
+<ul>
+<li>CRI 是为支持 k8s 工作而定义的，主要目的是调用底层运行时来构建 pod &#x3D; 多容器、共享网络和存储</li>
+<li>OCI 则相对更底层一点，主要目的是调用内核功能来构建容器</li>
 </ul>
-<h3 id="Less-well"><a href="#Less-well" class="headerlink" title="Less well"></a>Less well</h3><ul>
-<li>一部分“碎片学习”是无效的</li>
-<li>知识焦虑越来越重</li>
-<li>OKR 优先级和权重失真</li>
+<p>有一种说法是 containerd 等用于支持 k8s 等 PaaS 平台功能的运行时，被称为 High-Level 运行时，除了容器、镜像外，还拥有管理网络、存储等能力。而 runc 这种直接对接操作系统内核，只关注于容器本身的即为 Low-Level 运行时。</p>
+<h3 id="Shim"><a href="#Shim" class="headerlink" title="Shim"></a>Shim</h3><p>Shim 也是一个常出现但让人误解的词，在翻阅了一些资料后，我发现 “Shim - 垫片” 就是一个技术词汇，出现在各处的定义不同。</p>
+<p><img src="https://pic2.zhimg.com/v2-c48f1605cadaf38cb90e1222da20aa51_b.jpg"></p>
+<p><img src="https://pic2.zhimg.com/80/v2-c48f1605cadaf38cb90e1222da20aa51_720w.webp"></p>
+<p>在 docker 的语境下，shim 指的是 mangager(containerd) -&gt; container(runc) 这一层</p>
+<p><img src="https://pic3.zhimg.com/v2-556e53e5bd8477861db967326775af6e_b.jpg"></p>
+<p><img src="https://pic3.zhimg.com/80/v2-556e53e5bd8477861db967326775af6e_720w.webp"></p>
+<p>在 k8s 的语境下，shim 指的是 CRI client(kubelet) -&gt; runtime(docker&#x2F;containerd) 这一层</p>
+<p><em>因为一开始 k8s 只支持 docker，所以使用 dockershim 做了一层桥接；而后使用 CRI-containerd 操作时，其实就不存在 shim 这一层了</em></p>
+<p><img src="https://pic1.zhimg.com/v2-6a94ea5611ac846c8064fc1b2998da30_b.jpg"></p>
+<p><img src="https://pic1.zhimg.com/80/v2-6a94ea5611ac846c8064fc1b2998da30_720w.webp"></p>
+<p>在 containerd 的语境下，shim 指的是 OCI client(containerd) -&gt; runtime(runc) 这一层</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="https://link.zhihu.com/?target=https://mp.weixin.qq.com/s?__biz=MzkzMTM1MDEyOA==&mid=2247483673&idx=1&sn=405f481ab19f928bb85add017201fb1c&chksm=c26d1206f51a9b107de1d80d91e29c4e7c6c6edaa6e6809b0040ee3aa08c1524563b8cd43ac8&mpshare=1&scene=1&srcid=05304k7ldEAcPcXbuNW6G4Lu&sharer_sharetime=1653886191829&sharer_shareid=d1c27a97d2ae54cfe57aae2b6d670930%23rd">9000字长文复盘Docker兴衰，从容器大战史推演基础软件投资</a></li>
+<li><a href="https://link.zhihu.com/?target=https://kubernetes.io/zh-cn/blog/2022/05/03/dockershim-historical-context/">Dockershim：历史背景</a></li>
+<li>容器江湖的爱恨情仇 - Thoughtworks中国的文章 - 知乎 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/523574407">https://zhuanlan.zhihu.com/p/523574407</a></li>
+<li><a href="https://link.zhihu.com/?target=https://mp.weixin.qq.com/s?__biz=MzI5ODQ2MzI3NQ==&mid=2247507046&idx=1&sn=1c8f205730fb3b7b9519725b7d7730d0&chksm=eca7e522dbd06c34be089b740b710238168da8009b111a44deadc89f08ea98b31a466d9dd95e&mpshare=1&scene=1&srcid=0405CZnlY42ne6yorySr9VG5&sharer_sharetime=1649166099552&sharer_shareid=d1c27a97d2ae54cfe57aae2b6d670930%23rd">Kubernetes容器平台，从繁荣走向碎片化</a></li>
+<li><a href="https://link.zhihu.com/?target=https://www.youtube.com/watch?v=BE77h7dmoQU">Kubernetes: The Documentary [PART 1]</a></li>
+<li><a href="https://link.zhihu.com/?target=https://www.youtube.com/watch?v=318elIq37PE">Kubernetes: The Documentary [PART 2]</a></li>
+<li><a href="https://link.zhihu.com/?target=https://mp.weixin.qq.com/s/GHjvvTJ8ZerIyCqXB1BSUQ">K8s宣布弃用Docker，千万别慌！</a></li>
 </ul>
-<h2 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h2><p>在完成了规划已久的<a href="/2022/03/29/Mesh-Shaped-Cloud-Native-Developer/">“Mesh-Shaped”</a>设定之后，这一宏大愿景给了我非常强的信心和动力投身到 “mesh” 式的学习中。借助 Logseq 等工具，我把所关注的公众号、参与的技术群群、关注的社交网络中的大佬，都安排进了我的“knowledge pipeline” —— 通过摘抄、截图、总结把这些知识收集了起来。从编程语言的 tips、到云原生的发展前景、到架构模式的建立、到开源商业的市场逻辑，随着时间的推移，涉及的知识域越来越广。</p>
-<p>然而，随着知识域扩展到我不熟悉的领域，并不能通过简单的摘抄就能够理解它。我需要搜索更多的资料，了解更多的背景，而学习的重点也逐渐的偏移了我的 OKR。在我花了整整 3 天时间，才完成了预计 10h 的 GCP ML Fundamental 的学习后，我发现想要学习一个全新的领域，需要的时间、精力是另一个量级的（超出预计），也是很难用碎片化时间去填充的。比如，ML Models 和相关的算法，需要一个非常集中思考的时间，才能够真正学懂的知识。</p>
-<h3 id="一部分“碎片学习”是无效的"><a href="#一部分“碎片学习”是无效的" class="headerlink" title="一部分“碎片学习”是无效的"></a>一部分“碎片学习”是无效的</h3><p>因此，回顾我过去 2 个月的学习时，不少的知识都是碎片且无效的。（包括加入了很多社区群，just 加入）</p>
-<p>碎片式学习很适合查漏补缺，比如，在对 DDD 和面向对象有一定了解的前提下，通过参加社区活动和查阅博客，对我以前不理解或有疏漏的概念进行了补充和深入。或者是对于一个具体的问题的调查和研究。</p>
-<p>而我收集到的很多“碎片”，只是放在那里，希望我能在它“过气”之前用上它。</p>
-<h3 id="知识焦虑越来越重"><a href="#知识焦虑越来越重" class="headerlink" title="知识焦虑越来越重"></a>知识焦虑越来越重</h3><p>不加限制的阅读导致我的知识焦虑越来越重。什么都想知道，什么都要了解 —— 这并不好。</p>
-<h3 id="OKR-优先级和权重失真"><a href="#OKR-优先级和权重失真" class="headerlink" title="OKR 优先级和权重失真"></a>OKR 优先级和权重失真</h3><p>碎片化的学习叠加起来，反而占据了大量的时间，导致 OKR 里的主线任务迟迟没有进展。而且在执行 OKR 时，我也试图用碎片化的方式去做 —— 今天做这个明天看那个，实现了 OKR 的“并发”，然而我并没有多个“线程”来执行他们，最后的后果就是抢占式调度 —— 更慢了。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>发散很重要，我们需要拓宽眼界和思路，以实现 “曲线救国” 或是 “降维打击”。聚焦也同等重要，保证路不走偏，积蓄力量攻坚克难。</p>
-<p>前两天和同事交流“Orchestration vs Choreography”时，有聊到：</p>
-<blockquote>
-<p>Choreography 是 mesh 式的调用，其实是因为服务间相互不可知。即 Complex（Cynefin）的认知模式下，大家都是黑盒，因此只能依赖相邻的服务一步一步传递信息，实现业务的最终执行<br>Orchestration 则是由中心的指挥家总揽全局。因为整个系统对他而言处于 Clear 模式，需要谁做什么、谁先谁后，都心中有数。</p>
-</blockquote>
-<p>反观“Mesh-Shaped”，并不是说所有知识一定是要相互连接，奔着扩大范围走的。而是以点绘面 —— 通过已有的核心点，逐步扩散出新的领域，从而构建更大的范围知识网。</p>
-<p align="center">
-  <img src="/assets/mesh-shaped-recap/image_1653875255217_0.png" alt="Orchestration vs Choreography" />
-</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -236,7 +256,7 @@ Good,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recap"><span class="toc-number">1.</span> <span class="toc-text">Recap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Good-achievements"><span class="toc-number">1.1.</span> <span class="toc-text">Good achievements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Less-well"><span class="toc-number">1.2.</span> <span class="toc-text">Less well</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why"><span class="toc-number">2.</span> <span class="toc-text">Why</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E9%83%A8%E5%88%86%E2%80%9C%E7%A2%8E%E7%89%87%E5%AD%A6%E4%B9%A0%E2%80%9D%E6%98%AF%E6%97%A0%E6%95%88%E7%9A%84"><span class="toc-number">2.1.</span> <span class="toc-text">一部分“碎片学习”是无效的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E7%84%A6%E8%99%91%E8%B6%8A%E6%9D%A5%E8%B6%8A%E9%87%8D"><span class="toc-number">2.2.</span> <span class="toc-text">知识焦虑越来越重</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OKR-%E4%BC%98%E5%85%88%E7%BA%A7%E5%92%8C%E6%9D%83%E9%87%8D%E5%A4%B1%E7%9C%9F"><span class="toc-number">2.3.</span> <span class="toc-text">OKR 优先级和权重失真</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A9%E7%A9%BA%E4%B8%80%E5%A3%B0%E5%B7%A8%E5%93%8D%EF%BC%8CDocker-%E9%97%AA%E4%BA%AE%E7%99%BB%E5%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">天空一声巨响，Docker 闪亮登场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes-vs-Docker-Swarm"><span class="toc-number">3.</span> <span class="toc-text">Kubernetes vs Docker Swarm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OCI-%E5%BC%80%E6%94%BE%E5%AE%B9%E5%99%A8%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.</span> <span class="toc-text">OCI 开放容器接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes-%E5%8D%A0%E9%A2%86%E9%AB%98%E5%9C%B0"><span class="toc-number">5.</span> <span class="toc-text">Kubernetes 占领高地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C%E6%97%B6%E2%80%9D"><span class="toc-number">6.</span> <span class="toc-text">“容器运行时”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shim"><span class="toc-number">7.</span> <span class="toc-text">Shim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">8.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             </div>
             
