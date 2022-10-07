@@ -173,34 +173,31 @@
 <p>本文推荐采用的一种开发模式：</p>
 <ul>
 <li><p>monorepo</p>
-</li>
-<li><p>所有代码存放在一个仓库</p>
-</li>
-<li><p>按照使用阶段和类别划分 folder</p>
-</li>
-<li><p>通过 CodeOwner 限制或区分 Dev&#x2F;Ops 和团队边界</p>
+<ul>
+<li>所有代码存放在一个仓库</li>
+<li>按照使用阶段和类别划分 folder</li>
+<li>通过 CodeOwner 限制或区分 Dev&#x2F;Ops 和团队边界</li>
+</ul>
 </li>
 <li><p>trunk-based + PR</p>
-</li>
-<li><p>业务代码直接提交到 main</p>
-</li>
-<li><p>直接影响 CI&#x2F;CD 和线上环境的代码需经过 PR，以便 CodeOwner 进行检查</p>
+<ul>
+<li>业务代码直接提交到 main</li>
+<li>直接影响 CI&#x2F;CD 和线上环境的代码需经过 PR，以便 CodeOwner 进行检查</li>
+</ul>
 </li>
 <li><p>one codebase all environment</p>
-</li>
-<li><p>所有环境同一代码库</p>
-</li>
-<li><p>通过 feature toogle 来打开和关闭未完成的功能</p>
+<ul>
+<li>所有环境同一代码库</li>
+<li>通过 feature toogle 来打开和关闭未完成的功能</li>
+</ul>
 </li>
 <li><p><strong>缺点 —— 对开发团队要求很高</strong></p>
-</li>
-<li><p><strong>团队成员需要有跨团队、领域工作的能力</strong></p>
-</li>
-<li><p><strong>团队 Leader 需要全栈（前、后、DevOps、云）</strong></p>
-</li>
-<li><p><strong>架构师需要和团队一起工作，保证所有人对业务和架构的理解正确</strong></p>
-</li>
-<li><p><strong>TDD + 自动化测试 是必备技能</strong></p>
+<ul>
+<li><strong>团队成员需要有跨团队、领域工作的能力</strong></li>
+<li><strong>团队 Leader 需要全栈（前、后、DevOps、云）</strong></li>
+<li><strong>架构师需要和团队一起工作，保证所有人对业务和架构的理解正确</strong></li>
+<li><strong>TDD + 自动化测试 是必备技能</strong></li>
+</ul>
 </li>
 </ul>
 <p><img src="https://pic4.zhimg.com/v2-5a3fe4e210d0d315e0d67f9ef73c73e3_b.jpg"></p>
