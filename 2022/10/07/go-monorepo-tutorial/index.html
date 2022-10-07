@@ -5,13 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落 - Anddd7&#39;s Planet</title>
+    <title>go-monorepo-tutorial - Anddd7&#39;s Planet</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="Anddd7, cloud-native, mesh-shaped,"> 
     <meta name="description" content="Level Up! Programmer~,
-背景今年在系统学习 Kubernetes 的时候，发现 k8s 为了进一步模块化、兼容化各种云平台和容器运行时，有非常多个接口规范和标准。同时正式的将 Docker 移除，将 containerd,"> 
+背景在 K8S 已成为容器编排事实标准的 2022 年，越来越多的项目开始基于微服务、声明式 API 来构建系统 —— 即云原生系统。作为一个不会八股文的 Java 开发，在过去的几年用 Kotl,"> 
     <meta name="author" content="Anddd7"> 
     <link rel="alternative" href="atom.xml" title="Anddd7&#39;s Planet" type="application/atom+xml"> 
     <link rel="icon" href="/assets/avatar.jpeg"> 
@@ -75,7 +75,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/assets/avatar.jpeg" alt="" data-url="https://anddd7.mesh-shaped.top">
         <!-- <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div> -->
-        <h3 class="subtitle">容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落</h3>
+        <h3 class="subtitle">go-monorepo-tutorial</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -108,16 +108,16 @@
                 <a href="/categories/Studies"><b>「
                     </b>STUDIES<b> 」</b></a>
                 
-                十月 05, 2022
+                十月 07, 2022
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2022/10/05/container-k8s/" title="容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落" class="">容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2022/10/07/go-monorepo-tutorial/" title="go-monorepo-tutorial" class="">go-monorepo-tutorial</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    5.4k
+                    5.3k
                 </span>
                 
                 
@@ -136,7 +136,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/container/" rel="tag">container</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/go/" rel="tag">go</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/k8s/" rel="tag">k8s</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/microservices/" rel="tag">microservices</a></li></ul>
             
         </div>
     </div>
@@ -157,47 +157,119 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p><img src="https://pic2.zhimg.com/v2-8eab1606a489aa28545ed7f984f80b01.jpg"></p>
-<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>今年在系统学习 Kubernetes 的时候，发现 k8s 为了进一步模块化、兼容化各种云平台和容器运行时，有非常多个接口规范和标准。同时正式的将 Docker 移除，将 containerd 作为默认的容器运行时。因此，为了搞清楚容器变迁中的前因后果，画了一张全景图来分析和归纳各个技术之间的关系和变迁。</p>
-<p><em>（大部分信息都在图中，因此文字仅作为导读）<br>（图文带有主观认知，难免会有错误和误解，仅作学习参考）</em></p>
-<h3 id="天空一声巨响，Docker-闪亮登场"><a href="#天空一声巨响，Docker-闪亮登场" class="headerlink" title="天空一声巨响，Docker 闪亮登场"></a>天空一声巨响，Docker 闪亮登场</h3><p><img src="https://pic3.zhimg.com/v2-2e5bff692825013e0537ec33fc1bde8e_b.jpg"></p>
-<p>Docker 的核心能力 namespace、cgroup 其实早在 08 年前就已经被广泛的运用在 linux 系统上。而当时，提供 “代码和依赖一致” 的能力，也并非是容器首创的。而 Docker 能够打败 Cloud Foundry，靠的其实是 AUFS —— 通过分层文件打造镜像，保证了系统环境的统一。即 代码（应用程序）+ 依赖（后端服务）+ 系统（操作系统） 三位一体，保证了运行的一致性。</p>
-<p><img src="https://pic2.zhimg.com/v2-23eda6e9882ef84ac4f92543079b3f39_b.jpg"></p>
-<p>加之，Docker 还通过 Cli + Docker Hub 的模式，便捷且友好的交互模式降低了容器的准入门槛，赢得了开发者就赢得了未来。（同 Github）</p>
-<h3 id="Kubernetes-vs-Docker-Swarm"><a href="#Kubernetes-vs-Docker-Swarm" class="headerlink" title="Kubernetes vs Docker Swarm"></a>Kubernetes vs Docker Swarm</h3><p><img src="https://pic4.zhimg.com/v2-ec7c2c677631f7fcb616166676501d43_b.jpg"></p>
-<p>当 Docker 完成了单机运行环境的大一统后，就开始计划抢夺各大云厂商的饭碗 —— PaaS 和容器编排。不过，各大云厂（AWS、Azure、GCP、VMWare）背后站的可都是 IT 行业的话事人，不会这么轻易的让出这块蛋糕。因此，2014 年左右，发生了 2 件事改变了 Docker 的命运。</p>
-<p>Kubernetes 横空出世，带着 Google 的光环一出场就吸引了全场目光，随后一路走高直接干趴了 DockerSwarm。<br>OCI 组织成立（Google Redhat 发起），开始定义各种容器标准，随后 Docker 开始拆分自身组件、实现各式标准和对接各种平台。runc, containerd 在受到社区追捧被更多工具使用时，Docker 这个软件却被慢慢遗忘了，最后只剩下 “docker” 这样一个容器的代称了。</p>
-<p><em>（如果 Docker 不加入 OCI、不实现标准、不捐赠 runc，现在会是怎么样呢<br>（最近 Istio 终于也加入 CNCF 了 …</em></p>
-<h3 id="OCI-开放容器接口"><a href="#OCI-开放容器接口" class="headerlink" title="OCI 开放容器接口"></a>OCI 开放容器接口</h3><p><img src="https://pic4.zhimg.com/v2-505c8cfaeac6e5042330af60890c9813_b.jpg"></p>
-<p>Linux 基金会下的 OCI 定义了 Runtime（运行时） + Image（镜像）标准，以便根据用户的使用情况选择不同的容器运行时，如 能基于 hypervisor 提供强隔离性的 KataContainer，基于系统调用拦截的 gVistor 等。</p>
-<p>“OCI 容器” 通常是指的容器运行时，即如何创建容器、管理镜像的底层功能。</p>
-<h3 id="Kubernetes-占领高地"><a href="#Kubernetes-占领高地" class="headerlink" title="Kubernetes 占领高地"></a>Kubernetes 占领高地</h3><p><img src="https://pic2.zhimg.com/v2-98750bc5070732faf351a1e71fd8d7a9_b.jpg"></p>
-<p>Kubernetes 通过开源运作不断吸引开发者，开发者影响技术决策，从而逐渐占据企业市场，最终赢得了容器编排大战的胜利，当前 k8s 以成为容器编排的事实标准，AWS、Cloud Foundry 这些在容器之前就已经有 PaaS 平台能力的云厂，份额也在不断的被 k8s 蚕食。</p>
-<p>k8s 本质是一个 PaaS 平台，为了对接不同的实现，比如 容器运行时、网络传输、云服务组件，也抽象出了很多接口，即 CRI、CNI、CSI、CCM 等。</p>
-<p>为什么剔除 Docker（dockerd） 也是因为对于 k8s 来说，并不需要 Docker 的上层功能，仅需要能够操纵容器的运行时组件即可。而这部分能力恰好就是在 Docker 演进过程中，被拆分出来的 containerd。因此 containerd 被纳入到 CRI 标准中，随后被捐赠给 CNCF，作为 k8s 默认的容器运行时实现。</p>
-<h3 id="“容器运行时”"><a href="#“容器运行时”" class="headerlink" title="“容器运行时”"></a>“容器运行时”</h3><p>我们在翻阅文档时，通常会看到两种容器运行时：</p>
+            <p><img src="https://pic4.zhimg.com/v2-ddda56a5e941e13669028d19e70ffddf.png"></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在 K8S 已成为容器编排事实标准的 2022 年，越来越多的项目开始基于微服务、声明式 API 来构建系统 —— 即云原生系统。作为一个不会八股文的 Java 开发，在过去的几年用 Kotlin+Spring 开发后端的体验还算不错，但随着对 AWS、K8S 的使用越来越多，很多以前由后端承载的功能都移交给了云，比如 注册中心、配置管理、限流降级。加之 DDD 拆分微服务，各个服务间通过 MQ 实现最终一致性，连分布式事务都没有了，后端代码真正的变成了 CRUD。</p>
+<p>Go、Rust 等语言的崛起也正是切中了这点 —— 简单、高效。相比 Kotlin（+Spring）来说，虽然 Go 给我的感受更多是“简陋”，但不可否认使用 Go 来构建小型微服务系统（少于 100 个 go 文件, 多于 40 个微服务）时，从开发编译到部署调试的效率都大大高于 JVM 系统。</p>
+<p>对于 Go 微服务体系而言，grpc、docker、k8s、istio 这一系列成熟的工具，也能帮助开发者在没有“spring框架”的情况下，开发出一个足够健壮的微服务系统了。</p>
+<p><em>PS: 本文使用类似 Value Stream Mapping（价值流图）的方式介绍了 Go 微服务架构的整个生命周期，所涉及到的开源技术和组件可根据具体需求进行替换，并不是唯一解</em></p>
+<h3 id="Codebase"><a href="#Codebase" class="headerlink" title="Codebase"></a>Codebase</h3><p>在写下代码后要思考的第一件事就是，如何管理你的源代码。虽然大多数人都有使用 Github 的经验了，但在构建一个复杂业务的微服务系统的时候，代码库拆分、分支策略、发布策略、CodeOwner 等，都是需要考虑的范畴。</p>
 <ul>
-<li>CRI 是为支持 k8s 工作而定义的，主要目的是调用底层运行时来构建 pod &#x3D; 多容器、共享网络和存储</li>
-<li>OCI 则相对更底层一点，主要目的是调用内核功能来构建容器</li>
+<li>Monorepo vs Polyrepo</li>
+<li>trunk-based vs gitflow</li>
+<li>release branch, tag, feature toogle</li>
+<li>…</li>
 </ul>
-<p>有一种说法是 containerd 等用于支持 k8s 等 PaaS 平台功能的运行时，被称为 High-Level 运行时，除了容器、镜像外，还拥有管理网络、存储等能力。而 runc 这种直接对接操作系统内核，只关注于容器本身的即为 Low-Level 运行时。</p>
-<h3 id="Shim"><a href="#Shim" class="headerlink" title="Shim"></a>Shim</h3><p>Shim 也是一个常出现但让人误解的词，在翻阅了一些资料后，我发现 “Shim - 垫片” 就是一个技术词汇，出现在各处的定义不同。</p>
-<p><img src="https://pic2.zhimg.com/v2-c48f1605cadaf38cb90e1222da20aa51_b.jpg"></p>
-<p>在 docker 的语境下，shim 指的是 mangager(containerd) -&gt; container(runc) 这一层</p>
-<p><img src="https://pic3.zhimg.com/v2-556e53e5bd8477861db967326775af6e_b.jpg"></p>
-<p>在 k8s 的语境下，shim 指的是 CRI client(kubelet) -&gt; runtime(docker&#x2F;containerd) 这一层</p>
-<p><em>因为一开始 k8s 只支持 docker，所以使用 dockershim 做了一层桥接；而后使用 CRI-containerd 操作时，其实就不存在 shim 这一层了</em></p>
-<p><img src="https://pic1.zhimg.com/v2-6a94ea5611ac846c8064fc1b2998da30_b.jpg"></p>
-<p>在 containerd 的语境下，shim 指的是 OCI client(containerd) -&gt; runtime(runc) 这一层</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
-<li><a href="https://link.zhihu.com/?target=https://mp.weixin.qq.com/s?__biz=MzkzMTM1MDEyOA==&mid=2247483673&idx=1&sn=405f481ab19f928bb85add017201fb1c&chksm=c26d1206f51a9b107de1d80d91e29c4e7c6c6edaa6e6809b0040ee3aa08c1524563b8cd43ac8&mpshare=1&scene=1&srcid=05304k7ldEAcPcXbuNW6G4Lu&sharer_sharetime=1653886191829&sharer_shareid=d1c27a97d2ae54cfe57aae2b6d670930%23rd">9000字长文复盘Docker兴衰，从容器大战史推演基础软件投资</a></li>
-<li><a href="https://link.zhihu.com/?target=https://kubernetes.io/zh-cn/blog/2022/05/03/dockershim-historical-context/">Dockershim：历史背景</a></li>
-<li>容器江湖的爱恨情仇 - Thoughtworks中国的文章 - 知乎 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/523574407">https://zhuanlan.zhihu.com/p/523574407</a></li>
-<li><a href="https://link.zhihu.com/?target=https://mp.weixin.qq.com/s?__biz=MzI5ODQ2MzI3NQ==&mid=2247507046&idx=1&sn=1c8f205730fb3b7b9519725b7d7730d0&chksm=eca7e522dbd06c34be089b740b710238168da8009b111a44deadc89f08ea98b31a466d9dd95e&mpshare=1&scene=1&srcid=0405CZnlY42ne6yorySr9VG5&sharer_sharetime=1649166099552&sharer_shareid=d1c27a97d2ae54cfe57aae2b6d670930%23rd">Kubernetes容器平台，从繁荣走向碎片化</a></li>
-<li><a href="https://link.zhihu.com/?target=https://www.youtube.com/watch?v=BE77h7dmoQU">Kubernetes: The Documentary [PART 1]</a></li>
-<li><a href="https://link.zhihu.com/?target=https://www.youtube.com/watch?v=318elIq37PE">Kubernetes: The Documentary [PART 2]</a></li>
-<li><a href="https://link.zhihu.com/?target=https://mp.weixin.qq.com/s/GHjvvTJ8ZerIyCqXB1BSUQ">K8s宣布弃用Docker，千万别慌！</a></li>
+<p>是选择单体式仓库还是组合式仓库？是选择主分支开发还是特性分支？没有最好，只有最适合 —— 根据团队的大小、能力、协作方式来选择开发方式；或者反之，根据开发模式选择团队。</p>
+<p>本文推荐采用的一种开发模式：</p>
+<ul>
+<li><p>monorepo</p>
+</li>
+<li><p>所有代码存放在一个仓库</p>
+</li>
+<li><p>按照使用阶段和类别划分 folder</p>
+</li>
+<li><p>通过 CodeOwner 限制或区分 Dev&#x2F;Ops 和团队边界</p>
+</li>
+<li><p>trunk-based + PR</p>
+</li>
+<li><p>业务代码直接提交到 main</p>
+</li>
+<li><p>直接影响 CI&#x2F;CD 和线上环境的代码需经过 PR，以便 CodeOwner 进行检查</p>
+</li>
+<li><p>one codebase all environment</p>
+</li>
+<li><p>所有环境同一代码库</p>
+</li>
+<li><p>通过 feature toogle 来打开和关闭未完成的功能</p>
+</li>
+<li><p><strong>缺点 —— 对开发团队要求很高</strong></p>
+</li>
+<li><p><strong>团队成员需要有跨团队、领域工作的能力</strong></p>
+</li>
+<li><p><strong>团队 Leader 需要全栈（前、后、DevOps、云）</strong></p>
+</li>
+<li><p><strong>架构师需要和团队一起工作，保证所有人对业务和架构的理解正确</strong></p>
+</li>
+<li><p><strong>TDD + 自动化测试 是必备技能</strong></p>
+</li>
 </ul>
+<p><img src="https://pic4.zhimg.com/v2-5a3fe4e210d0d315e0d67f9ef73c73e3_b.jpg"></p>
+<p><img src="https://pic4.zhimg.com/v2-212bd010da70d694739344b77ae62933_b.jpg"></p>
+<h3 id="Development-开发-Build-编译"><a href="#Development-开发-Build-编译" class="headerlink" title="Development 开发 + Build 编译"></a>Development 开发 + Build 编译</h3><p><img src="https://pic1.zhimg.com/v2-5438e8b09a50a06bdd66d638e8e8dd48_b.jpg"></p>
+<p>概念：</p>
+<ul>
+<li>12 factors（基准代码、配置分离）</li>
+<li>声明式 API</li>
+<li>CI</li>
+</ul>
+<p>与其说微服务构建的是一个个服务，还不如说构建的是一项项能力。特别是在云原生、云服务、Serverless 越发红火的今天，站在价值端看，一个服务如何被编写、如何被运行其实并不重要（有太多种选择），一个服务能提供什么样的能力才重要。API 则是服务所能提供能力的一个体现，好的 API 设计即能获得更易用的系统、更高效的交互 —— “Declarative API, API First”。将 API 作为统一语言也未尝不可，团队基于 API 达成统一，业务能理解 API 代表的能力、技术能保证 API 的正常运行。</p>
+<p>技术：</p>
+<ul>
+<li><code>grpc + protobuf</code> 定义 API ，通过 protoc 自动生成 server&#x2F;client</li>
+<li><code>make + shell</code> 进行代码的编译和打包</li>
+<li><code>kustomize</code> 定义和组装 k8s manifest</li>
+<li><code>docker</code> 打包镜像</li>
+<li><code>skaffold</code> 根据 git diff 选择需要编译的服务，提升效率</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/v2-928f116da591a6cceff5b37abd8d6b2a_b.jpg"></p>
+<p><code>skaffold</code> 其实是个很有意思的项目，他的本意是作为一套 CI&#x2F;CD 的工具来管控服务的编译、打包、测试、部署。但单一的功能与 <code>Jenkins, GithubActions, FluxCD, ArgoCD</code> 等专业工具相比又捉襟见肘。不过用它来比对本地、commit 的修改，自动生成 image tag 的功能还是很好用的，就不用自己写 shell、python 来完成这个功能了。</p>
+<h3 id="Deploy-部署-Runtime-运行"><a href="#Deploy-部署-Runtime-运行" class="headerlink" title="Deploy 部署 + Runtime 运行"></a>Deploy 部署 + Runtime 运行</h3><p><img src="https://pic3.zhimg.com/v2-4f31a96422cb9e41ebb86b05fea8d3c6_b.jpg"></p>
+<p>概念：</p>
+<ul>
+<li>12 factors</li>
+<li>CD</li>
+<li>service mesh</li>
+</ul>
+<p>技术：</p>
+<ul>
+<li><code>ArgoCD</code> 工作在 k8s 集群内部的持续部署</li>
+<li><code>Kubernetes</code>, <code>Istio</code></li>
+</ul>
+<p>部署和运行阶段相比就简单的多了，k8s 已经是非常成熟的 PaaS 平台，只需要提供正确的 manifest 就能将应用部署到集群之中。</p>
+<h3 id="Observe-监控-Debug-遥测"><a href="#Observe-监控-Debug-遥测" class="headerlink" title="Observe 监控 + Debug 遥测"></a>Observe 监控 + Debug 遥测</h3><p><img src="https://pic3.zhimg.com/v2-0ed49fdab4c49413a4bb44dcfb89423e_b.jpg"></p>
+<p>概念：</p>
+<ul>
+<li>service mesh</li>
+<li>可观测性</li>
+</ul>
+<p>技术：</p>
+<ul>
+<li><code>OPLG（Open Telemetry、Prometheus、Loki、Grafana）</code></li>
+<li><code>Istio</code></li>
+<li><code>Nocalhost</code></li>
+</ul>
+<p>Nocalhost 也是一个很有意思的项目，通过替换、复制原有容器， 可以在运行时对远程应用进行调试和控制。加上 Istio 可以灵活控制流量路由，配合使用就可以很方便的实现“每个人一个环境”的开发梦想。</p>
+<h3 id="Platform-基础设施"><a href="#Platform-基础设施" class="headerlink" title="Platform 基础设施"></a>Platform 基础设施</h3><p><img src="https://pic2.zhimg.com/v2-09e22d41da3ae9c01fe9b17cffbd3b99_b.jpg"></p>
+<p>概念：</p>
+<ul>
+<li>不可变基础设施</li>
+<li>IaC</li>
+</ul>
+<p>技术：</p>
+<ul>
+<li><code>terraform、terragrunt</code></li>
+</ul>
+<p>在很多团队，基础设施被认为是运维、DevOps 的专项工作，和团队的日常开发是分离的。当团队需要使用基础设施时，更多的是通过 “ticket” “request” 来进行跨团队的协作。但如果我们把基础设施稍微拆分一下：</p>
+<ul>
+<li>layer 0，配置基础服务和云账号</li>
+<li>layer 1，配置集群和支撑服务</li>
+<li>layer 2，部署应用所需的后端服务</li>
+</ul>
+<p>随着 k8s、istio、dapr 技术的出现，后端应用变得更存粹（的 CRUD），但跨功能需求并不会消失，对数据库、MQ 的需求和依赖也不会消失，只是将这种耦合变为进程间、pod 外的耦合了。如果我们将基础设施也用代码管理起来，并随应用代码一起提交、一起管理、一起运行，就可以进一步降低“不同步”的可能性、提升团队开发的效率。</p>
+<p>甚至有团队会自定义一些 yaml 文件，用于描述需求的后端服务（数据库、桶、MQ、IP），通过 CRD 自定义的解析器来 provision 云资源。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="https://pic1.zhimg.com/v2-679d6225ef5d4f1f7fbbbc31b7115428_b.jpg"></p>
+<p>云原生技术重塑了原本的前端、后端、运维，并通过新的概念、技术重新定义软件开发的流程。</p>
+<p>云原生开发者 ≈ 全干工程师</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -250,7 +322,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A9%E7%A9%BA%E4%B8%80%E5%A3%B0%E5%B7%A8%E5%93%8D%EF%BC%8CDocker-%E9%97%AA%E4%BA%AE%E7%99%BB%E5%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">天空一声巨响，Docker 闪亮登场</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes-vs-Docker-Swarm"><span class="toc-number">3.</span> <span class="toc-text">Kubernetes vs Docker Swarm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OCI-%E5%BC%80%E6%94%BE%E5%AE%B9%E5%99%A8%E6%8E%A5%E5%8F%A3"><span class="toc-number">4.</span> <span class="toc-text">OCI 开放容器接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kubernetes-%E5%8D%A0%E9%A2%86%E9%AB%98%E5%9C%B0"><span class="toc-number">5.</span> <span class="toc-text">Kubernetes 占领高地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%80%9C%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C%E6%97%B6%E2%80%9D"><span class="toc-number">6.</span> <span class="toc-text">“容器运行时”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shim"><span class="toc-number">7.</span> <span class="toc-text">Shim</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">8.</span> <span class="toc-text">参考资料</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Codebase"><span class="toc-number">1.1.</span> <span class="toc-text">Codebase</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Development-%E5%BC%80%E5%8F%91-Build-%E7%BC%96%E8%AF%91"><span class="toc-number">1.2.</span> <span class="toc-text">Development 开发 + Build 编译</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-%E9%83%A8%E7%BD%B2-Runtime-%E8%BF%90%E8%A1%8C"><span class="toc-number">1.3.</span> <span class="toc-text">Deploy 部署 + Runtime 运行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Observe-%E7%9B%91%E6%8E%A7-Debug-%E9%81%A5%E6%B5%8B"><span class="toc-number">1.4.</span> <span class="toc-text">Observe 监控 + Debug 遥测</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Platform-%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD"><span class="toc-number">1.5.</span> <span class="toc-text">Platform 基础设施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>
                 </div>
             </div>
             
