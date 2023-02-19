@@ -61,7 +61,7 @@ IaC 的工具很多，甚至使用 shell、python 调用云服务 sdk、cli 也�
 
 下面我举 2 个编程理论用于 IaC 领域的例子 ...
 
-### 简单原则 in IaC
+### 简单设计 in IaC
 
 ![简单设计](https://insights.thoughtworks.cn/wp-content/uploads/2023/02/code-simple-design-five-principles-1.png)
 [代码的简单设计五原则 - Thoughtworks洞见](https://insights.thoughtworks.cn/code-simple-design-five-principles/)
