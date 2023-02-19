@@ -32,7 +32,7 @@
 
 ## 'AS' code, not 'IS' code
 
-![IaC Tools](https://miro.medium.com/max/1400/1*3HV8dJP3XTTGBBMzYwhqlA.png)
+![IaC Tools](https://picx.zhimg.com/80/v2-3856f65a763bad268e7d103c7aeb9c65_1440w.png)
 
 IaC 的工具很多，甚至使用 shell、python 调用云服务 sdk、cli 也能完成高效的基础设施编排。但基础设施‘即’代码的重点并不完全是代码化 —— 'AS' not 'IS'。
 
@@ -114,30 +114,30 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
 
 ### 简单应用：无所谓分层，直接放到一个地方方便执行
 
-- ```sh
+```sh
   simple
   └── main.tf
-  ```
+```
 
 ### 简单应用 - 分类：随着资源变多，可以按资源类型/应用类型来
 
-- ```sh
+```sh
   simple-by-resource/
   ├── database.tf
   ├── oss.tf
   ├── vm.tf
   └── vpc.tf
-  ```
+```
 
-- ```sh
+```sh
   simple-by-application/
   ├── backend-app.tf
   └── frontend-app.tf
-  ```
+```
 
 ### 简单应用 - 组件化：当某些资源复杂度高、需要单独维护、需要复用时，通过 module 进行管理
 
-- ```sh
+```sh
   simple-with-modules/
   ├── applications
   │   ├── backend-app
@@ -152,11 +152,11 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
       └── vm
           ├── main.tf
           └── vpc.tf
-  ```
+```
 
 ### 复杂应用 - 子组件：通过 folder 结构来标识复杂组件的关系和版本
 
-- ```sh
+```sh
   complex-sub-modules/
   ├── applications
   │   ├── backend-app
@@ -175,9 +175,9 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
           ├── main.tf
           └── networking
               └── main.tf
-  ```
+```
 
-- ```terraform
+```terraform
   # complex-sub-modules/applications/banckend-app/main.tf
   module "server" {
     source = "../../modules/vm"
@@ -203,11 +203,11 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
     # or publish module to registry
     # source = "private-regirstry@modules/database/v1"
   }
-  ```
+```
 
 ### 复杂应用 - 环境：将环境相关的变量抽象出去形成 variables，基于环境做区分
 
-- ```sh
+```sh
   complex-env-apps/
   ├── applications
   │   ├── backend-app
@@ -234,9 +234,9 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
       └── vm
           ├── main.tf
           └── vpc.tf
-  ```
+```
 
-- ```sh
+```sh
   # 独立管理环境参数，把 applications 也当成一种 module
   complex-outside-env-apps/
     ├── applications
@@ -260,9 +260,9 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
         └── vm
             ├── main.tf
             └── vpc.tf
-  ```
+```
 
-- ```sh
+```sh
   # 更复杂的全球部署的系统，在环境之上再加一层地域做区分
   complex-region-env-apps/
   ├── applications
@@ -302,11 +302,11 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
           ├── prod.tfvars
           ├── qa.tfvars
           └── stg.tfvars
-  ```
+```
 
 ### 进阶应用 - 共享状态：如果多个应用间要共享状态，比如前端需要拿到后端服务器的端口号
 
-- ```terraform
+```terraform
   # 使用 remote state，跨 state 直接查询
   data "terraform_remote_state" "backend_state" {
     backend = "oss"
@@ -321,9 +321,9 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
   locals {
     backend_port = data.terraform_remote_state.backend_state.outputs.port
   }
-  ```
+```
 
-- ```sh
+```sh
   # 合并应用，将所有基础设施合并成一棵树，从根节点进行管理
   advance-compose-state/
   ├── applications
@@ -365,14 +365,15 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
           ├── prod.tfvars
           ├── qa.tfvars
           └── stg.tfvars
-  ```
+```
 
-- 使用 Terragrunt 进行多应用管理（相当于一个代码生成器，帮你执行 remote state 的查询逻辑）
-  - ![Terragrunt](https://s2.loli.net/2023/02/19/LQeRJhclxbOYVSg.png)
+使用 Terragrunt 进行多应用管理（相当于一个代码生成器，帮你执行 remote state 的查询逻辑）
+
+![Terragrunt](https://s2.loli.net/2023/02/19/LQeRJhclxbOYVSg.png)
 
 ### 进阶应用 - 分层架构和平台化
 
-- ```sh
+```sh
   advance-platform/
   ├── layer0
   │   ├── alicloud
@@ -455,4 +456,4 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
               ├── prod.tfvars
               ├── qa.tfvars
               └── stg.tfvars
-  ```
+```
