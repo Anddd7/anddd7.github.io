@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"time"
 
@@ -55,7 +56,7 @@ func (b *blog) createFile() error {
 		return err
 	}
 
-	fmt.Printf("Blog created successfully at %s", path)
+	log.Printf("Blog created successfully at %s", path)
 
 	return nil
 }

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/spf13/cobra"
 )
@@ -15,26 +15,18 @@ var (
 
 func init() {
 	rootCmd.AddCommand(CreateCmd)
+	rootCmd.AddCommand(PublishCmd)
 }
 
 func main() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Printf("💢Failed with %s", err)
-	} else {
-		fmt.Printf("👍Done")
+		log.Fatalf("💢Failed with %s", err)
 	}
+	log.Println("👍Done")
 }
 
 type blog struct {
 	title    string
 	filename string
 	year     int
-}
-
-func listBlogs() []*blog {
-	return nil
-}
-
-func updateSidebar(include, exclude string) {
-
 }
