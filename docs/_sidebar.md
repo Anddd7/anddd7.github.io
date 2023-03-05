@@ -2,8 +2,8 @@
 <!-- 按年分类 -->
 
 * [2023](/)
-** [“在我的电脑上明明可以的” — 图解 DevContainer 构建干净的开发环境](migrate/devcontainer-tutorial "“在我的电脑上明明可以的” — 图解 DevContainer 构建干净的开发环境")
-** [Infrastructure as Code (IaC) 思考和实践](post/iac-and-terraform "Infrastructure as Code (IaC) 思考和实践")
+** [“在我的电脑上明明可以的” — 图解 DevContainer 构建干净的开发环境](post/2023/devcontainer-tutorial "“在我的电脑上明明可以的” — 图解 DevContainer 构建干净的开发环境")
+** [Infrastructure as Code (IaC) 思考和实践](post/2023/iac-and-terraform "Infrastructure as Code (IaC) 思考和实践")
 
 * [2022](/)
 ** [打造 Mesh-Shaped 能力 - 图解 Logseq 个人知识管理体系](migrate/logseq-pkm "打造 Mesh-Shaped 能力 - 图解 Logseq 个人知识管理体系")
