@@ -1,3 +1,5 @@
-
 run:
-	go run main.go
+	go run .
+
+build:
+	go build -o blog-cli .
