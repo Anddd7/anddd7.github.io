@@ -2,6 +2,7 @@
 <!-- 按年分类 -->
 
 * [2023](/)
+** [用 cobra 实现自己的 cheatsheet](post/2023/6e5f8581-c859-4711-80c5-b3766e98b202 "用 cobra 实现自己的 cheatsheet")
 ** [从 Handcraft 到 Operator, 0-1 实现 CRD](post/2023/18d74433-e3f1-46d4-8e08-a7bf0133c2f7 "从 Handcraft 到 Operator, 0-1 实现 CRD")
 ** [“在我的电脑上明明可以的” — 图解 DevContainer 构建干净的开发环境](post/2023/devcontainer-tutorial "“在我的电脑上明明可以的” — 图解 DevContainer 构建干净的开发环境")
 ** [Infrastructure as Code (IaC) 思考和实践](post/2023/iac-and-terraform "Infrastructure as Code (IaC) 思考和实践")
