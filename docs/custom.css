@@ -1,0 +1,7 @@
+.sidebar a.book {
+    color: blueviolet;
+    font-weight: bold;
+    font-size: medium;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
