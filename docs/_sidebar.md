@@ -2,6 +2,7 @@
 <!-- 按年分类 -->
 
 * 2023
+** [软件开发管理中的敏捷和精益](post/2023/76cea0f2-085e-4b58-a6a0-67e589dd6e19.md "软件开发管理中的敏捷和精益")
 ** [远程开发环境的可行性 - 图解云原生应用的开发与调试](post/2023/82101107-d502-4d1b-988a-9effd7eff9b7.md "远程开发环境的可行性 - 图解云原生应用的开发与调试")
 ** [Tunnel vs VPN vs VPC](post/2023/4ab64f0f-c709-4bce-b43d-ae2a5ec7245c.md "Tunnel vs VPN vs VPC")
 ** [用 cobra 实现自己的 cheatsheet](post/2023/6e5f8581-c859-4711-80c5-b3766e98b202 "用 cobra 实现自己的 cheatsheet")
