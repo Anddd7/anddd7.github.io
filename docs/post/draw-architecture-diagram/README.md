@@ -14,6 +14,7 @@
       - [可视化符号](#可视化符号)
         - [几何属性](#几何属性)
         - [非几何属性](#非几何属性)
+      - [表现形式](#表现形式)
       - [图的表现力](#图的表现力)
   - [软件架构图的构成](#软件架构图的构成)
     - [关注点设立](#关注点设立)
@@ -25,6 +26,7 @@
       - [风格和风格指南](#风格和风格指南)
       - [工具](#工具)
     - [架构视图](#架构视图)
+      - [架构视图分类（案例）](#架构视图分类案例)
   - [图解工作法](#图解工作法)
     - [复现](#复现)
     - [发散](#发散)
@@ -38,42 +40,53 @@
 
 **建筑设计图**
 在建筑设计中，建筑师会使用建筑设计图来表达建筑物的结构、布局和各个部分之间的关系。并且根据使用场景不同，还可以细分为多种类型，如平面图、立面图、剖面图等。
-类似地，以架构图作为载体，可以帮助软件开发人员从不同的维度理解系统的结构和设计，并以此进行跨团队的沟通和协作。通过类比建筑设计图，我们也可以用绘制建筑设计图的方式来绘制架构图。
+类似地，以架构图作为载体，可以帮助软件开发人员从不同的维度理解系统设计，并以此进行跨团队的沟通和协作。通过类比建筑设计图，我们也可以参考建筑设计图的绘制方法来绘制架构图。
 
-> 插图: 建筑图纸
+<center>
+  <img src="https://www.shejiqun.com/Dynamic/20140729/User/m44/12599403.jpg" alt="插图: 建筑图纸" />
+</center>
 
 **图形的表现力**
-软件系统通常复杂且庞大，包含多个组件、模块和交互关系。在这种复杂性下，仅依靠文字描述很难准确传达系统的结构和设计意图。
-架构图通过图形化的方式，提供了一种更直观、更易于理解的表达方式，帮助开发人员更好地把握系统的整体框架，从而降低开发过程中的误解和风险。
+软件系统通常复杂且庞大，包含多个组件、模块和交互关系。在这种复杂性下，仅依靠文字描述很难准确传达系统的结构和设计意图。架构图以图形化、可视化的方式，更直观、更易于理解，从而降低沟通成本、信息损耗，提升团队效率。
 
 **多重价值**
-架构图可以作为文档的一部分，帮助开发人员记录和沉淀系统设计的思路和决策。
+架构图可以作为文档的一部分，可以帮助开发人员记录和沉淀系统设计的思路和决策。
 架构图还可以作为团队协作的工具，帮助不同角色的成员更好地理解和参与系统的开发过程。
 架构图还可以用于与项目利益相关者（如客户、管理层）的沟通，以便更好地展示系统的整体架构、技术方案和价值呈现。
 
-> 插图: 多人围绕架构图进行讨论
+<center>
+  <img src="https://research.perkinswill.com/wp-content/uploads/2020/01/TheArchitecturalDiscussion-780x400.jpg" alt="插图: 软件架构图" />
+</center>
 
 ### 目标受众
 
-这篇文章的受众群体主要是从事软件开发的人，包括但不限于以下人员：
+本文的受众群体主要是从事软件开发的人，包括但不限于以下人员：
 
 - 软件开发工程师：这些人员负责具体的软件开发工作，包括编写代码、设计系统结构等。他们可以使用架构图来帮助他们理解系统的整体设计和组织，更好地进行模块化和组件化开发，以及解决系统中的问题和优化。
+
 - 系统架构师：系统架构师负责系统的整体设计和架构规划。他们可以使用架构图来表达他们的设计意图和决策，与团队成员和利益相关者进行沟通和共享。架构图可以帮助他们在系统设计过程中权衡不同的技术方案和决策，并为系统的发展和演进提供指导。
+
 - 项目经理：项目经理负责项目的规划、协调和管理。他们可以使用架构图来理解系统的整体结构和组织，帮助他们更好地把握项目的进展和风险，以及与团队成员和客户进行沟通和协调。
+
 - 技术顾问和解决方案架构师：技术顾问和解决方案架构师为客户提供技术咨询和解决方案设计。他们可以使用架构图来与客户共享和演示他们的设计方案，帮助客户理解系统的整体结构和技术实现，并为客户做出决策提供支持。
 
-> 插图：各个角色对架构图的使用
+<center>
+  <img src="https://s3.envato.com/files/276411836/_8515256.jpg" alt="插图: 多人围绕架构图进行讨论" />
+</center>
 
 这些从事软件开发的人员在日常工作中会有多种使用场景，包括但不限于以下情况：
 
 - 系统设计和规划阶段：在系统设计和规划阶段，他们可以使用架构图来理解和描述系统的整体结构、模块和组件的关系，以及数据流和交互流程等。
+
 - 团队协作和沟通：架构图可以作为团队内部沟通和协作的工具，帮助团队成员之间更好地理解和讨论系统设计，减少误解和沟通障碍。
+
 - 文档编写和知识传承：架构图可以作为文档的一部分，帮助记录和传承系统设计的思路和决策。它们可以作为技术文档、系统文档或用户手册的一部分，为开发人员和利益相关者提供系统的概览和详细信息。
-- 技术展示和客户沟通：架构图可以用于技术展示、成果汇报
+
+- 技术展示和客户沟通：架构图可以用于分析和描绘当前系统的情况，也可以用于展示和演示未来系统的设计方案。
 
 ## 文字、图形和可视化表达
 
-在人类的历史中，文字和图形一直是人们表达思想和传播信息的主要方式...
+在人类的历史中，文字和图形一直是人们表达思想和传播信息的主要方式。
 
 ### 语言与文字
 
@@ -83,7 +96,15 @@
 
 语言和文字对人类文明的影响深远。它们不仅成为了人类思想和知识的媒介，还推动了人类社会的发展和进步。
 
-当涉及到文字表达时，有几个限制和特征需要考虑：
+<center>
+  <img src="https://talkingdarcy.com/wp-content/uploads/2020/04/river.jpg" alt="插图: 象形文字" />
+</center>
+
+<center>
+  <img src="https://talkingdarcy.com/wp-content/uploads/2020/04/01-wine.jpg" alt="插图: 象形文字" />
+</center>
+
+当涉及到使用语言或文字表达时，有几个限制和特征：
 
 - 表现力有限：文字主要通过字词和句子的组合来传达意义，但它们可能无法准确地捕捉复杂的概念、情感和感觉。有时候，一些抽象的或非具象的概念可能需要通过其他手段来进行解释和传达。
 
@@ -93,18 +114,15 @@
 
 - 上下文负载：文字的理解通常依赖于上下文的负载。同样的文字，在不同的上下文中可能具有不同的含义和解读。读者需要综合考虑文字本身的表述以及所处的背景信息、语境和前后关系等因素，以理解文字的真正意义。
 
-> 插图: 象形文字
+<center>
+  <img src="data:image/png;base64,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" alt="插图: 句子分词" />
+</center>
 
 ### 图形（图象、图像）
 
 （这里不讨论图形、图像的定义和区别，“图”都泛指通过一个或多个图形构成的简单的、复杂的图像）
 
-图形是通过线条、形状、点和颜色等基本要素构成的平面或立体的视觉表达。它们可以是简单的几何形状，也可以是复杂的图案和图像。图形通常是通过手绘、绘图软件创建的，用于传达和表达特定的概念、思想或信息，具有艺术性、装饰性或功能性的目的。
-
-从广义的概念，一个图形包含的信息主要包括几何属性和非几何属性：
-
-- 几何属性：刻画对象的轮廓、形状。也称几何要素。包括点、线、面、体。
-- 非几何属性：视觉属性，刻画对象的颜色、材质等。比如明暗、色彩、纹理、透明性、线型、线宽。
+图形是通过线条、形状、点和颜色等基本要素构成的平面或立体的视觉表达。它们可以是简单的几何形状，也可以是复杂的图案和图像，用于传达和表达特定的概念、思想或信息，具有艺术性、装饰性或功能性的目的。
 
 当涉及到图的“阅读”时，有以下几个优势和特点：
 
@@ -114,42 +132,27 @@
 
 - 数理逻辑表达：在图论和拓扑学中使用图来表达数学逻辑，是因为图提供了一种直观、可视化的方式来描述和分析对象之间的关系和结构。图的数理逻辑表达能力使得它们可以用于描述和分析复杂的关系和结构，如网络拓扑、数据流、组织结构等。
 
-> 插图：各种图形
+<center>
+  <img src="https://media.istockphoto.com/id/1061064942/zh/%E5%90%91%E9%87%8F/%E6%95%B8%E5%AD%B8%E5%9C%96%E7%A4%BA.jpg?s=170667a&w=0&k=20&c=LZhhUbpEC03tcxdWQ5mrPgw1tAeQlhRL90rZYz3RhqU=" >
+</center>
 
 ### 可视化表达
 
 图形通过视觉元素来传达信息，其表现力取决于组成这个图形的元素的数量和种类，比如点、线、面、体、颜色、材质等。通过一个或多个图形的组合，可以表达更多的信息，如空间关系、时间关系、逻辑关系等。
 
-通常我们会有以下几种图形的可视化表达形式：
-
-- 二维：二维可视化是最基本的形式，通过平面上的点、线和面来表达信息。
-  - 几何属性包括点的位置、线的长度和方向、面的形状和大小。非几何属性包括色彩、线宽、纹理、透明度、明暗等。通过合理运用这些属性，可以在二维平面上创造出丰富的图形效果。例如，使用不同颜色的点表示不同类别的数据，使用线条的粗细和纹理来表示数据的趋势或关系，使用不同明暗程度的面来表示数据的密度或权重。
-
-> 插图：示例
-
-- 二点五维：二点五维可视化是在二维平面上叠加多个图像形成图层。
-  - 每一层的图像可以表示不同的信息。这种可视化表达形式常用于地图、图表和数据可视化中。例如，在地图上叠加不同的图层，可以同时展示某一个地区的地理特征、人口数据和气候状况，以便更全面地了解地区的情况。
-
-> 插图：示例
-
-- 三维：三维可视化通过在三维空间中表达信息，即 xyz 三坐标系。
-  - 几何属性不仅包括点、线和面，还包括深度、体积和角度。通过调整物体在三维空间中的位置、大小和形状，可以展示更多的空间关系和视角。非几何属性也同样适用于三维可视化，例如使用色彩和光照效果来模拟阴影和反射。三维可视化广泛应用于建筑设计、虚拟现实、游戏开发等领域。
-
-> 插图：示例
-
-- 四维：四维可视化是指通过动画来记录和展示图形的变化。在时间维度上，通过连续的图形演变，可以呈现数据的变化趋势和演化过程。这种形式的可视化特别适用于展示时间序列数据和动态系统。例如，使用折线图或曲线图展示随时间变化的数据趋势，或者通过动画展示物体的运动轨迹和变形过程。
-
-> 插图：示例
-
 #### 可视化符号
 
-图的绘制本质上仍是对信息的抽象化表达，即符号化。无论是几何属性中的点、线、面，还是非几何属性中的颜色、纹理、明暗等，都是用来表达某一种信息的符号。
+从广义的概念，一个图形包含的信息主要包括几何属性和非几何属性：
 
-通常使用的：
+- 几何属性：刻画对象的轮廓、形状。也称几何要素。包括点、线、面、体。
+- 非几何属性：视觉属性，刻画对象的颜色、材质等。比如明暗、色彩、纹理、透明性、线型、线宽。
+
+图的绘制本质上仍是对信息的抽象化表达，即符号化。无论是几何属性中的点、线、面，还是非几何属性中的颜色、纹理、明暗等，都是用来表达某一种信息的符号。
 
 ##### 几何属性
 
 - 点：点是最基本的几何属性，通常用来表示一个位置或一个数据点。点和点的相对位置，则反应了数据间的亲疏关系。在数据可视化中，点经常被用来表示离散的数据项，如散点图中的数据点，或地图上的地理位置。
+
 - 线：线是由两个或多个点连接而成的几何形状。线可以用来表示各种关系和连接，如连接两个点之间的路径、表示数据的趋势或流动。在图表中，线经常用于绘制折线图、曲线图等。
   - 箭头
   - 折线
@@ -180,9 +183,40 @@
 
 - 线宽：线宽指线条的粗细程度。线宽可以用来表示数据的强度、关联的强弱或表示图形元素的重要性。比如，使用粗线条表示主要的数据传输路径，使用细线条表示次要的数据传输路径。
 
+#### 表现形式
+
+通常我们会有以下几种图形的可视化表达形式：
+
+- 二维：二维可视化是最基本的形式，通过平面上的点、线和面来表达信息。
+  - 几何属性包括点的位置、线的长度和方向、面的形状和大小。非几何属性包括色彩、线宽、纹理、透明度、明暗等。通过合理运用这些属性，可以在二维平面上创造出丰富的图形效果。
+  - 例如，使用不同颜色的点表示不同类别的数据，使用线条的粗细和纹理来表示数据的趋势或关系，使用不同明暗程度的面来表示数据的密度或权重。
+
+- 二点五维：二点五维可视化是在二维平面上叠加多个图像形成图层。
+  - 每一层的图像可以表示不同的信息。这种可视化表达形式常用于地图、图表和数据可视化中。
+  - 例如，在地图上叠加不同的图层，可以同时展示某一个地区的地理特征、人口数据和气候状况，以便更全面地了解地区的情况。
+
+<center>
+  <img src="https://media.istockphoto.com/id/1211377843/zh/%E5%90%91%E9%87%8F/%E5%B9%BE%E4%BD%95%E6%8A%BD%E8%B1%A1%E8%83%8C%E6%99%AF%E7%8F%BE%E4%BB%A3%E6%99%82%E9%AB%A6%E7%9A%84%E5%9C%96%E6%A1%88%E8%88%87%E5%B9%BE%E4%BD%95%E5%9C%96%E5%BD%A2%E5%8D%8A%E8%89%B2%E8%AA%BF%E9%BB%9E%E5%9C%96%E5%BD%A2%E7%B7%9A%E7%9A%84%E7%B5%84%E7%B9%94%E5%A3%81%E7%B4%99%E5%92%8C%E6%98%8E%E4%BF%A1%E7%89%87%E8%97%8D%E8%89%B2%E9%87%91%E8%89%B2%E9%A2%A8%E6%A0%BC80%E5%B9%B4%E4%BB%A390%E5%B9%B4%E4%BB%A3%E5%90%91%E9%87%8F.jpg?s=612x612&w=0&k=20&c=ayGJB-W2cSnluwniy5hEtMPavMy_DIEFQ7V3O8iBLTE=" >
+</center>
+
+- 三维：三维可视化通过在三维空间中表达信息，即 xyz 三坐标系。
+  - 几何属性不仅包括点、线和面，还包括深度、体积和角度。通过调整物体在三维空间中的位置、大小和形状，可以展示更多的空间关系和视角。
+  - 非几何属性也同样适用于三维可视化，例如使用色彩和光照效果来模拟阴影和反射。三维可视化广泛应用于建筑设计、虚拟现实、游戏开发等领域。
+
+- 四维：四维可视化是指通过动画来记录和展示图形的变化。
+  - 在时间维度上，通过连续的图形演变，可以呈现数据的变化趋势和演化过程。这种形式的可视化特别适用于展示时间序列数据和动态系统。
+  - 例如，使用折线图或曲线图展示随时间变化的数据趋势，或者通过动画展示物体的运动轨迹和变形过程。
+
+<center>
+  <img src="https://willzhuang.github.io/2018/04/12/%E7%AE%97%E6%B3%95%E5%9B%BE%E8%A7%A3/quick-sort.png" >
+</center>
+
 #### 图的表现力
 
-> 插图：示例 （一大段文字描述只需要很简单的图形表示）
+<center>
+  <img src="https://m.foolcdn.com/media/affiliates/images/Network_Diagram-03-network_topologies_pqUkR09.width-750.png"
+  >
+</center>
 
 图可以在一个相对小的空间中表达大量的信息，因而图传达信息的能力（表现力）远远超过了文字。
 
@@ -292,7 +326,7 @@
 
 将 “信息主体”  进行 “结构层次分解” + ”逻辑关系组织” + ”风格” 展示给 “利益相关方”
 
-对于一个复杂的软件系统，可能需要向多个不同的利益相关者绘制不同目的的架构图，以满足不同的需求。这些架构图通常被组织成一系列的架构视图，用于描述系统的不同方面和视角。
+但对于一个复杂的软件系统，可能需要向多个不同的利益相关者绘制不同目的的架构图，以满足不同的需求。就像是建筑设计中的平面图、立面图、剖面图等，每个视图都有自己的特点和表达方式。我们将这样一系列的具有明确职责的架构图称为架构视图（Architecture View）。
 
 比如，
 
@@ -302,7 +336,9 @@
 
 因此，绘制架构图时除了要设计单张架构图的内容和结构，还要考虑单张架构图的信息边界，避免一张图表达过多的信息，导致信息过载。同时，如果采用多张架构图来描述系统，还要考虑多张架构图之间的关系和一致性，以确保整体的完整性和连贯性。
 
-（以下分类主要基于4+1 视图和笔者的个人经验，仅做参考）
+#### 架构视图分类（案例）
+
+（以下分类主要基于 4+1 视图和笔者的个人经验，仅做参考）
 
 | 视图/受众 | CxO        | PO/Architect | DevOps/Dev |
 | :-------- | :--------- | :----------- | :--------- |
@@ -342,7 +378,7 @@
 
 以新的关键信息为核心，重新绘制图
 
-
 ## 参考
 
 - [4+1 视图模型](https://www.cs.ubc.ca/~gregor/teaching/papers/4+1view-architecture.pdf)
+- [物品类的象形文字](https://talkingdarcy.com/pictograph-stuff/)
