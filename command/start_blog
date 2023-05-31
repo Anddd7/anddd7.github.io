@@ -1,0 +1,7 @@
+#!/bin/sh
+
+docker run --name=docsify \
+    -v /root/anddd7.github.io/docs:/docs \
+    -p 3000:3000 \
+    -d \
+    anddd7-docsify

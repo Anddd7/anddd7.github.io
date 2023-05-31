@@ -1,0 +1,8 @@
+#!/bin/sh
+
+docker run --name www-nginx \
+    -v /root/anddd7.github.io/www.mesh-shaped.top:/usr/share/nginx/html:ro \
+    -v /root/anddd7.github.io/nginx.conf:/etc/nginx/nginx.conf:ro
+    -p 80:80 \
+    -d \
+    nginx
