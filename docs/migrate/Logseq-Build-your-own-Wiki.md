@@ -29,7 +29,7 @@
   - 在Typora里用文件结构稍微区分了一下笔记内容
   - (Apple)Reminders/Notes，灵光一闪的时候（haha）就用手机记录，再通过Mac迁移
 
-<p align="center"><img src="/assets/Logseq-Build-your-own-Wiki/1644655887368.jpg" alt="Trello Card" /></p>
+![Trello Card](../assets/Logseq-Build-your-own-Wiki/1644655887368.jpg)
 
 ```markdown
  # Typora Folder Structure
@@ -206,13 +206,9 @@ Logseq主要做知识管理，但是如何高效高质量的获取原始数据�
 
 当 page name 中包含`/`时，Logseq会将其分解为类似文件路径的结构，并生成hierarchy。而且在 graph 中也会有不同的着色，看起来更清晰。
 
-<p align="center">
-  <img src="/assets/Logseq-Build-your-own-Wiki/WX20220212-172346.png" alt="Hierarchy" />
-</p>
+![Hierarchy](../assets/Logseq-Build-your-own-Wiki/WX20220212-172346.png)
 
-<p align="center">
-  <img src="/assets/Logseq-Build-your-own-Wiki/WX20220212-172451.png" alt="Page Graph" />
-</p>
+![Page Graph](../assets/Logseq-Build-your-own-Wiki/WX20220212-172451.png)
 
 ### Query：GTD / OKR
 
@@ -261,7 +257,7 @@ Logseq主要做知识管理，但是如何高效高质量的获取原始数据�
 #+END_QUERY
 ```
 
-<p align="center"><img src="/assets/Logseq-Build-your-own-Wiki/1644658272643.jpg" alt="效果图" /></p>
+![效果图](../assets/Logseq-Build-your-own-Wiki/1644658272643.jpg)
 
 # 想法
 

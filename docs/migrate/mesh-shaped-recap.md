@@ -47,6 +47,4 @@
 
 反观“Mesh-Shaped”，并不是说所有知识一定是要相互连接，奔着扩大范围走的。而是以点绘面 —— 通过已有的核心点，逐步扩散出新的领域，从而构建更大的范围知识网。
 
-<p align="center">
-  <img src="/assets/mesh-shaped-recap/image_1653875255217_0.png" alt="Orchestration vs Choreography" />
-</p>
+![Orchestration vs Choreography](../assets/mesh-shaped-recap/image_1653875255217_0.png)

@@ -44,9 +44,7 @@
 
 ## 总结
 
-<p align="center">
-  <img src="/assets/luyou-vs-daili-vs-wangguan/2022-05-25-10-21-15.png" alt="Route vs Proxy vs Gateway" />
-</p>
+![Route vs Proxy vs Gateway](../assets/luyou-vs-daili-vs-wangguan/2022-05-25-10-21-15.png)
 
 > ps: 还顺便研究了一下 excalidraw 添加中文字体:
 >

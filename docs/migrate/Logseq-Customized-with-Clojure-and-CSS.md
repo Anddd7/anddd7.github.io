@@ -172,9 +172,7 @@
 
 ### Output
 
-<p align="center">
-  <img src="/assets/Logseq-Customized-with-Clojure-and-CSS/1645694079239.jpg" alt="Demo" />
-</p>
+![Demo](../assets/Logseq-Customized-with-Clojure-and-CSS/1645694079239.jpg)
 
 # 总结
 
