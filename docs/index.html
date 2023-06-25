@@ -25,6 +25,20 @@
       },
       auto2top: true,
       subMaxLevel: 2,
+      markdown: {
+        smartypants: true,
+        renderer: {
+          image: function (href, title, text) {
+            if (href.startsWith('../../')) {
+              href = href.replace('../../', '/')
+            } else if (href.startsWith('../')) {
+              href = href.replace('../', '/')
+            }
+
+            return `<img src="${href}" alt="${text}" title="${title}" style="display:block;margin:auto;">`
+          }
+        }
+      }
     }
   </script>
 </body>
