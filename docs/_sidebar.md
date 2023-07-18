@@ -26,3 +26,4 @@
 * 主题精选
 ** [(WIP)《系列：云原生工程》](post/cloud-native-engineering/ ':class=book')
 ** [《系列：架构图怎么画》](post/draw-architecture-diagram/ ':class=book')
+** [(WIP)《系列：图解工作法》](post/diagrammatize/ ':class=book')
