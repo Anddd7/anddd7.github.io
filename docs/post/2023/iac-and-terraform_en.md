@@ -1,127 +1,123 @@
-# Infrastructure as Code (IaC) 思考和实践
+# Thoughts and Practices on Infrastructure as Code (IaC)
 
-**EN: [Thought and Practice of Infrastructure as Code (IaC)](post/2023/iac-and-terraform_en "Thought and Practice of Infrastructure as Code (IaC)")**
+## Immutable Infrastructure
 
-## 不可变基础设施
+Before talking about IaC, let's first understand immutable infrastructure:
 
-在讲 IaC 之前，我们先了解一下不可变基础设施：
+> **Software application complexity -> Development and deployment complexity -> Infrastructure complexity**
 
-> **软件应用的复杂性 -> 开发部署的复杂性 -> 基础设施的复杂性**
+In the past software development, in order to configure and install the operating environment of the software application, it usually takes a lot of time to prepare the network, machine, operating system and database. And as the software is updated, the operating environment will also be adjusted, such as installing patches, modifying ip, modifying ports, etc. However, manual adjustments are not only prone to errors, but also difficult to record modifications. This operating environment (server) is like a pet you care for carefully. Once lost, it will never be found again.
 
-在以前的软件开发中，为了配置和安装好软件应用的运行环境，通常需要花大量的时间在准备网络、机器、操作系统和数据库上。并且随着软件的更新，运行环境也会跟着调整，如安装补丁、修改 ip、修改端口等。但人工的调整不仅容易出错，而且难以记录修改，这个运行环境（服务器）就像你精心照顾的宠物一样，一旦丢失了就再也找不回来了。
+Therefore, the industry has put forward the metaphor of [Pet vs Cattle](https://joachim8675309.medium.com/devops-concepts-pets-vs-cattle-2380b5aab313), and verified its effectiveness through cloud services.
 
-因此，业界提出了 [Pet vs Cattle（宠物 vs 家禽）](https://joachim8675309.medium.com/devops-concepts-pets-vs-cattle-2380b5aab313) 的比喻，并且通过云服务验证了其有效性。
+Similarly, snowflake servers and phoenix servers describe similar situations: each snowflake is unique, and once it melts, it can never be condensed into the same snowflake again. The phoenix server can be reborn through "egg" nirvana (the characteristics of the phoenix server):
 
-同样的，雪花服务器和凤凰服务器也是描述的类似的情况：每一片雪花都是独一无二的，并且消融后就再也无法再次凝结成相同的雪花。而凤凰服务器则可以通过“变蛋”涅槃重生（凤凰服务器的特点）：
+- Stable server status and fewer deployment failures
+- No configuration drift or snowflake server
+- Consistent pre-release environment and simple horizontal scaling
+- Simple rollback and recovery processing
 
-- 稳定的服务器状态和更少的部署失败
-- 没有配置漂移或雪花服务器
-- 一致的预发布环境和简单的水平扩缩容
-- 简单的回滚和恢复处理
+And to solve the above problems (to achieve immutable infrastructure):
 
-而要想解决上述问题（实现不可变基础设施）：
+- Automated pipeline
+- Stateless application layer
+- Persistent data layer
+- Infrastructure as Code IaC
+- DevOps style collaboration
 
-- 自动化管道
-- 无状态应用层
-- 持久化数据层
-- 基础设施即代码 IaC
-- DevOps 式协作
+IaC is not only an important part of them, but also a tool that can easier to achieve the other goals using the advantages of code.
 
-而 IaC 不仅是其中重要的一环，利用代码的特点和优势也更容易达成其他几项工程实践。
-
-> IMMUTABLE, BUT CONFIGURABLE / REPRODUCIBLE AND AUTOMATABLE \
-> （是）不可变的，但可配置 / （是）可复制的，且可自动化
+> IMMUTABLE, BUT CONFIGURABLE / REPRODUCIBLE AND AUTOMATABLE
 
 ## 'AS' code, not 'IS' code
 
 ![IaC Tools](https://picx.zhimg.com/80/v2-3856f65a763bad268e7d103c7aeb9c65_1440w.png)
 
-IaC 的工具很多，甚至使用 shell、python 调用云服务 sdk、cli 也能完成高效的基础设施编排。但基础设施‘即’代码的重点并不完全是代码化 —— 'AS' not 'IS'。
+There are many tools for IaC, and even using shell, python to call cloud service sdk, cli can also complete efficient infrastructure orchestration. But the focus of the infrastructure 'as' code is not entirely on code - 'AS' not 'IS'.
 
-一方面，使用代码管理基础设施：
+On the one hand, use code to manage infrastructure:
 
-- 基于编程/模版语言提升效率
-  - 变量、常量、函数，提升编码效率减少重复和输入错误
-  - 抽象、封装、复用，辅助基础设施的创建、修改、分发
-  - 代码结构即基础设施架构
-  - 同样适用 Clean Code 书写出自解释的代码
-- 基于代码工具提升效率
-  - Git，帮助基础设施实现版本化
-  - 测试，尽早检验基础设施的可靠性
-  - 流水线，自动化测试、部署、验证、回滚，响应更快
+- Improve efficiency based on programming/template language
+  - Variables, constants, functions, improve coding efficiency and reduce duplication and input errors
+  - Abstraction, encapsulation, reuse, assist in the creation, modification and distribution of infrastructure
+  - Code structure is the infrastructure architecture
+  - The code is self-explanatory, just like Clean Code
+- Improve efficiency based on code tools
+  - Git, help infrastructure achieve versioning
+  - Test, check the reliability of infrastructure as early as possible
+  - Pipeline, automated testing, deployment, verification, rollback, faster response
 
-另一方面，IaC 应该致力于‘描述’基础设施：
+On the other hand, IaC should be committed to 'describing' infrastructure:
 
-- 基础设施受硬件架构影响，具有固有的依赖和限制
-  - 比如 vm、集群 需要建设在网络之上
-  - 比如 db、mq 是区域（region）资源，而 dns 是全球资源
-- 虽然代码执行很快，但基础设施的准备并不像云厂说的那样快
-  - java、go 应用的启动是秒级的
-  - 而基础设施的“部署”时间则在几分钟到几小时不等
-  - 比如 阿里云 rds 需要接近 10 分钟才能完全可以
-- 如果遇到有状态服务，重建的难度远大于数据库迁移
+- Infrastructure is affected by hardware architecture and has inherent dependencies and limitations
+  - For example, vm, cluster needs to be built on the network
+  - For example, db, mq are regional resources, and dns is a global resource
+- Although the code runs very fast, the preparation of the infrastructure is not as fast as the cloud provider said "in seconds"
+  - The startup of java and go applications is in seconds
+  - While the "deployment" time of infrastructure varies from a few minutes to several hours
+  - For example, Alibaba Cloud RDS takes nearly 10 minutes to be fully available
+- If you encounter a stateful service, the difficulty of rebuilding is much greater than that of database migration
 
-下面我举 2 个编程理论用于 IaC 领域的例子 ...
+### Simple Design in IaC
 
-### 简单设计 in IaC
+![Alt text](../../assets/iac-and-terraform_en/image.png)
+[four rules of Simple Design - Kent Beck](https://www.martinfowler.com/bliki/BeckDesignRules.html)
+[Clean Code — 4 Rules of Simple Design](https://medium.com/swlh/clean-code-4-rules-of-simple-design-f86b066ee43d)
 
-![简单设计](https://insights.thoughtworks.cn/wp-content/uploads/2023/02/code-simple-design-five-principles-1.png)
-[代码的简单设计五原则 - Thoughtworks洞见](https://insights.thoughtworks.cn/code-simple-design-five-principles/)
+The design and implementation process of IaC can also use the theory of simple design:
 
-IaC 的设计实现过程中同样可以采用简单设计的理论：
+- Passes the test, it must be the first condition to be met
+- Reveals intention
+  - Use declarative programming to describe the types, models and resource dependencies of infrastructure with code
+  - "Do one thing and do it well" - UNIX design philosophy
+    - eg. make, man, tree ...
+- No duplication
+  - Use module, template, script to abstract reusable resources or commands
+    - eg. module, template, script ...
+- Fewest elements - Less is more
 
-- 通过测试，必然是首要满足的条件
-- 揭示意图
-  - 采用声明式编程，用代码描述基础设施的种类、型号以及资源的依赖关系
-    - (参考下文 Terraform Tips)
-  - "Do one thing and do it well" - UNIX 设计哲学
-    - make, man, tree
-    - kubectl run, apply, delete
-- 消除重复
-  - 使用 module、模版、脚本 来抽象可复用的资源或命令
-    - (参考下文 Terraform Tips)
-- 最小元素 ...
+### Layered architecture in IaC
 
-### 分层架构 in IaC
+![Alt text](../../assets/iac-and-terraform_en/image-1.png)
 
-![基础设施的分层架构示例](https://s2.loli.net/2023/02/19/3nGJem5aP1z4lyu.png)
+Layered infrastructure is similar to layered architecture (eg. mvc), that is used to separate focus point:
 
-对基础设施进行分层和代码分层（mvc 模式）类似，目的是分离关注点：
-
-- 权责方
-  - 有哪些组织？有哪些部门？有哪些角色？
-  - 他们的权利和义务是什么？
-  - 如何协作？
-- 修改频率
-  - 哪些资源是一开始就需要准备和设计的？
-  - 哪些资源是新项目启动需要的？
-  - 哪些是不能修改的？哪些是定期修改的？哪些是随时可能修改的？
-- 资源类型
+- Owner
+  - What the organization is? How many departments are there? How many stackholders are there?
+  - What are their roles and responsibilities?
+  - What's the collaboration model?
+- Change frequency
+  - What resources need to be prepared and designed from the beginning?
+  - What resources are needed to start a new service?
+  - Which ones cannot be modified? Which ones are revised regularly? Which ones are subject to change at any time?
+- Resource Type
   - IaaS/PaaS/SaaS
-  - 计算、存储、网络，集群、中间件、工具链
+  - Computing, storage, network, cluster, middleware, tool chain
 
-如上图，是以 “基于多云环境构建 k8s 集群运行多种服务” 为题的分层架构：
+As shown above, it is a sample of layered architecture, if you want to "Build a k8s cluster based on a multi-cloud environment".
 
-- Layer0、Layer1 致力于不同的云环境上抽象出相同的支撑平台，对上暴露封装好的接口
-- Layer2 构建企业内部的中间件/服务“市场”，提供多种组件按需使用
-- Application 按需“采买”，直到某项服务被应用团队采用了，就会通过自动化脚本进行部署
+- Layer0 and Layer1 are committed to abstracting the same support platform in different cloud environments and exposing encapsulated interfaces.
+- Layer2 builds an internal middleware/service "market" within the enterprise and provides a variety of components for on-demand use.
+- Application "use" on demand, until a service is adopted by the application team, it will be deployed through automated scripts
 
-![平台工程下的 DevOps 工作流](https://s2.loli.net/2023/02/19/2zS3gfmhaQWbdvK.png)
+![DevOps workflow](https://s2.loli.net/2023/02/19/2zS3gfmhaQWbdvK.png)
+
+Then, we can process it via gitops.
 
 ![GitOps with CMDB](https://s2.loli.net/2023/02/19/g7hkrQPfWaKHlAN.png)
 
 ## Terraform Tips
 
-基于上述理论，我们以 terraform 为例（部署一个包含前后端的服务）来介绍一些 tips：
+Based on the above theory, we take terraform as an example (deploying a service including front-end and back-end) to introduce some tips:
 
-### 简单应用：无所谓分层，直接放到一个地方方便执行
+### Simple application: no layer, just execute it
 
 ```sh
   simple
   └── main.tf
 ```
 
-### 简单应用 - 分类：随着资源变多，可以按资源类型/应用类型来
+### Simple application - Classify: need to manage the resource by group
 
 ```sh
   simple-by-resource/
@@ -137,7 +133,7 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
   └── frontend-app.tf
 ```
 
-### 简单应用 - 组件化：当某些资源复杂度高、需要单独维护、需要复用时，通过 module 进行管理
+### Simple application - Modulization: abstract, reuse by module
 
 ```sh
   simple-with-modules/
@@ -156,7 +152,7 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
           └── vpc.tf
 ```
 
-### 复杂应用 - 子组件：通过 folder 结构来标识复杂组件的关系和版本
+### Complex application - Sub module: use folder to build hierarchy
 
 ```sh
   complex-sub-modules/
@@ -207,7 +203,7 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
   }
 ```
 
-### 复杂应用 - 环境：将环境相关的变量抽象出去形成 variables，基于环境做区分
+### Complex application - Environment: extract environment-related variables, and distinguish based on environment
 
 ```sh
   complex-env-apps/
@@ -239,7 +235,7 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
 ```
 
 ```sh
-  # 独立管理环境参数，把 applications 也当成一种 module
+  # manage env vars in a separate folder, and treat applications as a module
   complex-outside-env-apps/
     ├── applications
     │   ├── backend-app
@@ -265,7 +261,7 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
 ```
 
 ```sh
-  # 更复杂的全球部署的系统，在环境之上再加一层地域做区分
+  # for global deployment, add region layer on top of environment
   complex-region-env-apps/
   ├── applications
   │   ├── backend-app
@@ -306,10 +302,10 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
           └── stg.tfvars
 ```
 
-### 进阶应用 - 共享状态：如果多个应用间要共享状态，比如前端需要拿到后端服务器的端口号
+### Advanced application - Share State: access state of other module
 
 ```terraform
-  # 使用 remote state，跨 state 直接查询
+  # query by remote state
   data "terraform_remote_state" "backend_state" {
     backend = "oss"
 
@@ -326,7 +322,7 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
 ```
 
 ```sh
-  # 合并应用，将所有基础设施合并成一棵树，从根节点进行管理
+  # combine applications, merge all infrastructure into a tree, and manage them from the root node
   advance-compose-state/
   ├── applications
   │   ├── backend-app
@@ -369,11 +365,37 @@ IaC 的设计实现过程中同样可以采用简单设计的理论：
           └── stg.tfvars
 ```
 
-使用 Terragrunt 进行多应用管理（相当于一个代码生成器，帮你执行 remote state 的查询逻辑）
+Print the outputs of one module into a file, and then read the file in another module
+
+```terraform
+  # write outputs to file
+  output "port" {
+    value = module.server.port
+
+    depends_on = [module.server]
+  }
+
+  provisioner "local-exec" {
+    command = "echo ${module.server.port} > port.txt"
+  }
+```
+
+```terraform
+  # read outputs from file
+  data "local_file" "port" {
+    filename = "${path.module}/port.txt"
+  }
+
+  locals {
+    port = data.local_file.port.content
+  }
+```
+
+Use Terragrunt to facilitate the remote state query 
 
 ![Terragrunt](https://s2.loli.net/2023/02/19/LQeRJhclxbOYVSg.png)
 
-### 进阶应用 - 分层架构和平台化
+### Advanced application - Layered achitecture and Platform
 
 ```sh
   advance-platform/
