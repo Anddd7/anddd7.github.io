@@ -1,7 +1,7 @@
 posts:
-  - title: 消费降级 - 配置 Windows 开发环境
-    path: docs/post/2023/b7e9662c-3db7-4567-8eab-2d5eff90bc99.md
-    status: 1
-  - title: 随笔 - 二零二四，开年“述职”
-    path: docs/post/2024/65c3ac93-7550-4a3a-962c-dd7b93684d50.md
-    status: 1
+    - title: 消费降级 - 配置 Windows 开发环境
+      path: docs/post/2023/b7e9662c-3db7-4567-8eab-2d5eff90bc99.md
+      status: 1
+    - title: 随笔 - 二零二四，开年“述职”
+      path: docs/post/2024/20240102-5e1388be.md
+      status: 1
