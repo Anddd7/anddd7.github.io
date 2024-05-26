@@ -1,0 +1,25 @@
+sources:
+- service
+- ingress
+
+domainFilters: ["mesh-shaped.top"]
+
+provider:
+  name: alibabacloud
+
+extraArgs: ["--alibaba-cloud-zone-type=public"]
+
+alibabacloud:
+  accessKeyId: {? {requiredEnv "ALICLOUD_DNS_MANAGER_AK": ''} : ''}
+  secretAccessKey: {? {requiredEnv "ALICLOUD_DNS_MANAGER_SK": ''} : ''}
+  region: cn-hangzhou
+  vpcId: "xxx"
+
+extraVolumes:
+- name: hostpath
+  hostPath:
+    path: /usr/share/zoneinfo
+    type: Directory
+extraVolumeMounts:
+- name: hostpath
+  mountPath: /usr/share/zoneinfo

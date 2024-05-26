@@ -1,0 +1,23 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+spec:
+  acme:
+    email: anddd7@icloud.com
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt
+    solvers:
+    - dns01:
+        webhook:
+          config:
+            regionId: cn-hangzhou
+            accessTokenSecretRef:
+              key: access-token
+              name: alidns-secrets
+            secretKeySecretRef:
+              key: secret-key
+              name: alidns-secrets
+          groupName: mesh-shaped.top
+          solverName: alidns-solver
