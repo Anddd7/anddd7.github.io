@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kubectl kustomize kustomization | kubectl apply -f -

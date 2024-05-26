@@ -3,7 +3,7 @@ config:
   - Developer:
     - Github:
       - abbr: GH
-        href: https://github.com/
+        href: https://github.com/Anddd7
   services:
   - My First Group:
     - My First Service:
@@ -59,7 +59,7 @@ ingress:
       gethomepage.dev/group: "Dynamic"
       gethomepage.dev/icon: "homepage.png"
     hosts:
-    - host: homepage.example.com
+    - host: mesh-shaped.top
       paths:
       - path: /
         pathType: Prefix
