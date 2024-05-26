@@ -1,4 +1,10 @@
 #!/bin/bash
 
 helm repo add external-dns https://kubernetes-sigs.github.io/external-dns/
-helm upgrade --install external-dns external-dns/external-dns --version 1.14.4 -f helm/values.yaml
+
+helm upgrade --install \
+    external-dns external-dns/external-dns \
+    --namespace external-dns \
+    --create-namespace \
+    --version 1.14.4 \
+    -f helm/values.yaml
