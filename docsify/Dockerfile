@@ -1,11 +1,9 @@
 FROM node:latest
 
-LABEL description="Running docsify in server mode (SSR)"
+RUN npm install -g docsify-cli@latest
 
 WORKDIR /docs
-  
-RUN npm install -g docsify-cli@latest
-  
-EXPOSE 3000/tcp
+
+COPY ./docs /docs
   
 ENTRYPOINT docsify serve .
