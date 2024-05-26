@@ -1,0 +1,4 @@
+#!/bin/bash
+
+helm repo add jameswynn https://jameswynn.github.io/helm-charts
+helm install homepage jameswynn/homepage -f helm/values.yaml
