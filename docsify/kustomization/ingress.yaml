@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: docsify
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   rules:
   - host: anddd7.mesh-shaped.top
@@ -16,3 +17,7 @@ spec:
             name: docsify
             port:
               number: 80
+  tls:
+  - hosts:
+    - "*.mesh-shaped.top"
+    secretName: mesh-shaped-top-wild-tls
