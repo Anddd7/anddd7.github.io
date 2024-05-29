@@ -1,11 +1,8 @@
 #!/bin/bash
 
-helm repo add jetstack https://charts.jetstack.io --force-update
-helm repo add cert-manager-alidns-webhook https://devmachine-fr.github.io/cert-manager-alidns-webhook
-
-helm repo update
-
 # cert-manager
+helm repo add jetstack https://charts.jetstack.io
+
 helm upgrade --install \
     cert-manager jetstack/cert-manager \
     --namespace cert-manager \
@@ -14,13 +11,12 @@ helm upgrade --install \
     --set installCRDs=true \
     -f helm/values.yaml
 
-helm upgrade --install \
-    cert-manager jetstack/cert-manager \
-    --namespace cert-manager \
-    --create-namespace \
-    --version v1.14.5 \
-    -f helm/values.yaml
+# install the alibaba cloud config secret
+kubectl kustomize kustomization | envsubst | kubectl apply -f -
 
 # alidns webhook
-helm upgrade --install \
-    alidns-webhook cert-manager-alidns-webhook/alidns-webhook
+helm upgrade --install alidns-webhook alidns-webhook \
+    --repo https://wjiec.github.io/alidns-webhook \
+    --namespace cert-manager \
+    --create-namespace \
+    --set groupName=acme.mesh-shaped.top

@@ -34,8 +34,11 @@ kind: Ingress
 metadata:
   name: nginx-ingress
   annotations:
-    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
-    traefik.ingress.kubernetes.io/router.middlewares: default-nginx-stripprefix@kubernetescrd
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    traefik.ingress.kubernetes.io/router.middlewares: |
+      default-nginx-stripprefix@kubernetescrd,
+      default-redirect-to-https@kubernetescrd
+    cert-manager.io/cluster-issuer: letsencrypt
 spec:
   ingressClassName: traefik
   rules:
@@ -49,6 +52,10 @@ spec:
             name: nginx-svc
             port:
               number: 80
+  tls:
+  - hosts:
+    - nginx.mesh-shaped.top
+    secretName: nginx-tls
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -58,3 +65,12 @@ spec:
   stripPrefix:
     prefixes:
     - /testpath
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: redirect-to-https
+spec:
+  redirectScheme:
+    scheme: https
+    permanent: true
