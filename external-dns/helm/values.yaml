@@ -1,4 +1,5 @@
 image:
+  # kubernetes.io is disconnected from the CN network, use docker.io instead   
   repository: bitnami/external-dns
   tag: 0.14.1
 
@@ -11,6 +12,7 @@ domainFilters: ["mesh-shaped.top"]
 provider:
   name: alibabacloud
 
+# bind and use the config file with aksk
 extraArgs: ["--alibaba-cloud-zone-type=public", "--alibaba-cloud-config-file=/etc/kubernetes/external-dns/alibabacloud-cloud-config.yaml"]
 
 extraVolumes:

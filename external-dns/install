@@ -1,8 +1,14 @@
 #!/bin/bash
 
-# install the alibaba cloud config secret
+# instructions
+# ------------
+# alibaba provider can read credentials from a file
+# so we need to create a secret and mount into the pod
+
+# prepare the secret
 kubectl kustomize kustomization | envsubst | kubectl apply -f -
 
+# install cert-manager
 helm repo add external-dns https://kubernetes-sigs.github.io/external-dns/
 
 helm upgrade --install \

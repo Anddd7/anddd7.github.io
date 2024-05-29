@@ -1,3 +1,5 @@
+# a simple nginx app to test whole process
+
 namespace: default
 
 resources:

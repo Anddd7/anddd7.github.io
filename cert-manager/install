@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# instructions
+# ------------
+# cert-manager doesn't support alidns as a dns01 provider out of the box.
+# so you need to use a webhook to make it work, there are 3 alidns-webhook
+# - (out-of-date) https://github.com/pragkent/alidns-webhook
+# - (no image mirror) https://github.com/DEVmachine-fr/cert-manager-alidns-webhook
+# - [checked] https://github.com/wjiec/alidns-webhook
+
 # cert-manager
 helm repo add jetstack https://charts.jetstack.io
 
@@ -11,7 +19,7 @@ helm upgrade --install \
     --set installCRDs=true \
     -f helm/values.yaml
 
-# install the alibaba cloud config secret
+# prepare the secret for aksk and cluster issues
 kubectl kustomize kustomization | envsubst | kubectl apply -f -
 
 # alidns webhook
