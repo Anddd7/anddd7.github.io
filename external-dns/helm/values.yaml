@@ -1,3 +1,7 @@
+image:
+  repository: bitnami/external-dns
+  tag: 0.14.1
+
 sources:
 - service
 - ingress
@@ -7,19 +11,20 @@ domainFilters: ["mesh-shaped.top"]
 provider:
   name: alibabacloud
 
-extraArgs: ["--alibaba-cloud-zone-type=public"]
-
-alibabacloud:
-  accessKeyId: {? {requiredEnv "ALICLOUD_DNS_MANAGER_AK": ''} : ''}
-  secretAccessKey: {? {requiredEnv "ALICLOUD_DNS_MANAGER_SK": ''} : ''}
-  region: cn-hangzhou
-  vpcId: "xxx"
+extraArgs: ["--alibaba-cloud-zone-type=public", "--alibaba-cloud-config-file=/etc/kubernetes/external-dns/alibabacloud-cloud-config.yaml"]
 
 extraVolumes:
 - name: hostpath
   hostPath:
     path: /usr/share/zoneinfo
     type: Directory
+- name: alibabacloud-cloud-config
+  secret:
+    secretName: alibabacloud-cloud-config
+
 extraVolumeMounts:
 - name: hostpath
   mountPath: /usr/share/zoneinfo
+- name: alibabacloud-cloud-config
+  mountPath: /etc/kubernetes/external-dns
+  readOnly: true

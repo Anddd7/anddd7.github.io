@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# install the alibaba cloud config secret
+kubectl kustomize kustomization | envsubst | kubectl apply -f -
+
 helm repo add external-dns https://kubernetes-sigs.github.io/external-dns/
 
 helm upgrade --install \

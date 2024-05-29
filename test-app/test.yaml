@@ -39,7 +39,8 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - http:
+  - host: nginx.mesh-shaped.top
+    http:
       paths:
       - path: /testpath
         pathType: Prefix

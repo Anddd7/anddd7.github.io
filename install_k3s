@@ -7,7 +7,7 @@ fi
 
 # use mirror for cn https://docs.k3s.io/zh/quick-start
 
-curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -s - server --advertise-address $PUBLIC_IP --write-kubeconfig-mode=644
+curl -sfL https://rancher-mirror.rancher.cn/k3s/k3s-install.sh | INSTALL_K3S_MIRROR=cn sh -s - server --node-external-ip $PUBLIC_IP --write-kubeconfig-mode=644
 
 # ---
 
