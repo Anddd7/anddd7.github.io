@@ -1,0 +1,16 @@
+# overwrite image with aliyun mirror
+
+controller:
+  image:
+    registry: registry.cn-hangzhou.aliyuncs.com
+    image: google_containers/nginx-ingress-controller
+    tag: "v1.10.0"
+    digest: ""
+    digestChroot: ""
+  admissionWebhooks:
+    patch:
+      image:
+        registry: registry.cn-hangzhou.aliyuncs.com
+        image: google_containers/kube-webhook-certgen
+        tag: v1.4.1
+        digest: ""

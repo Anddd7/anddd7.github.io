@@ -22,7 +22,7 @@ Home page of my domain
 
 - `www.mesh-shaped.top`
 
-## How to deploy (WIP)
+## How to deploy
 
 Use k3s to deploy those pages, with external-dns, cert-manager
 
@@ -34,3 +34,17 @@ Use k3s to deploy those pages, with external-dns, cert-manager
 - install k3s
 - configure external-dns and cert-manager(lets encrypt)
   - create RAM user and AKSK in alicloud
+
+### steps
+
+- install k3s
+  - setup server `ubuntu 22.04`
+  - install k3s, see [install_k3s](./install_k3s)
+  - expose k3s to internet, see [inbound rules](https://docs.k3s.io/zh/installation/requirements#inbound-rules-for-k3s-nodes)
+  - export k3s kubeconfig, replace `127.0.0.1` with server ip
+  - execute `k get no` in local
+- install core components
+  - helm
+  - ~~ingress-nginx~~
+    - use Traefik instead (built-in k3s)
+  -
