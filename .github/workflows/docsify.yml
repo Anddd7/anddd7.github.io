@@ -6,6 +6,7 @@ on:
       - 'docsify/docs/**'
       - 'docsify/Dockerfile'
       - 'docsify/kustomization/**'
+      - '.github/workflows/docsify.yml'
 
 env:
   REGISTRY: ghcr.io
