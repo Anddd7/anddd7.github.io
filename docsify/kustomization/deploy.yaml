@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: docsify
-        image: ghcr.io/anddd7/anddd7.github.io/docsify:${IMAGE_TAG}
+        image: ${DOCSIFY_IMAGE_TAG}
         ports:
         - containerPort: 3000

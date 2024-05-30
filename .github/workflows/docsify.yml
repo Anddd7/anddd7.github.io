@@ -3,7 +3,7 @@ name: docsify
 on:
   push:
     paths:
-      - '.github/workflows/docsify.yml'
+      # - '.github/workflows/docsify.yml'
       - 'docsify/docs/**'
       - 'docsify/Dockerfile'
       - 'docsify/kustomization/**'
@@ -52,7 +52,7 @@ jobs:
         uses: wahyd4/kubectl-helm-action@master
         env:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
-          IMAGE_TAG: ${{ steps.meta.outputs.tags }}
+          DOCSIFY_IMAGE_TAG: ${{ steps.meta.outputs.tags }}
         with:
           args: |
             kubectl kustomize docsify/kustomization | envsubst | kubectl apply -f -
