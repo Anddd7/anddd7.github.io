@@ -43,8 +43,8 @@ config:
     - Excalidraw:
         href: https://excalidraw-anddd7.vercel.app/
         description: support zh fonts
-        ping: excalidraw-anddd7.vercel.app
         icon: https://docs.excalidraw.com/img/favicon.png
+        ping: excalidraw-anddd7.vercel.app
 
   - Github:
     - Github:
