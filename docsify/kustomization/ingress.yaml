@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: docsify
   annotations:
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/name: "Blog"
+    gethomepage.dev/description: "Blog powered by docsify"
+    gethomepage.dev/group: "Website"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: letsencrypt
 spec:

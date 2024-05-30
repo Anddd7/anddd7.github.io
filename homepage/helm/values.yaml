@@ -1,26 +1,66 @@
 config:
+
+  # settings
+  settings:
+    title: Anddd7
+    quicklaunch:
+      searchDescriptions: true
+      hideInternetSearch: true
+      showSearchSuggestions: true
+      hideVisitURL: true
+
+  # bookmarks
   bookmarks:
-  - Developer:
+  - Github:
     - Github:
       - abbr: GH
-        href: https://github.com/Anddd7
+        href: https://github.com/
+
+  - AI:
+    - ChatGPT:
+      - href: https://chat.openai.com/
+    - txyz:
+      - href: https://app.txyz.ai/
+        description: AI enhanced paper reading
+
+  - UI:
+    - emojiCopy:
+      - href: https://emojicopy.com/
+
+  - Format:
+    - JSON Hero:
+      - href: https://jsonhero.io/
+    - regex101:
+      - href: https://regex101.com/
+    - Regex Vis:
+      - href: https://regex-vis.com/
+    - Visual Subnet Calculator:
+      - href: https://www.davidc.net/sites/default/subnets/subnets.html
+    - CIDR Visualizer:
+      - href: https://cidr-subnet.netlify.app/
+
+  # services
   services:
-  - My First Group:
-    - My First Service:
-        href: http://localhost/
-        description: Homepage is awesome
+  - Website:
+    - Excalidraw:
+        href: https://excalidraw-anddd7.vercel.app/
+        description: support zh fonts
 
-  - My Second Group:
-    - My Second Service:
-        href: http://localhost/
-        description: Homepage is the best
+  - Github:
+    - Github:
+        href: https://github.com/Anddd7
+    - Anddd7/grpcbin:
+        href: https://github.com/Anddd7/grpcbin
+        description: A gRPC testing tool
+    - Anddd7/rubber-duck:
+        href: https://github.com/Anddd7/rubber-duck
+        description: A testing toolset for kubernetes
 
-  - My Third Group:
-    - My Third Service:
-        href: http://localhost/
-        description: Homepage is 😎
+  # widgets
   widgets:
-  # show the kubernetes widget, with the cluster summary and individual nodes
+  - greeting:
+    text_size: xl
+    text: Welcome, you find this place.
   - kubernetes:
       cluster:
         show: true
@@ -34,11 +74,22 @@ config:
         memory: true
         showLabel: true
   - search:
-      provider: duckduckgo
+      provider: [duckduckgo, google]
       target: _blank
+  - openmeteo:
+    label: Chengdu
+    latitude: 30.6667
+    longitude: 104.0667
+    timezone: China/Beijing
+    units: metric # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+    format: # optional, Intl.NumberFormat options
+      maximumFractionDigits: 1
+
+  # kubernetes
   kubernetes:
     mode: cluster
-  settings:
+
 
 serviceAccount:
   create: true
@@ -52,8 +103,8 @@ ingress:
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/name: "Homepage"
-      gethomepage.dev/description: "Dynamically Detected Homepage"
-      gethomepage.dev/group: "Dynamic"
+      gethomepage.dev/description: "Self-hosted homepage"
+      gethomepage.dev/group: "Website"
       gethomepage.dev/icon: "homepage.png"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: letsencrypt
