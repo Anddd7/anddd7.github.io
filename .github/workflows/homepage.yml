@@ -23,3 +23,4 @@ jobs:
           args: |
             helm repo add jameswynn https://jameswynn.github.io/helm-charts
             helm upgrade --install homepage jameswynn/homepage -f homepage/helm/values.yaml
+            kubectl rollout restart deployment homepage

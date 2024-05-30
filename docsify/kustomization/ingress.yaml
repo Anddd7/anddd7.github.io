@@ -7,6 +7,7 @@ metadata:
     gethomepage.dev/name: "Blog"
     gethomepage.dev/description: "Blog powered by docsify"
     gethomepage.dev/group: "Website"
+    gethomepage.dev/icon: "https://avatars.githubusercontent.com/u/40133106"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: letsencrypt
 spec:

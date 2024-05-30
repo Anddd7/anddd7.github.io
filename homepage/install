@@ -5,3 +5,5 @@ helm repo add jameswynn https://jameswynn.github.io/helm-charts
 helm upgrade --install \
     homepage jameswynn/homepage \
     -f helm/values.yaml
+
+kubectl rollout restart deployment homepage
