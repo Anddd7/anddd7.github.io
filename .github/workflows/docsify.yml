@@ -3,10 +3,10 @@ name: docsify
 on:
   push:
     paths:
+      - '.github/workflows/docsify.yml'
       - 'docsify/docs/**'
       - 'docsify/Dockerfile'
       - 'docsify/kustomization/**'
-      - '.github/workflows/docsify.yml'
 
 env:
   REGISTRY: ghcr.io
@@ -51,6 +51,15 @@ jobs:
       - uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-          IMAGE_TAG: ${{ steps.meta.outputs.tags }}
         with:
-          args: kustomize docsify/kustomization | envsubst | kubectl apply -f -
+          args: kustomize docsify/kustomization > docsify/install-pre.yaml
+      
+      - name: envsubst
+        env:
+          IMAGE_TAG: ${{ steps.meta.outputs.tags }}
+        run: |
+          envsubst < docsify/install-pre.yaml > docsify/install.yaml
+
+      - uses: actions-hub/kubectl@master
+        with: 
+          args: apply -f docsify/install.yaml
