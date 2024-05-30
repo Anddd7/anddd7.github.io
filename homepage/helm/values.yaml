@@ -2,11 +2,11 @@ config:
   # settings
   settings:
     title: Anddd7
-    quicklaunch:
-      searchDescriptions: true
-      hideInternetSearch: true
-      showSearchSuggestions: true
-      hideVisitURL: true
+
+    layout:
+      Website:
+        style: row
+        columns: 4
 
   # bookmarks
   bookmarks:
@@ -18,9 +18,8 @@ config:
   - AI:
     - ChatGPT:
       - href: https://chat.openai.com/
-    - txyz:
+    - txyz | paper reader:
       - href: https://app.txyz.ai/
-        description: AI enhanced paper reading
 
   - UI:
     - emojiCopy:
@@ -33,7 +32,7 @@ config:
       - href: https://regex101.com/
     - Regex Vis:
       - href: https://regex-vis.com/
-    - Visual Subnet Calculator:
+    - Subnet Calculator:
       - href: https://www.davidc.net/sites/default/subnets/subnets.html
     - CIDR Visualizer:
       - href: https://cidr-subnet.netlify.app/
@@ -44,22 +43,26 @@ config:
     - Excalidraw:
         href: https://excalidraw-anddd7.vercel.app/
         description: support zh fonts
+        ping: excalidraw-anddd7.vercel.app
+        icon: https://docs.excalidraw.com/img/favicon.png
 
   - Github:
     - Github:
         href: https://github.com/Anddd7
+        description: My Github Profile
+        icon: https://github.githubassets.com/favicons/favicon.png
     - Anddd7/grpcbin:
         href: https://github.com/Anddd7/grpcbin
         description: A gRPC testing tool
+        icon: https://github.githubassets.com/favicons/favicon.png
     - Anddd7/rubber-duck:
         href: https://github.com/Anddd7/rubber-duck
         description: A testing toolset for kubernetes
+        icon: https://github.githubassets.com/favicons/favicon.png
+
 
   # widgets
   widgets:
-  - greeting:
-    text_size: xl
-    text: Welcome, you find this place.
   - kubernetes:
       cluster:
         show: true
@@ -75,15 +78,6 @@ config:
   - search:
       provider: [duckduckgo, google]
       target: _blank
-  - openmeteo:
-    label: Chengdu
-    latitude: 30.6667
-    longitude: 104.0667
-    timezone: China/Beijing
-    units: metric # or imperial
-    cache: 5 # Time in minutes to cache API responses, to stay within limits
-    format: # optional, Intl.NumberFormat options
-      maximumFractionDigits: 1
 
   # kubernetes
   kubernetes:
