@@ -4,9 +4,9 @@ metadata:
   name: docsify
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/name: "Blog"
-    gethomepage.dev/description: "Blog powered by docsify"
-    gethomepage.dev/group: "Website"
+    gethomepage.dev/name: "Blog - 博客"
+    gethomepage.dev/description: "My mesh-shaped blogs, powered by docsify"
+    gethomepage.dev/group: "Deployment"
     gethomepage.dev/icon: "https://avatars.githubusercontent.com/u/40133106"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: letsencrypt

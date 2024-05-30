@@ -30,9 +30,9 @@ metadata:
   name: beian
   annotations:
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/name: "Beian"
-    gethomepage.dev/description: "Main entry for ICP"
-    gethomepage.dev/group: "Website"
+    gethomepage.dev/name: "Beian - 备案"
+    gethomepage.dev/description: "Serve root domain with ICP information"
+    gethomepage.dev/group: "Deployment"
     gethomepage.dev/icon: "https://miro.medium.com/max/358/1*8tS36qcyZ2c-kYF3zSrbfA.png"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: letsencrypt

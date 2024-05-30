@@ -4,16 +4,15 @@ config:
     title: Anddd7
 
     layout:
-      Website:
+      Deployment:
         style: row
         columns: 4
 
   # bookmarks
   bookmarks:
-  - Github:
-    - Github:
-      - abbr: GH
-        href: https://github.com/
+  - Cloud-Native:
+    - CNCF:
+      - href: https://landscape.cncf.io/
 
   - AI:
     - ChatGPT:
@@ -39,14 +38,13 @@ config:
 
   # services
   services:
-  - Website:
+  - Deployment:
     - Excalidraw:
         href: https://excalidraw-anddd7.vercel.app/
-        description: support zh fonts
+        description: Forked excalidraw, support free ZH fonts
         icon: https://docs.excalidraw.com/img/favicon.png
-        ping: excalidraw-anddd7.vercel.app
 
-  - Github:
+  - Coding:
     - Github:
         href: https://github.com/Anddd7
         description: My Github Profile
@@ -96,8 +94,8 @@ ingress:
     annotations:
       gethomepage.dev/enabled: "true"
       gethomepage.dev/name: "Homepage"
-      gethomepage.dev/description: "Self-hosted homepage"
-      gethomepage.dev/group: "Website"
+      gethomepage.dev/description: "this!"
+      gethomepage.dev/group: "Deployment"
       gethomepage.dev/icon: "homepage.png"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: letsencrypt
