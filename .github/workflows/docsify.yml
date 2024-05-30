@@ -48,18 +48,11 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - uses: actions-hub/kubectl@master
+      - name: Deploy to Kubernetes
+        uses: wahyd4/kubectl-helm-action@master
         env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-        with:
-          args: kustomize docsify/kustomization > docsify/install-pre.yaml
-      
-      - name: envsubst
-        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
           IMAGE_TAG: ${{ steps.meta.outputs.tags }}
-        run: |
-          envsubst < docsify/install-pre.yaml > docsify/install.yaml
-
-      - uses: actions-hub/kubectl@master
-        with: 
-          args: apply -f docsify/install.yaml
+        with:
+          args: |
+            kubectl kustomize docsify/kustomization | envsubst | kubectl apply -f -
