@@ -2,8 +2,10 @@ name: docsify
 
 on:
   push:
-    tags:
-      - '*'
+    paths:
+      - 'docsify/docs/**'
+      - 'docsify/Dockerfile'
+      - 'docsify/kustomization/**'
 
 env:
   REGISTRY: ghcr.io
@@ -35,6 +37,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: type=sha
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
@@ -43,3 +46,10 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+          IMAGE_TAG: ${{ steps.meta.outputs.tags }}
+        with:
+          args: kustomize kustomization | envsubst | kubectl apply -f -
