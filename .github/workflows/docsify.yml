@@ -52,4 +52,4 @@ jobs:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
           IMAGE_TAG: ${{ steps.meta.outputs.tags }}
         with:
-          args: kustomize kustomization | envsubst | kubectl apply -f -
+          args: kustomize docsify/kustomization | envsubst | kubectl apply -f -
