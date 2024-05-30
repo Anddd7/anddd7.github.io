@@ -1,0 +1,83 @@
+#!/bin/bash
+
+docsify_blog_dir="docsify/docs/post"
+docsify_sidebar_file="docsify/docs/_sidebar.md"
+
+function blog_create() {
+    title="Your Title Here"
+
+    while getopts "t:" opt; do
+        case $opt in
+        t)
+            title="$OPTARG"
+            ;;
+        \?)
+            echo "Usage: $0 create [-t <title>]"
+            exit 1
+            ;;
+        esac
+    done
+
+    current_date=$(date +"%Y%m%d-%H%M%S")
+    file_name="$current_date.md"
+    file_path="$docsify_blog_dir/$(date +"%Y")/$file_name"
+
+    cat <<EOF >"$file_path"
+# $title
+
+Your content here.
+
+---
+
+<div style="display: flex; justify-content: space-around;">
+    <img src="../../assets/mp-weixin-green.png" alt="Image 1" style="width: 45%;"/>
+    <img src="../../assets/mp-weixin-white.png" alt="Image 2" style="width: 45%;"/>
+</div>
+EOF
+
+    echo "Blog post created: $file_path"
+
+    code "$file_path"
+}
+
+function blog_publish() {
+    while getopts "f:" opt; do
+        case $opt in
+        f)
+            file_path="$OPTARG"
+            ;;
+        \?)
+            echo "Usage: $0 publish [-f <file_path>]"
+            exit 1
+            ;;
+        esac
+    done
+
+    if [ -z "$file_path" ]; then
+        echo "Please provide the file path using -f option."
+        exit 1
+    fi
+
+    year=$(echo "$file_path" | awk -F'/' '{print $3}')
+    title=$(head -n 1 "$file_path" | sed -n 's/^# \(.*\)$/\1/p')
+    file_path=$(echo "$file_path" | sed 's/^docs\///')
+
+    sed -i "/\* $year/ a\*\* [$title]($file_path \"$title\")" "$docsify_sidebar_file"
+
+    echo "Blog post published to sidebar: $file_path"
+}
+
+case "$1" in
+new)
+    shift
+    blog_create "$@"
+    ;;
+pub)
+    shift
+    blog_publish "$@"
+    ;;
+*)
+    echo "Usage: $0 {new|pub} [options]"
+    exit 1
+    ;;
+esac
