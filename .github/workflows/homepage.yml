@@ -1,0 +1,24 @@
+name: homepage
+
+on:
+  push:
+    paths:
+      - 'homepage/helm/**'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Deploy to Kubernetes
+        uses: wahyd4/kubectl-helm-action@master
+        env:
+          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: |
+            helm upgrade --install homepage jameswynn/homepage -f homepage/helm/values.yaml
