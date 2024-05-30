@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp index.html kustomization/index.html
+
+kubectl kustomize kustomization | envsubst | kubectl apply -f -

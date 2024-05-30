@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: beian
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  rules:
+  - host: mesh-shaped.top
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: beian
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - "*.mesh-shaped.top"
+    secretName: mesh-shaped-top-wild-tls
