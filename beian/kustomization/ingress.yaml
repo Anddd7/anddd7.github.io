@@ -33,7 +33,7 @@ metadata:
     gethomepage.dev/name: "Beian - 备案"
     gethomepage.dev/description: "Serve root domain with ICP information"
     gethomepage.dev/group: "Deployment"
-    gethomepage.dev/icon: "https://miro.medium.com/max/358/1*8tS36qcyZ2c-kYF3zSrbfA.png"
+    gethomepage.dev/icon: "https://avatars.githubusercontent.com/u/24785373"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
     cert-manager.io/cluster-issuer: letsencrypt
 spec:

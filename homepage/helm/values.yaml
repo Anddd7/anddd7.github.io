@@ -96,7 +96,7 @@ ingress:
       gethomepage.dev/name: "Homepage"
       gethomepage.dev/description: "this!"
       gethomepage.dev/group: "Deployment"
-      gethomepage.dev/icon: "homepage.png"
+      gethomepage.dev/icon: "https://avatars.githubusercontent.com/u/122929872"
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
       cert-manager.io/cluster-issuer: letsencrypt
     hosts:
