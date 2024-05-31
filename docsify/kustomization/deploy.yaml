@@ -2,17 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: docsify
-  labels:
-    app: docsify
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: docsify
+      app.kubernetes.io/name: docsify
   template:
     metadata:
       labels:
-        app: docsify
+        app.kubernetes.io/name: docsify
     spec:
       containers:
       - name: docsify

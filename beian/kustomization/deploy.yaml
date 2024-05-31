@@ -6,11 +6,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: beian
+      app.kubernetes.io/name: beian
   template:
     metadata:
       labels:
-        app: beian
+        app.kubernetes.io/name: beian
     spec:
       containers:
       - name: nginx
