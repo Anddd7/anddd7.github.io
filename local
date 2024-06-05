@@ -58,13 +58,13 @@ function blog_publish() {
         exit 1
     fi
 
-    year=$(echo "$file_path" | awk -F'/' '{print $3}')
+    year=$(echo "$file_path" | awk -F'/' '{print $4}')
     title=$(head -n 1 "$file_path" | sed -n 's/^# \(.*\)$/\1/p')
-    file_path=$(echo "$file_path" | sed 's/^docs\///')
+    file_path=$(echo "$file_path" | sed 's/^docsify\/docs\///')
 
     sed -i "/\* $year/ a\*\* [$title]($file_path \"$title\")" "$docsify_sidebar_file"
 
-    echo "Blog post published to sidebar: $file_path"
+    echo "Blog post published to sidebar: $docsify_sidebar_file"
 }
 
 case "$1" in
