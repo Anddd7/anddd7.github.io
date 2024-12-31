@@ -4,6 +4,8 @@
 ** [如何绘制架构图：Mesh-Shaped Architecture Views](post/draw-architecture-diagram/ ':class=book')
 
 <!-- 按年分类 -->
+* 2025
+** [Mesh-Shaped PKM - AI Powered](post/2025/20241231-112948.md "Mesh-Shaped PKM - AI Powered")
 
 * 2024
 ** [k3s 搭建个人博客基础设施](post/2024/20240617-102118.md "k3s 搭建个人博客基础设施")
