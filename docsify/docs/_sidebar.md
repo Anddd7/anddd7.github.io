@@ -1,3 +1,7 @@
+<!-- 长篇系列 -->
+* 方法论系列
+** [2023/实现云原生：从技术创新到工程落地](post/cloud-native-engineering/ ':class=book')
+** [2023/架构图怎么画](post/draw-architecture-diagram/ ':class=book')
 
 <!-- 按年分类 -->
 
@@ -32,7 +36,3 @@
 ** [路由 vs 代理 vs 网关](migrate/router-proxy-gtw "路由 vs 代理 vs 网关")
 ** [API Design - inspired by google api design](migrate/API-Design-inspired-by-google-api-design "API Design - inspired by google api design")
 
-<!-- 长篇系列 -->
-* 长篇系列
-** [(WIP)《系列：实现云原生：从技术创新到工程落地》](post/cloud-native-engineering/ ':class=book')
-** [《系列：架构图怎么画》](post/draw-architecture-diagram/ ':class=book')

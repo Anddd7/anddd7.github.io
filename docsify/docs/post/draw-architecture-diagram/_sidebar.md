@@ -1,7 +1,7 @@
 * [系列：架构图怎么画](post/draw-architecture-diagram/)
 
----
----
+<hr style="border-top:2px solid gainsboro;" />
+<p style="text-align: center;"> 相关链接 </p>
 
 * [远程开发环境的可行性 - 图解云原生应用的开发与调试](post/2023/82101107-d502-4d1b-988a-9effd7eff9b7.md "远程开发环境的可行性 - 图解云原生应用的开发与调试")
 
@@ -17,7 +17,7 @@
 
 * [路由 vs 代理 vs 网关](migrate/router-proxy-gtw "路由 vs 代理 vs 网关")
 
---- 
----
-
-* [<< 回到首页](/)
+<hr style="border-top:2px solid gainsboro;" />
+<p style="text-align: center;"> 
+    <a href="/"> << 回到首页 </a> 
+</p>
