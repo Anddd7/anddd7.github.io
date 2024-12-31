@@ -1,7 +1,7 @@
 <!-- 长篇系列 -->
 * 方法论系列
-** [2023/实现云原生：从技术创新到工程落地](post/cloud-native-engineering/ ':class=book')
-** [2023/架构图怎么画](post/draw-architecture-diagram/ ':class=book')
+** [实现云原生：从技术创新到工程落地](post/cloud-native-engineering/ ':class=book')
+** [如何绘制架构图：Mesh-Shaped Architecture Views](post/draw-architecture-diagram/ ':class=book')
 
 <!-- 按年分类 -->
 
@@ -14,6 +14,7 @@
 ** [图解工作法](post/2024/20240126-102348.md "图解工作法")
 ** [随笔 - 二零二四，开年“述职”](post/2024/20240102-5e1388be.md "随笔 - 二零二四，开年“述职”")
 
+
 * 2023
 ** [消费降级 - 配置 Windows 开发环境](post/2023/b7e9662c-3db7-4567-8eab-2d5eff90bc99.md "消费降级 - 配置 Windows 开发环境")
 ** [AI 是个筐啥都可以装 - 图解 AI 基本概念](post/2023/caaae7fa-5b70-47b9-9c1b-56eb43da21bc.md "AI 是个筐啥都可以装 - 图解 AI 基本概念")
@@ -25,14 +26,14 @@
 ** [“在我的电脑上明明可以的” — 图解 DevContainer 构建干净的开发环境](post/2023/devcontainer-tutorial "“在我的电脑上明明可以的” — 图解 DevContainer 构建干净的开发环境")
 ** [Infrastructure as Code (IaC) 思考和实践](post/2023/iac-and-terraform "Infrastructure as Code (IaC) 思考和实践")
 
+
 * 2022
-** [打造 Mesh-Shaped 能力 - 图解 Logseq 个人知识管理体系](migrate/logseq-pkm "打造 Mesh-Shaped 能力 - 图解 Logseq 个人知识管理体系")
+** [Mesh-Shaped PKM - 图解 Logseq 个人知识管理体系](migrate/logseq-pkm "打造 Mesh-Shaped 能力 - 图解 Logseq 个人知识管理体系")
 ** [容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落](migrate/container-k8s-docker "容器江湖的刀光剑影 - 图解 K8S 与 Docker 的缘起缘落")
 ** [Go 微服务架构 - 图解 Go + K8S 的微服务系统的全开发流程](migrate/go-monorepo-tutorial "Go 微服务架构 - 图解 Go + K8S 的微服务系统的全开发流程")
-** [Mesh-Shaped 回顾 Retro](migrate/mesh-shaped-recap "Mesh-Shaped  回顾 Retro")
+** [Mesh-Shaped Retro](migrate/mesh-shaped-recap "Mesh-Shaped Retro")
 ** [Mesh-Shaped Cloud-Native Developer](migrate/Mesh-Shaped-Cloud-Native-Developer "Mesh-Shaped Cloud-Native Developer")
 ** [Logseq - Customized with Clojure and CSS](migrate/Logseq-Customized-with-Clojure-and-CSS "Logseq - Customized with Clojure and CSS")
 ** [Logseq - Build your own Wiki](migrate/Logseq-Build-your-own-Wiki "Logseq - Build your own Wiki")
 ** [路由 vs 代理 vs 网关](migrate/router-proxy-gtw "路由 vs 代理 vs 网关")
 ** [API Design - inspired by google api design](migrate/API-Design-inspired-by-google-api-design "API Design - inspired by google api design")
-

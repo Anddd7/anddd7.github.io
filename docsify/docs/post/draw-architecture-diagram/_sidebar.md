@@ -1,4 +1,4 @@
-* [系列：架构图怎么画](post/draw-architecture-diagram/)
+* [如何绘制架构图：Mesh-Shaped Architecture Views](post/draw-architecture-diagram/)
 
 <hr style="border-top:2px solid gainsboro;" />
 <p style="text-align: center;"> 相关链接 </p>
