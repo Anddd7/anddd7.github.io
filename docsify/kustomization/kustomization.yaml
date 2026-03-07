@@ -1,6 +1,0 @@
-namespace: default
-
-resources:
-- deploy.yaml
-- svc.yaml
-- ingress.yaml

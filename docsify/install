@@ -1,5 +1,0 @@
-#!/bin/bash
-
-export IMAGE_TAG=$(git rev-parse --short HEAD)
-
-kubectl kustomize kustomization | envsubst | kubectl apply -f -

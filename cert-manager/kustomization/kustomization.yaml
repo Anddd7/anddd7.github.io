@@ -1,5 +1,0 @@
-namespace: cert-manager
-
-resources:
-- clusterissuer.yaml
-- secret.yaml
