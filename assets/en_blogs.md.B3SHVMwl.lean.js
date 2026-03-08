@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./chunks/framework.BmOFhHdK.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"en/blogs.md","filePath":"en/blogs.md","lastUpdated":1772904362000}'),o={name:"en/blogs.md"};function s(n,r,c,d,l,p){return t(),a("div")}const m=e(o,[["render",s]]);export{i as __pageData,m as default};
