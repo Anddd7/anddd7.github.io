@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as o}from"./chunks/framework.ougANTrz.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"blogs.md","filePath":"blogs.md"}'),a={name:"blogs.md"};function s(r,c,n,l,p,_){return t(),o("div")}const m=e(a,[["render",s]]);export{i as __pageData,m as default};
