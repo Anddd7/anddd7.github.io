@@ -1,0 +1,140 @@
+<svg width="1280" height="760" viewBox="0 0 1280 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF8"/>
+      <stop offset="1" stop-color="#F6EFE4"/>
+    </linearGradient>
+    <linearGradient id="agent" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#C36A38"/>
+      <stop offset="1" stop-color="#9A4A22"/>
+    </linearGradient>
+    <linearGradient id="skill" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F3A54A"/>
+      <stop offset="1" stop-color="#D97706"/>
+    </linearGradient>
+    <linearGradient id="adapter" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#B86A45"/>
+      <stop offset="1" stop-color="#8E4423"/>
+    </linearGradient>
+    <linearGradient id="api" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F7F0E6"/>
+      <stop offset="1" stop-color="#EFE3D2"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#A78969" flood-opacity="0.18"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#9A4A22"/>
+    </marker>
+    <style>
+      .title { font: 700 34px Inter, Arial, sans-serif; fill: #2A2722; }
+      .boxTitle { font: 700 20px Inter, Arial, sans-serif; fill: #F8FAFC; }
+      .boxText { font: 500 15px Inter, Arial, sans-serif; fill: #F8EEE8; }
+      .chip { font: 700 14px Inter, Arial, sans-serif; fill: #FFF7ED; }
+      .apiTitle { font: 700 18px Inter, Arial, sans-serif; fill: #392F24; }
+      .apiText { font: 500 14px Inter, Arial, sans-serif; fill: #746A5D; }
+      .note { font: 600 15px Inter, Arial, sans-serif; fill: #9A4A22; }
+      .flow { stroke: #9A4A22; stroke-width: 4; fill: none; stroke-linecap: round; stroke-dasharray: 14 12; marker-end: url(#arrow); }
+      .pulse { fill: #C97B45; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="760" rx="28" fill="url(#bg)"/>
+  <text x="64" y="76" class="title">Choreography：多个 Agent Client 按业务规则协作</text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="180" width="300" height="170" rx="22" fill="url(#agent)"/>
+    <text x="96" y="226" class="boxTitle">Order Agent Client</text>
+    <text x="96" y="254" class="boxText">理解订单场景，决定先查库存还是下单</text>
+    <rect x="96" y="282" width="92" height="34" rx="17" fill="url(#skill)"/>
+    <text x="121" y="304" class="chip">Skill</text>
+    <text x="198" y="304" class="boxText">订单规则 / 推荐逻辑</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="390" width="300" height="170" rx="22" fill="url(#agent)"/>
+    <text x="96" y="436" class="boxTitle">Inventory Agent Client</text>
+    <text x="96" y="464" class="boxText">处理库存场景，判断缺货与替代品</text>
+    <rect x="96" y="492" width="92" height="34" rx="17" fill="url(#skill)"/>
+    <text x="121" y="514" class="chip">Skill</text>
+    <text x="198" y="514" class="boxText">库存口径 / 异常处理</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="600" width="300" height="110" rx="22" fill="url(#adapter)"/>
+    <text x="96" y="648" class="boxTitle">CLI / MCP Gateway</text>
+    <text x="96" y="676" class="boxText">统一适配 API 调用面</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="470" y="170" width="250" height="130" rx="20" fill="url(#api)" stroke="#E7DECE"/>
+    <text x="496" y="214" class="apiTitle">Order API</text>
+    <text x="496" y="242" class="apiText">价格、优惠、结算</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="470" y="325" width="250" height="130" rx="20" fill="url(#api)" stroke="#E7DECE"/>
+    <text x="496" y="369" class="apiTitle">Inventory API</text>
+    <text x="496" y="397" class="apiText">库存、缺货、替代品</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="470" y="480" width="250" height="130" rx="20" fill="url(#api)" stroke="#E7DECE"/>
+    <text x="496" y="524" class="apiTitle">Catalog API</text>
+    <text x="496" y="552" class="apiText">商品信息、关联推荐</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="860" y="210" width="330" height="360" rx="24" fill="#FFF7EF" stroke="#E7DECE"/>
+    <text x="892" y="258" style="font: 700 20px Inter, Arial, sans-serif; fill: #392F24;">业务规则落点</text>
+    <text x="892" y="300" style="font: 500 15px Inter, Arial, sans-serif; fill: #5B2B16;">• 订单金额 &lt; 100 时，先查库存</text>
+    <text x="892" y="336" style="font: 500 15px Inter, Arial, sans-serif; fill: #5B2B16;">• 有库存时，再查“随手加一件”候选商品</text>
+    <text x="892" y="372" style="font: 500 15px Inter, Arial, sans-serif; fill: #5B2B16;">• 缺货时，转向替代商品或延迟交付</text>
+    <text x="892" y="408" style="font: 500 15px Inter, Arial, sans-serif; fill: #5B2B16;">• 技术上统一处理超时、重试、降级</text>
+    <text x="892" y="472" class="note">无需改变 API ，</text>
+    <text x="892" y="500" class="note">调用方根据 Skill 的指导进行调用。</text>
+  </g>
+
+  <path class="flow" d="M370 655C410 655 420 555 470 545">
+    <animate attributeName="stroke-dashoffset" from="0" to="-52" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <circle r="6" class="pulse">
+    <animateMotion dur="2s" repeatCount="indefinite" path="M370 655C410 655 420 555 470 545"/>
+  </circle>
+
+  <path class="flow" d="M370 655C410 655 420 400 470 390">
+    <animate attributeName="stroke-dashoffset" from="0" to="-52" dur="1.8s" repeatCount="indefinite"/>
+  </path>
+  <circle r="6" class="pulse">
+    <animateMotion dur="1.8s" repeatCount="indefinite" path="M370 655C410 655 420 400 470 390"/>
+  </circle>
+
+  <path class="flow" d="M370 265C415 265 430 235 470 235">
+    <animate attributeName="stroke-dashoffset" from="0" to="-52" dur="1.6s" repeatCount="indefinite"/>
+  </path>
+  <circle r="6" class="pulse">
+    <animateMotion dur="1.6s" repeatCount="indefinite" path="M370 265C415 265 430 235 470 235"/>
+  </circle>
+
+  <path class="flow" d="M370 475C415 475 430 390 470 390">
+    <animate attributeName="stroke-dashoffset" from="0" to="-52" dur="1.7s" repeatCount="indefinite"/>
+  </path>
+  <circle r="6" class="pulse">
+    <animateMotion dur="1.7s" repeatCount="indefinite" path="M370 475C415 475 430 390 470 390"/>
+  </circle>
+
+  <path class="flow" d="M370 475C415 475 430 545 470 545">
+    <animate attributeName="stroke-dashoffset" from="0" to="-52" dur="1.9s" repeatCount="indefinite"/>
+  </path>
+  <circle r="6" class="pulse">
+    <animateMotion dur="1.9s" repeatCount="indefinite" path="M370 475C415 475 430 545 470 545"/>
+  </circle>
+
+  <path class="flow" d="M720 235C770 235 805 270 860 300">
+    <animate attributeName="stroke-dashoffset" from="0" to="-52" dur="2.1s" repeatCount="indefinite"/>
+  </path>
+  <path class="flow" d="M720 390C780 390 810 390 860 390">
+    <animate attributeName="stroke-dashoffset" from="0" to="-52" dur="2s" repeatCount="indefinite"/>
+  </path>
+  <path class="flow" d="M720 545C770 545 805 515 860 455">
+    <animate attributeName="stroke-dashoffset" from="0" to="-52" dur="2.2s" repeatCount="indefinite"/>
+  </path>
+</svg>
